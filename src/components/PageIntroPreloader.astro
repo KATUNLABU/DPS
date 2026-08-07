@@ -367,17 +367,17 @@
           if (progressBar) progressBar.style.width = '100%';
           autoRevealTimer = setTimeout(() => {
             triggerStickerPeelAndZoom();
-          }, 800);
+          }, 1000);
         }
       });
 
-      // 1. Desplazamiento desde startX a targetX (Duración 5.8s)
+      // 1. Desplazamiento ultra suave desde startX a targetX (Duración 13.5s para completar en 15s total)
       tl.fromTo(
         tapeStrip,
         { x: startX },
         {
           x: targetX,
-          duration: 5.8,
+          duration: 13.5,
           ease: 'power2.inOut'
         },
         0
@@ -392,7 +392,7 @@
           repeat: 1,
           ease: 'sine.inOut'
         },
-        5.8
+        13.5
       );
 
       currentTimeline = tl;
