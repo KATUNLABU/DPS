@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactEngineering from '../../components/ContactEngineering.astro';
+import { MACHINES, type Machine } from '../../data/machines';
+import { getProducts } from '../../lib/supabase';
+
+export async function getStaticPaths() {
+  return MACHINES.map((machine) => ({
+    params: { id: machine.id },
+    props: { machine },
+  }));
+}
+
+interface Props {
+  machine: Machine;
+}
+
+const { machine } = Astro.props;
+
+// Obtener otros 3 equipos relacionados
+const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
+---
+
+<Layout 
+  title={`${machine.name} - ${machine.subtitle} | KATUN DPS`}
+  description={`${machine.description} Conoce las especificaciones técnicas, velocidad, resolución y descarga la ficha técnica PDF.`}
+>
+  <Header />
+
+  <main class="pt-20 pb-16 bg-slate-50 min-h-screen">
+    
+    <!-- Breadcrumb Navigation -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <nav class="flex items-center gap-2 text-xs font-['Space_Grotesk',monospace] text-slate-500">
+        <a href="/" class="hover:text-[#00aeef] transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/catalogo" class="hover:text-[#00aeef] transition-colors">Catálogo de Equipos</a>
+        <span>/</span>
+        <span class="text-slate-900 font-bold">{machine.name}</span>
+      </nav>
+    </div>
+
+    <!-- Product Detail Hero -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="bg-white border border-slate-200 shadow-md p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Product Image Showcase -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="relative bg-slate-950 aspect-[4/3] overflow-hidden border border-slate-200 group">
+            <img 
+              src={machine.image} 
+              alt={machine.name} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            
+            {machine.badge && (
+              <span class="absolute top-4 left-4 bg-[#00aeef] text-white text-[11px] font-['Space_Grotesk',monospace] font-bold px-3 py-1 uppercase tracking-wider shadow-sm">
+                {machine.badge}
+              </span>
+            )}
+
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-white text-xs font-['Space_Grotesk',monospace]">
+              <span class="bg-slate-900/80 px-2.5 py-1 border border-slate-700 uppercase">
+                {machine.category}
+              </span>
+              <span class="bg-slate-900/80 px-2.5 py-1 border border-slate-700 text-[#00aeef] font-bold">
+                {machine.technology}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Summary & Action Panel -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="space-y-3">
+            <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3 py-1 bg-[#00aeef]/10 text-[#00aeef] inline-block uppercase tracking-widest">
+              SOLUCIÓN INDUSTRIAL KATUN DPS
+            </span>
+            <h1 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+              {machine.name}
+            </h1>
+            <p class="font-['Space_Grotesk',monospace] text-base text-[#00aeef] font-bold">
+              {machine.subtitle}
+            </p>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
+            {machine.description}
+          </p>
+
+          <!-- Highlight Key Specs -->
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="bg-slate-50 p-3 border border-slate-200">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">VELOCIDAD</span>
+              <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-slate-900">{machine.speed}</span>
+            </div>
+            <div class="bg-slate-50 p-3 border border-slate-200">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">RESOLUCIÓN</span>
+              <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-slate-900">{machine.resolution}</span>
+            </div>
+            <div class="bg-slate-50 p-3 border border-slate-200">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">ANCHO MÁX.</span>
+              <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-[#00aeef]">{machine.maxWidth}</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-4">
+            <a 
+              href={`https://wa.me/5215580793969?text=Hola,%20me%20interesa%20obtener%20cotización%20y%20asesoría%20para%20el%20equipo%20${encodeURIComponent(machine.name)}`}
+              target="_blank" 
+              rel="noopener" 
+              class="bg-slate-900 hover:bg-[#00aeef] text-white px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 shadow-xs uppercase"
+            >
+              <span class="material-symbols-outlined text-base">chat</span>
+              COTIZAR {machine.name.toUpperCase()}
+            </a>
+
+            {machine.pdfUrl && (
+              <a 
+                href={machine.pdfUrl}
+                target="_blank"
+                download 
+                class="border border-slate-300 hover:border-[#00aeef] hover:text-[#00aeef] text-slate-700 px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 uppercase"
+              >
+                <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                DESCARGAR FICHA PDF
+              </a>
+            )}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Technical Features & Specifications Deep Dive -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Column: Features -->
+        <div class="lg:col-span-6 bg-white p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+          <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-4">
+            <span class="material-symbols-outlined text-[#00aeef]">verified</span>
+            Características Principales
+          </h2>
+          
+          <ul class="space-y-4 font-['Space_Grotesk',monospace] text-sm text-slate-700">
+            {machine.features.map(feature => (
+              <li class="flex items-start gap-3 bg-slate-50 p-3 border border-slate-100">
+                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          {machine.industries && machine.industries.length > 0 && (
+            <div class="pt-4 space-y-3">
+              <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                SECTORES RECOMENDADOS:
+              </span>
+              <div class="flex flex-wrap gap-2">
+                {machine.industries.map(ind => (
+                  <span class="bg-slate-100 text-slate-800 font-['Space_Grotesk',monospace] text-xs px-3 py-1 font-semibold border border-slate-200">
+                    {ind}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Right Column: Specs Table -->
+        <div class="lg:col-span-6 bg-slate-900 text-white p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6">
+          <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-4">
+            <span class="material-symbols-outlined text-[#00aeef]">settings</span>
+            Especificaciones Técnicas
+          </h2>
+
+          <div class="divide-y divide-slate-800 font-['Space_Grotesk',monospace] text-xs">
+            {machine.specs.map(spec => (
+              <div class="py-3 flex justify-between items-center gap-4">
+                <span class="text-slate-400 font-semibold">{spec.label}</span>
+                <span class="text-white font-bold text-right text-sm">{spec.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Related Equipment Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200">
+      <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-slate-900 mb-6">
+        Otras Soluciones de Katun DPS que podrían interesarte
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {relatedMachines.map(rel => (
+          <a 
+            href={`/soluciones/${rel.id}`}
+            class="bg-white border border-slate-200 p-5 hover:border-[#00aeef] transition-all group flex flex-col justify-between shadow-xs"
+          >
+            <div class="space-y-3">
+              <div class="h-40 overflow-hidden bg-slate-950">
+                <img src={rel.image} alt={rel.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <span class="text-[10px] font-['Space_Grotesk',monospace] font-bold text-[#00aeef] uppercase block">
+                {rel.category}
+              </span>
+              <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
+                {rel.name}
+              </h3>
+              <p class="text-xs text-slate-500 font-['Space_Grotesk',monospace] line-clamp-2">
+                {rel.subtitle}
+              </p>
+            </div>
+            <div class="pt-4 mt-2 border-t border-slate-100 text-xs font-bold text-[#00aeef] font-['Space_Grotesk',monospace] flex items-center gap-1">
+              Ver Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Contact Form for this specific solution -->
+    <ContactEngineering />
+
+  </main>
+
+  <Footer />
+</Layout>

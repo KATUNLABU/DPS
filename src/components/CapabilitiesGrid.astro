@@ -1,0 +1,104 @@
+---
+const CAPABILITIES = [
+  {
+    id: "impresion-etiquetas",
+    title: "Impresión Digital de Etiquetas",
+    subtitle: "TECNOLOGÍA DURAFLEX® MEMJET®",
+    icon: "print",
+    description: "Imprime con cabezales motorizados de alta velocidad con tecnología DuraFlex® de Memjet a 1600x1600 DPI.",
+    badge: "MEMJET® DURAFLEX®"
+  },
+  {
+    id: "impresion-empaques",
+    title: "Impresión Digital de Empaques",
+    subtitle: "EMPAQUES RÍGIDOS Y FLEXIBLES",
+    icon: "inventory_2",
+    description: "Imprime empaques rígidos y flexibles: corrugados, madera, bolsas pouch y cartoncillo en una sola pasada.",
+    badge: "RÍGIDOS & FLEXIBLES"
+  },
+  {
+    id: "corte-laser",
+    title: "Corte: Cuchillas & Láser",
+    subtitle: "TRADICIONAL O LÁSER POTENTE",
+    icon: "content_cut",
+    description: "Cabezales de corte tradicional por cuchilla o módulo láser potente CO2 galvanométrico sin troqueles mecánicos.",
+    badge: "CUCHILLAS / LÁSER"
+  },
+  {
+    id: "laminado",
+    title: "Laminado en Frío",
+    subtitle: "PROTECCIÓN AL INSTANTE",
+    icon: "layers",
+    description: "Laminado en frío al instante para sellado de alta durabilidad frente a agua, químicos y fricción.",
+    badge: "LAMINADO EN FRÍO"
+  },
+  {
+    id: "barnizado",
+    title: "Barnizado & Secado",
+    subtitle: "CURADO INSTANTÁNEO NIR / UV",
+    icon: "format_paint",
+    description: "Barnizado y secado instantáneos mediante lámparas UV LED multi-zona o secado infrarrojo directo.",
+    badge: "BARNIZADO UV"
+  },
+  {
+    id: "embobinado",
+    title: "Embobinado & Desembobinado",
+    subtitle: "MODULACIÓN DE DIÁMETROS",
+    icon: "sync_alt",
+    description: "Modula rollos con diferentes diámetros con guiador de banda ultrasónico BST y servomotores.",
+    badge: "CONTROL DE ROLLOS"
+  }
+];
+---
+
+<section id="capabilities" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+    <div class="space-y-3">
+      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-slate-900 text-white inline-block rounded-none">
+        CAPACIDADES DE PROCESO
+      </span>
+      <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        Impresión & Acabado Integrado
+      </h2>
+    </div>
+    <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
+      Fabricación y distribución de máquinas digitales de alta velocidad para etiquetas y empaques en una sola pasada.
+    </p>
+  </div>
+
+  <!-- 6 Process Cards Grid (Sharp Square 0px Radius) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {CAPABILITIES.map(item => (
+      <div class="bg-white p-6 sm:p-8 border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none cursor-crosshair space-y-6">
+        <div class="space-y-4">
+          <div class="flex justify-between items-start">
+            <div class="w-12 h-12 bg-slate-100 border border-slate-200 flex items-center justify-center rounded-none group-hover:bg-slate-900 group-hover:text-white transition-colors">
+              <span class="material-symbols-outlined text-2xl">{item.icon}</span>
+            </div>
+            <span class="font-['Space_Grotesk',monospace] text-[10px] font-bold px-2.5 py-1 bg-slate-50 border border-slate-200 text-slate-700 rounded-none">
+              {item.badge}
+            </span>
+          </div>
+
+          <div class="space-y-1">
+            <span class="font-['Space_Grotesk',monospace] text-[11px] font-bold text-[#00aeef] uppercase block">
+              {item.subtitle}
+            </span>
+            <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
+              {item.title}
+            </h3>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed font-['Space_Grotesk',monospace]">
+            {item.description}
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between font-['Space_Grotesk',monospace] text-xs font-semibold text-slate-500">
+          <span>EQUIPOS ESPECIALIZADOS</span>
+          <span class="text-slate-900 group-hover:text-[#00aeef]">TECNOLOGÍA 2026 ↗</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

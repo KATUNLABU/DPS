@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "KATUN DPS - Katun Digital Process Systems | Soluciones en Impresión Digital y Corte de Etiquetas",
+  description = "Nos especializamos en la fabricación y distribución de equipos y máquinas digitales de impresión y corte de etiquetas para la industria en México y Latinoamérica. Memjet DuraFlex, Versapass, corte láser LC 350 PM y más."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Katun DPS, impresion digital etiquetas, cortadora laser etiquetas, memjet duraflex, vipcolor vp610, arrowjet aqua 330r, troquelado digital, etiquetas mexico" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://katundps.com/" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#fafafc] text-[#0f172a] font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#00aeef]/20 selection:text-[#00aeef]">
+    <slot />
+
+    <!-- Mobile Drawer Menu JavaScript -->
+    <script is:inline>
+      window.toggleDrawer = function() {
+        const drawer = document.getElementById('drawer');
+        if (drawer) {
+          drawer.classList.toggle('-translate-x-full');
+        }
+      }
+    </script>
+  </body>
+</html>

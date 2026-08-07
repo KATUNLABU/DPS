@@ -1,0 +1,121 @@
+---
+const INDUSTRIES = [
+  {
+    id: "alimentos",
+    title: "Alimentos & Bebidas",
+    tag: "RESISTENCIA & NORMATIVA",
+    icon: "restaurant",
+    image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80",
+    description: "Tintas acuosas Memjet® aptas para contacto indirecto con alimentos, botellas refrigeradas y latas sumergidas en hielo.",
+    recommended: ["ArrowJet Aqua 330R", "VIPColor VP610", "Aries 35PL"]
+  },
+  {
+    id: "quimicos",
+    title: "Químicos e Industriales (GHS)",
+    tag: "ETIQUETADO BS5609",
+    icon: "science",
+    image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80",
+    description: "Etiquetas ultrarresistentes a solventes, aceites y corrosivos con cumplimiento del estándar internacional GHS.",
+    recommended: ["ArrowJet Aqua 330R", "Arrow EZCut 350R Láser", "LC 350 PM"]
+  },
+  {
+    id: "farmaceutica",
+    title: "Salud & Farmacéutica",
+    tag: "TRAZABILIDAD & QR",
+    icon: "medication",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+    description: "Micro-impresión de alta precisión para frascos pequeños, ampolletas y serialización mediante códigos QR troquelados por láser.",
+    recommended: ["VIPColor VP660", "LC 350 PM Láser", "Contador Automático"]
+  },
+  {
+    id: "cosmetica",
+    title: "Cuidado Personal & Cosmética",
+    tag: "ACABADO LUXURY & FOIL",
+    icon: "face_3",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+    description: "Etiquetas transparentes (clear-on-clear), barniz UV brillante y estampado metálico foil para marcas de belleza y perfumería.",
+    recommended: ["Aqua Jet 330 Hybrid", "Katun LT330", "Taurus 35PL"]
+  },
+  {
+    id: "decoracion",
+    title: "Decoración & Rotulación",
+    tag: "FORMATO ANCHO & VINIL",
+    icon: "design_services",
+    image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
+    description: "Impresión y troquelado en vinilos autoadhesivos, papel tapiz, películas metalizadas y gráficos de alta durabilidad.",
+    recommended: ["Katun KLT3", "Arrow EZCut 330RX", "Katun LT330"]
+  },
+  {
+    id: "empaques",
+    title: "Empaques Flexibles & Cajas",
+    tag: "RÍGIDOS Y FLEXIBLES",
+    icon: "inventory",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    description: "Soluciones de impresión digital directa para bolsas pouch, cajas corrugadas, cartoncillo microcorrugado y empaques flexibles.",
+    recommended: ["Katun KLT3", "Gemini 40", "Taurus 35PL Plus"]
+  }
+];
+---
+
+<section id="industries" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+    <div class="space-y-3">
+      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-[#e11d48]/10 text-[#e11d48] inline-block rounded-none">
+        APLICACIONES INDUSTRIALES
+      </span>
+      <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        Sectores Atendidos
+      </h2>
+    </div>
+    <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
+      Nuestras prensas digitales y cortadoras cumplen con las exigencias de adhesión, resistencia y normativa en diversos mercados.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {INDUSTRIES.map(ind => (
+      <div class="bg-white border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group rounded-none">
+        <div>
+          <div class="relative h-48 overflow-hidden bg-slate-100 rounded-none">
+            <img 
+              src={ind.image} 
+              alt={ind.title} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+            
+            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+              {ind.tag}
+            </span>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-2xl text-slate-700">{ind.icon}</span>
+              <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900">
+                {ind.title}
+              </h3>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed font-['Space_Grotesk',monospace]">
+              {ind.description}
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 pt-0 border-t border-slate-100 mt-4">
+          <span class="font-['Space_Grotesk',monospace] text-[10px] font-bold uppercase text-slate-400 block mb-2">
+            EQUIPOS RECOMENDADOS:
+          </span>
+          <div class="flex flex-wrap gap-1.5">
+            {ind.recommended.map(rec => (
+              <span class="font-['Space_Grotesk',monospace] text-[10px] font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 border border-slate-200 rounded-none">
+                {rec}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

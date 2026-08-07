@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ContactEngineering from '../components/ContactEngineering.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="Contacto e Ingeniería de Procesos - KATUN DPS"
+  description="Contacta con el equipo de ingeniería de Katun DPS. Cotizaciones, muestras impresas sin costo y agendamiento de demos en showroom en vivo."
+>
+  <Header />
+
+  <main class="pt-20 pb-12 bg-slate-50">
+    <!-- Header Hero Banner for Contact Page -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
+      <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3.5 py-1.5 bg-[#00aeef]/10 text-[#00aeef] inline-block mb-3 uppercase tracking-wider">
+        ATENCIÓN A CLIENTES & INGENIERÍA DE CAMPO
+      </span>
+      <h1 class="font-['Plus_Jakarta_Sans',sans-serif] text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+        Centro de Contacto & Showroom KATUN DPS
+      </h1>
+      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base font-['Space_Grotesk',monospace] leading-relaxed">
+        Estamos listos para evaluar tus proyectos de impresión digital, cotizar prensas Memjet o troquelado láser, y enviar muestras físicas personalizadas.
+      </p>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="bg-white p-6 border border-slate-200 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#00aeef] transition-colors">
+          <div class="space-y-2">
+            <div class="w-10 h-10 bg-[#00aeef]/10 text-[#00aeef] flex items-center justify-center rounded-none font-bold">
+              <span class="material-symbols-outlined">call</span>
+            </div>
+            <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900">
+              Atención Telefónica Directa
+            </h3>
+            <p class="text-xs text-slate-500 font-['Space_Grotesk',monospace] leading-relaxed">
+              Asistencia inmediata con ingenieros de soporte técnico y ejecutivos comerciales.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 font-['Space_Grotesk',monospace] text-xs">
+            <span class="text-slate-400 block">TELÉFONO & WHATSAPP:</span>
+            <a href="https://wa.me/5215580793969" target="_blank" rel="noopener" class="text-[#00aeef] font-bold hover:underline flex items-center gap-1 mt-0.5">
+              +52 1 (55) 8079 3969 <span class="material-symbols-outlined text-xs">open_in_new</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-6 border border-slate-200 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#00aeef] transition-colors">
+          <div class="space-y-2">
+            <div class="w-10 h-10 bg-[#e11d48]/10 text-[#e11d48] flex items-center justify-center rounded-none font-bold">
+              <span class="material-symbols-outlined">storefront</span>
+            </div>
+            <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900">
+              Demostraciones en Showroom
+            </h3>
+            <p class="text-xs text-slate-500 font-['Space_Grotesk',monospace] leading-relaxed">
+              Pruebas de impresión en vivo con tus archivos y sustratos reales de producción.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 font-['Space_Grotesk',monospace] text-xs">
+            <span class="text-slate-400 block">DISPONIBILIDAD:</span>
+            <span class="text-slate-900 font-bold">Lunes a Viernes (09:00 - 18:00 hrs)</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-6 border border-slate-200 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#00aeef] transition-colors">
+          <div class="space-y-2">
+            <div class="w-10 h-10 bg-[#f59e0b]/10 text-[#f59e0b] flex items-center justify-center rounded-none font-bold">
+              <span class="material-symbols-outlined">local_shipping</span>
+            </div>
+            <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900">
+              Envío de Muestras Gratis
+            </h3>
+            <p class="text-xs text-slate-500 font-['Space_Grotesk',monospace] leading-relaxed">
+              Solicita un paquete de muestras impresas a 1600 DPI y troqueladas con láser.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 font-['Space_Grotesk',monospace] text-xs">
+            <span class="text-slate-400 block">TIEMPO DE ENTREGA:</span>
+            <span class="text-slate-900 font-bold">24-48 horas en México y Latam</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <ContactEngineering />
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,339 @@
+---
+import { MACHINES } from '../data/machines';
+---
+
+<section id="catalog" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+  <!-- Header Title -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+    <div class="space-y-3">
+      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-slate-900 text-white inline-block rounded-none">
+        CATÁLOGO INDUSTRIAL 2026
+      </span>
+      <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+        Catálogo Completo de Equipos (14)
+      </h2>
+    </div>
+    <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
+      Explora nuestra gama completa de prensas digitales Memjet®, troqueladoras láser CO2, plotters y sistemas de inspección Katun DPS.
+    </p>
+  </div>
+
+  <!-- Filter Buttons & Search Bar -->
+  <div class="flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center mb-10">
+    <!-- Filter Tabs (Square) -->
+    <div class="flex flex-wrap gap-2" id="category-filters">
+      <button 
+        data-category="all" 
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-bold bg-slate-900 text-white shadow-xs transition-all cursor-crosshair rounded-none"
+      >
+        TODOS LOS EQUIPOS ({MACHINES.length})
+      </button>
+      <button 
+        data-category="impresoras" 
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+      >
+        IMPRESORAS DIGITALES (5)
+      </button>
+      <button 
+        data-category="cortadoras" 
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+      >
+        CORTADORAS & LÁSER (8)
+      </button>
+      <button 
+        data-category="especiales" 
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+      >
+        INSPECCIÓN & CONTROL (1)
+      </button>
+    </div>
+
+    <!-- Live Search Bar (Square) -->
+    <div class="relative w-full lg:w-80">
+      <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-slate-400 text-sm">search</span>
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="Buscar equipo o tecnología..." 
+        class="w-full pl-10 pr-4 py-2 text-xs bg-white border border-slate-200 focus:ring-2 focus:ring-[#00aeef] focus:outline-none placeholder:text-slate-400 font-['Space_Grotesk',monospace] rounded-none cursor-crosshair"
+      />
+    </div>
+  </div>
+
+  <!-- Machine Cards Grid (Sharp Square 0px Radius) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="machines-grid">
+    {MACHINES.map((machine) => (
+      <article 
+        class="machine-card bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none"
+        data-category={machine.category}
+        data-name={machine.name.toLowerCase()}
+        data-tech={machine.technology.toLowerCase()}
+      >
+        <div>
+          <!-- Machine Image Container (Square) -->
+          <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+            <img 
+              src={machine.image} 
+              alt={machine.name} 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+
+            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+              {machine.category === 'impresoras' ? 'IMPRESORA' : machine.category === 'cortadoras' ? 'CORTADORA / LÁSER' : 'ESPECIAL'}
+            </span>
+
+            {machine.badge && (
+              <span class="absolute top-3 right-3 bg-[#e11d48] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                {machine.badge}
+              </span>
+            )}
+          </div>
+
+          <!-- Machine Body Info -->
+          <div class="p-6 space-y-4">
+            <div>
+              <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
+                {machine.name}
+              </h3>
+              <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                {machine.subtitle}
+              </p>
+            </div>
+
+            <!-- Key Specs Pill Table (Square) -->
+            <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
+              <div>
+                <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                <span class="font-semibold text-[#e11d48] truncate block">{machine.speed}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">RESOLUCIÓN</span>
+                <span class="font-semibold text-[#00aeef] truncate block">{machine.resolution}</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed line-clamp-2 font-['Space_Grotesk',monospace]">
+              {machine.description}
+            </p>
+          </div>
+        </div>
+
+        <!-- Card Actions (Square) -->
+        <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
+          <a 
+            href={`/soluciones/${machine.id}`}
+            class="w-full bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
+          >
+            <span>VER PRODUCTO</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+
+          <div class="flex gap-2">
+            <button 
+              class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+              data-id={machine.id}
+            >
+              <span class="material-symbols-outlined text-sm">visibility</span>
+              <span>VISTA RÁPIDA</span>
+            </button>
+
+            <a 
+              href={machine.pdfUrl} 
+              target="_blank" 
+              rel="noopener"
+              class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
+              title="Descargar Brochure PDF"
+            >
+              <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
+              <span>PDF</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- Sharp Square Spec Modal (0px Radius) -->
+<div id="spec-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
+  <div class="bg-white border-2 border-slate-900 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl rounded-none">
+    <!-- Modal Header -->
+    <div class="p-6 bg-slate-900 text-white flex justify-between items-center sticky top-0 z-10">
+      <div>
+        <span class="font-['Space_Grotesk',monospace] text-xs text-[#00aeef] font-semibold uppercase" id="modal-category">
+          FICHA TÉCNICA
+        </span>
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold text-white" id="modal-title">
+          MACHINE NAME
+        </h3>
+      </div>
+      <button id="close-modal-btn" class="text-slate-400 hover:text-white transition-colors cursor-crosshair p-1">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <!-- Modal Content Body -->
+    <div class="p-6 sm:p-8 space-y-6">
+      <div class="p-4 bg-[#00aeef]/10 border border-[#00aeef]/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 rounded-none">
+        <div>
+          <span class="font-['Space_Grotesk',monospace] text-xs text-[#00aeef] font-bold block" id="modal-subtitle">
+            SUBTITLE HERE
+          </span>
+          <span class="font-['Space_Grotesk',monospace] text-sm font-semibold text-slate-800" id="modal-tech">
+            TECNOLOGÍA
+          </span>
+        </div>
+        <a id="modal-pdf-link" href="#" target="_blank" rel="noopener" class="bg-slate-900 text-white text-xs font-semibold px-4 py-2 hover:bg-[#00aeef] transition-colors flex items-center gap-2 rounded-none cursor-crosshair">
+          <span class="material-symbols-outlined text-sm">download</span> DESCARGAR PDF
+        </a>
+      </div>
+
+      <!-- Specs Grid Table -->
+      <div>
+        <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#00aeef]">tune</span> Especificaciones Técnicas
+        </h4>
+        <div class="border border-slate-200 divide-y divide-slate-100 bg-slate-50 font-['Space_Grotesk',monospace] text-xs rounded-none" id="modal-specs-table">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Features List -->
+      <div>
+        <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-500">check_circle</span> Características Principales
+        </h4>
+        <ul class="space-y-2 font-['Space_Grotesk',monospace] text-xs" id="modal-features-list">
+          <!-- Dynamically populated -->
+        </ul>
+      </div>
+
+      <!-- Target Industries Tags -->
+      <div>
+        <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <span class="material-symbols-outlined text-amber-500">domain</span> Sectores Compatibles
+        </h4>
+        <div class="flex flex-wrap gap-2" id="modal-industries-list">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ MACHINES }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.cat-filter-btn');
+    const searchInput = document.getElementById('search-input');
+    const cards = document.querySelectorAll('.machine-card');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    function filterCards() {
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const name = card.getAttribute('data-name');
+        const tech = card.getAttribute('data-tech');
+
+        const matchesCat = (currentCategory === 'all' || cat === currentCategory);
+        const matchesSearch = !searchQuery || name.includes(searchQuery) || tech.includes(searchQuery);
+
+        if (matchesCat && matchesSearch) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white');
+          b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        });
+        btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        btn.classList.add('bg-slate-900', 'text-white');
+
+        currentCategory = btn.getAttribute('data-category');
+        filterCards();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        filterCards();
+      });
+    }
+
+    // Modal Interaction
+    const modal = document.getElementById('spec-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const openModalBtns = document.querySelectorAll('.open-modal-btn');
+
+    openModalBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const machineId = btn.getAttribute('data-id');
+        const machine = MACHINES.find(m => m.id === machineId);
+        if (!machine) return;
+
+        document.getElementById('modal-title').textContent = machine.name;
+        document.getElementById('modal-subtitle').textContent = machine.subtitle;
+        document.getElementById('modal-tech').textContent = `TECNOLOGÍA: ${machine.technology} | RES: ${machine.resolution}`;
+        document.getElementById('modal-category').textContent = `FICHA TÉCNICA - ${machine.category.toUpperCase()}`;
+        document.getElementById('modal-pdf-link').setAttribute('href', machine.pdfUrl);
+
+        // Populate Specs Table
+        const specsTable = document.getElementById('modal-specs-table');
+        specsTable.innerHTML = machine.specs.map(s => `
+          <div class="flex justify-between p-3">
+            <span class="font-medium text-slate-500">${s.label}</span>
+            <span class="font-bold text-slate-900 text-right">${s.value}</span>
+          </div>
+        `).join('');
+
+        // Populate Features List
+        const featuresList = document.getElementById('modal-features-list');
+        featuresList.innerHTML = machine.features.map(f => `
+          <li class="flex items-start gap-2 bg-white p-2.5 border border-slate-200 rounded-none">
+            <span class="material-symbols-outlined text-sm text-[#00aeef] mt-0.5">check</span>
+            <span class="text-slate-700">${f}</span>
+          </li>
+        `).join('');
+
+        // Populate Industries Tags
+        const industriesList = document.getElementById('modal-industries-list');
+        industriesList.innerHTML = machine.industries.map(ind => `
+          <span class="px-3 py-1 font-['Space_Grotesk',monospace] text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded-none">
+            ${ind}
+          </span>
+        `).join('');
+
+        modal.classList.remove('hidden');
+      });
+    });
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+  });
+</script>

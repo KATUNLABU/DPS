@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntroPreloader from '../components/PageIntroPreloader.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import CapabilitiesGrid from '../components/CapabilitiesGrid.astro';
+import TechSpecsHighlight from '../components/TechSpecsHighlight.astro';
+import IndustriesMatrix from '../components/IndustriesMatrix.astro';
+import WorkflowProcess from '../components/WorkflowProcess.astro';
+import RoiCalculator from '../components/RoiCalculator.astro';
+import ContactEngineering from '../components/ContactEngineering.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout 
+  title="KATUN Digital Printing Solutions ™ - Equipos de Impresión Digital y Corte de Etiquetas"
+  description="Katun Digital Printing Solutions ™ - Soluciones en impresión digital de etiquetas y empaques rígidos/flexibles Memjet DuraFlex, corte láser, laminado y barnizado."
+>
+  <PageIntroPreloader />
+  <Header />
+  
+  <main class="space-y-4">
+    <div class="reveal-on-scroll">
+      <Hero />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <CapabilitiesGrid />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <TechSpecsHighlight />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <IndustriesMatrix />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <WorkflowProcess />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <RoiCalculator />
+    </div>
+
+    <div class="reveal-on-scroll">
+      <ContactEngineering />
+    </div>
+  </main>
+
+  <Footer />
+
+  <!-- IntersectionObserver Scroll Trigger Reveal Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</Layout>

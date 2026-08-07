@@ -1,0 +1,240 @@
+---
+---
+
+<header class="fixed top-0 z-50 w-full h-16 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs flex items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+    
+    <!-- Brand Logo -->
+    <div class="flex items-center gap-3">
+      <button class="md:hidden text-slate-700 hover:text-slate-900 transition-colors p-1 cursor-crosshair" onclick="toggleDrawer()" aria-label="Abrir Menú">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+
+      <a href="/" class="flex items-center gap-2.5 group cursor-crosshair">
+        <div class="flex items-center gap-1">
+          <span class="w-2.5 h-2.5 bg-[#00aeef]"></span>
+          <span class="w-2.5 h-2.5 bg-[#e11d48]"></span>
+          <span class="w-2.5 h-2.5 bg-[#f59e0b]"></span>
+        </div>
+        <h1 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-extrabold tracking-tight text-slate-900">
+          KATUN <span class="text-[#00aeef]">DPS</span>
+        </h1>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans',sans-serif] text-xs font-semibold">
+      
+      <!-- INICIO Button with Dropdown Menu for Sections -->
+      <div class="relative group py-4">
+        <a 
+          id="nav-inicio"
+          href="/" 
+          class="nav-link flex items-center gap-1 text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+        >
+          <span>INICIO</span>
+          <span class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+        </a>
+
+        <!-- Dropdown Menu for homepage sections that don't have their own page -->
+        <div class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 rounded-none">
+          <div class="px-4 py-2 bg-slate-50 border-b border-slate-100 font-['Space_Grotesk',monospace] text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+            SECCIONES PRINCIPALES
+          </div>
+          
+          <a href="/" class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair font-semibold">
+            <span class="material-symbols-outlined text-sm text-slate-400">home</span>
+            <span>Página Principal</span>
+          </a>
+          <a href="/#specs" class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair">
+            <span class="material-symbols-outlined text-sm text-slate-400">memory</span>
+            <span>Tecnología Memjet & Láser</span>
+          </a>
+          <a href="/#industries" class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair">
+            <span class="material-symbols-outlined text-sm text-slate-400">factory</span>
+            <span>Sectores Industriales</span>
+          </a>
+          <a href="/#process" class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair">
+            <span class="material-symbols-outlined text-sm text-slate-400">precision_manufacturing</span>
+            <span>Proceso de Trabajo</span>
+          </a>
+          <a href="/#calculator" class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair">
+            <span class="material-symbols-outlined text-sm text-slate-400">calculate</span>
+            <span>Calculadora de ROI</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- CATÁLOGO COMPLETO Link -->
+      <a 
+        id="nav-catalogo"
+        href="/catalogo" 
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+      >
+        CATÁLOGO COMPLETO (14)
+      </a>
+
+      <!-- INDUSTRIAS Link (Página dedicada) -->
+      <a 
+        id="nav-industrias"
+        href="/industrias" 
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+      >
+        INDUSTRIAS (7)
+      </a>
+
+      <!-- CONTACTO Link (Página dedicada) -->
+      <a 
+        id="nav-contacto"
+        href="/contacto" 
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+      >
+        CONTACTO E INGENIERÍA
+      </a>
+
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-3">
+      <a 
+        href="https://wa.me/5215580793969" 
+        target="_blank" 
+        rel="noopener" 
+        class="bg-slate-900 text-white hover:bg-[#00aeef] transition-all text-xs font-semibold px-4 py-2 flex items-center gap-1.5 shadow-sm rounded-none cursor-crosshair"
+      >
+        <span class="material-symbols-outlined text-sm">chat</span>
+        <span class="hidden sm:inline">WHATSAPP</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="fixed inset-y-0 left-0 w-80 bg-white border-r border-slate-200 z-[100] -translate-x-full transition-transform duration-300 md:hidden" id="drawer">
+  <div class="flex flex-col h-full">
+    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+      <div>
+        <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900">MENÚ NAVEGACIÓN</h2>
+        <span class="font-['Space_Grotesk',monospace] text-xs text-slate-500">KATUN DPS LATAM</span>
+      </div>
+      <button class="text-slate-500 hover:text-slate-900 cursor-crosshair" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <nav class="flex-grow flex flex-col p-4 space-y-1 font-['Plus_Jakarta_Sans',sans-serif] text-sm font-semibold text-slate-700">
+      <a id="mobile-nav-inicio" class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair" href="/" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined text-slate-400">home</span> Inicio
+      </a>
+      
+      <!-- Sub-secciones desplegadas en mobile -->
+      <div class="pl-6 space-y-1 border-l-2 border-slate-100 my-1">
+        <a class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2" href="/#specs" onclick="toggleDrawer()">
+          <span class="material-symbols-outlined text-xs">memory</span> Tecnología Memjet & Láser
+        </a>
+        <a class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2" href="/#industries" onclick="toggleDrawer()">
+          <span class="material-symbols-outlined text-xs">factory</span> Sectores Industriales
+        </a>
+        <a class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2" href="/#process" onclick="toggleDrawer()">
+          <span class="material-symbols-outlined text-xs">precision_manufacturing</span> Proceso de Trabajo
+        </a>
+        <a class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2" href="/#calculator" onclick="toggleDrawer()">
+          <span class="material-symbols-outlined text-xs">calculate</span> Calculadora ROI
+        </a>
+      </div>
+
+      <a id="mobile-nav-catalogo" class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair" href="/catalogo" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined text-slate-400">inventory_2</span> Catálogo Completo (14 Equipos)
+      </a>
+
+      <a id="mobile-nav-industrias" class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair" href="/industrias" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined text-slate-400">factory</span> Industrias & Sectores (7)
+      </a>
+
+      <a id="mobile-nav-contacto" class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair" href="/contacto" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined text-slate-400">mail</span> Contacto e Ingeniería
+      </a>
+    </nav>
+
+    <div class="p-6 border-t border-slate-100 bg-slate-50">
+      <p class="font-['Space_Grotesk',monospace] text-xs font-semibold text-slate-800">ATENCIÓN & SHOWROOM</p>
+      <p class="text-xs text-slate-500 mt-0.5">TEL: +52 1 (55) 8079 3969</p>
+    </div>
+  </div>
+</div>
+
+<!-- Active Link Highlighting Script -->
+<script is:inline>
+  function highlightActiveNav() {
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+
+    const navInicio = document.getElementById('nav-inicio');
+    const navCatalogo = document.getElementById('nav-catalogo');
+    const navIndustrias = document.getElementById('nav-industrias');
+    const navContacto = document.getElementById('nav-contacto');
+
+    const mNavInicio = document.getElementById('mobile-nav-inicio');
+    const mNavCatalogo = document.getElementById('mobile-nav-catalogo');
+    const mNavIndustrias = document.getElementById('mobile-nav-industrias');
+    const mNavContacto = document.getElementById('mobile-nav-contacto');
+
+    const activeClasses = ['text-[#00aeef]', 'font-extrabold', 'border-b-2', 'border-[#00aeef]'];
+    const mobileActiveClasses = ['bg-[#00aeef]/10', 'text-[#00aeef]', 'font-bold'];
+
+    // Clear active states
+    [navInicio, navCatalogo, navIndustrias, navContacto].forEach(el => {
+      if (el) {
+        el.classList.remove(...activeClasses);
+        el.classList.add('text-slate-600');
+      }
+    });
+
+    [mNavInicio, mNavCatalogo, mNavIndustrias, mNavContacto].forEach(el => {
+      if (el) {
+        el.classList.remove(...mobileActiveClasses);
+      }
+    });
+
+    // Apply active highlight based on current route
+    if (currentPath === '/catalogo' || currentPath.startsWith('/catalogo')) {
+      if (navCatalogo) {
+        navCatalogo.classList.add(...activeClasses);
+        navCatalogo.classList.remove('text-slate-600');
+      }
+      if (mNavCatalogo) mNavCatalogo.classList.add(...mobileActiveClasses);
+    } else if (currentPath === '/industrias' || currentPath.startsWith('/industrias')) {
+      if (navIndustrias) {
+        navIndustrias.classList.add(...activeClasses);
+        navIndustrias.classList.remove('text-slate-600');
+      }
+      if (mNavIndustrias) mNavIndustrias.classList.add(...mobileActiveClasses);
+    } else if (currentPath === '/contacto' || currentPath.startsWith('/contacto')) {
+      if (navContacto) {
+        navContacto.classList.add(...activeClasses);
+        navContacto.classList.remove('text-slate-600');
+      }
+      if (mNavContacto) mNavContacto.classList.add(...mobileActiveClasses);
+    } else {
+      // Default to Inicio for '/'
+      if (navInicio) {
+        navInicio.classList.add(...activeClasses);
+        navInicio.classList.remove('text-slate-600');
+      }
+      if (mNavInicio) mNavInicio.classList.add(...mobileActiveClasses);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', highlightActiveNav);
+  } else {
+    highlightActiveNav();
+  }
+
+  // Mobile Drawer Toggle
+  function toggleDrawer() {
+    const drawer = document.getElementById('drawer');
+    if (drawer) {
+      drawer.classList.toggle('-translate-x-full');
+    }
+  }
+</script>
