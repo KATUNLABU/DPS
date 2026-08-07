@@ -1,4 +1,6 @@
 ---
+import { MACHINES } from '../data/machines';
+const totalMachines = MACHINES.length;
 ---
 
 <section id="hero" class="relative pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -43,7 +45,7 @@
         href="/catalogo" 
         class="px-8 py-4 bg-slate-900 hover:bg-[#00aeef] text-white font-semibold text-sm transition-all shadow-sm flex items-center gap-2 rounded-none cursor-crosshair"
       >
-        <span>CONOCE NUESTROS EQUIPOS ESPECIALIZADOS (14)</span>
+        <span>CONOCE NUESTROS EQUIPOS ESPECIALIZADOS ({totalMachines})</span>
         <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </a>
       <a 
@@ -63,7 +65,7 @@
         EQUIPOS ESPECIALIZADOS DESTACADOS
       </h3>
       <a href="/catalogo" class="font-['Space_Grotesk',monospace] text-xs font-bold text-[#00aeef] hover:underline flex items-center gap-1 cursor-crosshair">
-        VER CATÁLOGO COMPLETO (14) ↗
+        VER CATÁLOGO COMPLETO ({totalMachines}) ↗
       </a>
     </div>
 
@@ -75,8 +77,8 @@
           <!-- Image Preview -->
           <div class="relative h-48 overflow-hidden bg-slate-100 rounded-none">
             <img 
-              src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80" 
-              alt="ArrowJet Aqua 330R" 
+              src="/imagenes/hero-impresora-rolltoroll.png" 
+              alt="ArrowJet Aqua 330R - Impresora Digital Roll-to-Roll" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#00aeef] font-['Space_Grotesk',monospace] text-[11px] font-bold px-3 py-1 border border-slate-200 shadow-xs rounded-none">
@@ -117,8 +119,8 @@
           <!-- Image Preview -->
           <div class="relative h-48 overflow-hidden bg-slate-100 rounded-none">
             <img 
-              src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" 
-              alt="Cortadora Láser LC 350 PM" 
+              src="/imagenes/hero-cortadora-laser.png" 
+              alt="Cortadora Láser LC 350 PM - Troquelado Láser Industrial" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#e11d48] font-['Space_Grotesk',monospace] text-[11px] font-bold px-3 py-1 border border-slate-200 shadow-xs rounded-none">
@@ -159,8 +161,8 @@
           <!-- Image Preview -->
           <div class="relative h-48 overflow-hidden bg-slate-100 rounded-none">
             <img 
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" 
-              alt="VIPColor VP610 / VP660" 
+              src="/imagenes/hero-impresora-escritorio.png" 
+              alt="VIPColor VP610 / VP660 - Impresora de Escritorio" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#f59e0b] font-['Space_Grotesk',monospace] text-[11px] font-bold px-3 py-1 border border-slate-200 shadow-xs rounded-none">

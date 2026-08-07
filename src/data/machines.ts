@@ -140,7 +140,7 @@ export const MACHINES: Machine[] = [
     maxWidth: "33 cm (13\")",
     description: "Impresora industrial robusta diseñada para operar 24/7 en entornos exigentes de conversión de etiqueta y empaque flexible.",
     badge: "INDUSTRIA 24/7",
-    image: "/imagenes/hero-contacto-equipo-2.webp",
+    image: "/imagenes/machine-klt3-industrial.png",
     pdfUrl: "/maquinas/05-katun-dps-impresora-klt3_web.pdf",
     features: [
       "Cabezales piezoeléctricos de gota variable",
@@ -290,7 +290,7 @@ export const MACHINES: Machine[] = [
     maxWidth: "35 cm (13.7\")",
     description: "El buque insignia en troquelado láser de Katun DPS. Diseñado para líneas de conversión industrial de alto rendimiento con código QR dinámico.",
     badge: "FLAGSHIP LÁSER",
-    image: "/imagenes/hero-nosotros-expo-grafica.webp",
+    image: "/imagenes/machine-lc350pm-laser.png",
     pdfUrl: "/maquinas/cortadora-de-etiquetas-lc-350-pm-katun-dps_nuevo-web.pdf",
     features: [
       "Velocidad extrema de hasta 80 m/min",
@@ -362,7 +362,7 @@ export const MACHINES: Machine[] = [
     maxWidth: "35 cm (13.7\")",
     description: "Unidad indispensable para el control de calidad final. Cuenta con precisión absoluta etiquetas opacas, transparentes y metálicas a alta velocidad.",
     badge: "CONTROL QA",
-    image: "/imagenes/KATUN-DPS-Catalogo-01-28-2025_web-pdf-791x1024.jpg",
+    image: "/imagenes/machine-contador-etiquetas.png",
     pdfUrl: "/maquinas/contador-de-automatico-de-etiquetas-web_red.pdf",
     features: [
       "Detección ultrasónica para etiquetas transparentes / clear-on-clear",

@@ -1,5 +1,9 @@
 ---
 import { MACHINES } from '../data/machines';
+
+const impresoras = MACHINES.filter(m => m.category === 'impresoras');
+const cortadoras = MACHINES.filter(m => m.category === 'cortadoras');
+const especiales = MACHINES.filter(m => m.category === 'especiales');
 ---
 
 <section id="catalog" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
@@ -10,7 +14,7 @@ import { MACHINES } from '../data/machines';
         CATÁLOGO INDUSTRIAL 2026
       </span>
       <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-        Catálogo Completo de Equipos (14)
+        Catálogo Completo de Equipos ({MACHINES.length})
       </h2>
     </div>
     <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
@@ -32,19 +36,19 @@ import { MACHINES } from '../data/machines';
         data-category="impresoras" 
         class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
       >
-        IMPRESORAS DIGITALES (5)
+        IMPRESORAS DIGITALES ({impresoras.length})
       </button>
       <button 
         data-category="cortadoras" 
         class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
       >
-        CORTADORAS & LÁSER (8)
+        CORTADORAS & LÁSER ({cortadoras.length})
       </button>
       <button 
         data-category="especiales" 
         class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
       >
-        INSPECCIÓN & CONTROL (1)
+        INSPECCIÓN & CONTROL ({especiales.length})
       </button>
     </div>
 
@@ -60,106 +64,356 @@ import { MACHINES } from '../data/machines';
     </div>
   </div>
 
-  <!-- Machine Cards Grid (Sharp Square 0px Radius) -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="machines-grid">
-    {MACHINES.map((machine) => (
-      <article 
-        class="machine-card bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none"
-        data-category={machine.category}
-        data-name={machine.name.toLowerCase()}
-        data-tech={machine.technology.toLowerCase()}
-      >
-        <div>
-          <!-- Machine Image Container (Square) -->
-          <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
-            <img 
-              src={machine.image} 
-              alt={machine.name} 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECCIÓN 1: IMPRESORAS DIGITALES                     -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="catalog-section mb-16" data-section="impresoras">
+    <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#00aeef]">
+      <div class="w-10 h-10 bg-[#00aeef] flex items-center justify-center rounded-none">
+        <span class="material-symbols-outlined text-xl text-white">print</span>
+      </div>
+      <div>
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
+          Impresoras Digitales
+        </h3>
+        <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#00aeef] uppercase">
+          {impresoras.length} EQUIPOS • MEMJET® DURAFLEX® • LED HD • PIEZOELÉCTRICO UV
+        </span>
+      </div>
+    </div>
 
-            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
-              {machine.category === 'impresoras' ? 'IMPRESORA' : machine.category === 'cortadoras' ? 'CORTADORA / LÁSER' : 'ESPECIAL'}
-            </span>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="machines-grid-impresoras">
+      {impresoras.map((machine) => (
+        <article 
+          class="machine-card bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none"
+          data-category={machine.category}
+          data-name={machine.name.toLowerCase()}
+          data-tech={machine.technology.toLowerCase()}
+        >
+          <div>
+            <!-- Machine Image Container (Square) -->
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+              <img 
+                src={machine.image} 
+                alt={machine.name} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
 
-            {machine.badge && (
-              <span class="absolute top-3 right-3 bg-[#e11d48] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
-                {machine.badge}
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+                IMPRESORA
               </span>
-            )}
-          </div>
 
-          <!-- Machine Body Info -->
-          <div class="p-6 space-y-4">
-            <div>
-              <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
-                {machine.name}
-              </h3>
-              <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
-                {machine.subtitle}
+              {machine.badge && (
+                <span class="absolute top-3 right-3 bg-[#00aeef] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                  {machine.badge}
+                </span>
+              )}
+            </div>
+
+            <!-- Machine Body Info -->
+            <div class="p-6 space-y-4">
+              <div>
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
+                  {machine.name}
+                </h3>
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                  {machine.subtitle}
+                </p>
+              </div>
+
+              <!-- Key Specs Pill Table (Square) -->
+              <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
+                <div>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="font-semibold text-[#00aeef] truncate block">{machine.speed}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">RESOLUCIÓN</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed line-clamp-2 font-['Space_Grotesk',monospace]">
+                {machine.description}
               </p>
             </div>
+          </div>
 
-            <!-- Key Specs Pill Table (Square) -->
-            <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
-              <div>
-                <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
-                <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
-                <span class="font-semibold text-[#e11d48] truncate block">{machine.speed}</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">RESOLUCIÓN</span>
-                <span class="font-semibold text-[#00aeef] truncate block">{machine.resolution}</span>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
-                <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
-              </div>
+          <!-- Card Actions (Square) -->
+          <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
+            <a 
+              href={`/soluciones/${machine.id}`}
+              class="w-full bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
+            >
+              <span>VER PRODUCTO</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+
+            <div class="flex gap-2">
+              <button 
+                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                data-id={machine.id}
+              >
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                <span>VISTA RÁPIDA</span>
+              </button>
+
+              <a 
+                href={machine.pdfUrl} 
+                target="_blank" 
+                rel="noopener"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
+                title="Descargar Brochure PDF"
+              >
+                <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
+                <span>PDF</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECCIÓN 2: CORTADORAS & TROQUELADO                  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="catalog-section mb-16" data-section="cortadoras">
+    <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#e11d48]">
+      <div class="w-10 h-10 bg-[#e11d48] flex items-center justify-center rounded-none">
+        <span class="material-symbols-outlined text-xl text-white">content_cut</span>
+      </div>
+      <div>
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
+          Cortadoras & Troquelado
+        </h3>
+        <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#e11d48] uppercase">
+          {cortadoras.length} EQUIPOS • LÁSER CO2 • CUCHILLAS DIGITALES • SEMI-ROTATIVO
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="machines-grid-cortadoras">
+      {cortadoras.map((machine) => (
+        <article 
+          class="machine-card bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none"
+          data-category={machine.category}
+          data-name={machine.name.toLowerCase()}
+          data-tech={machine.technology.toLowerCase()}
+        >
+          <div>
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+              <img 
+                src={machine.image} 
+                alt={machine.name} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+                CORTADORA / LÁSER
+              </span>
+
+              {machine.badge && (
+                <span class="absolute top-3 right-3 bg-[#e11d48] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                  {machine.badge}
+                </span>
+              )}
             </div>
 
-            <p class="text-xs text-slate-600 leading-relaxed line-clamp-2 font-['Space_Grotesk',monospace]">
-              {machine.description}
-            </p>
+            <div class="p-6 space-y-4">
+              <div>
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#e11d48] transition-colors">
+                  {machine.name}
+                </h3>
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                  {machine.subtitle}
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
+                <div>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="font-semibold text-[#e11d48] truncate block">{machine.speed}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">PRECISIÓN</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed line-clamp-2 font-['Space_Grotesk',monospace]">
+                {machine.description}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <!-- Card Actions (Square) -->
-        <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
-          <a 
-            href={`/soluciones/${machine.id}`}
-            class="w-full bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
-          >
-            <span>VER PRODUCTO</span>
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </a>
-
-          <div class="flex gap-2">
-            <button 
-              class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
-              data-id={machine.id}
-            >
-              <span class="material-symbols-outlined text-sm">visibility</span>
-              <span>VISTA RÁPIDA</span>
-            </button>
-
+          <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
             <a 
-              href={machine.pdfUrl} 
-              target="_blank" 
-              rel="noopener"
-              class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
-              title="Descargar Brochure PDF"
+              href={`/soluciones/${machine.id}`}
+              class="w-full bg-[#e11d48] hover:bg-[#be123c] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
             >
-              <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
-              <span>PDF</span>
+              <span>VER PRODUCTO</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </a>
+
+            <div class="flex gap-2">
+              <button 
+                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                data-id={machine.id}
+              >
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                <span>VISTA RÁPIDA</span>
+              </button>
+
+              <a 
+                href={machine.pdfUrl} 
+                target="_blank" 
+                rel="noopener"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
+                title="Descargar Brochure PDF"
+              >
+                <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
+                <span>PDF</span>
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
-    ))}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SECCIÓN 3: INSPECCIÓN & CONTROL                     -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="catalog-section" data-section="especiales">
+    <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#f59e0b]">
+      <div class="w-10 h-10 bg-[#f59e0b] flex items-center justify-center rounded-none">
+        <span class="material-symbols-outlined text-xl text-white">fact_check</span>
+      </div>
+      <div>
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
+          Inspección & Control de Calidad
+        </h3>
+        <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#f59e0b] uppercase">
+          {especiales.length} EQUIPO • SENSOR ULTRASÓNICO • CONTEO AUTOMÁTICO
+        </span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="machines-grid-especiales">
+      {especiales.map((machine) => (
+        <article 
+          class="machine-card bg-white border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group rounded-none"
+          data-category={machine.category}
+          data-name={machine.name.toLowerCase()}
+          data-tech={machine.technology.toLowerCase()}
+        >
+          <div>
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+              <img 
+                src={machine.image} 
+                alt={machine.name} 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+                ESPECIAL
+              </span>
+
+              {machine.badge && (
+                <span class="absolute top-3 right-3 bg-[#f59e0b] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                  {machine.badge}
+                </span>
+              )}
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div>
+                <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#f59e0b] transition-colors">
+                  {machine.name}
+                </h3>
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                  {machine.subtitle}
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
+                <div>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="font-semibold text-[#f59e0b] truncate block">{machine.speed}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">PRECISIÓN</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-slate-600 leading-relaxed line-clamp-2 font-['Space_Grotesk',monospace]">
+                {machine.description}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
+            <a 
+              href={`/soluciones/${machine.id}`}
+              class="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
+            >
+              <span>VER PRODUCTO</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+
+            <div class="flex gap-2">
+              <button 
+                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                data-id={machine.id}
+              >
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                <span>VISTA RÁPIDA</span>
+              </button>
+
+              <a 
+                href={machine.pdfUrl} 
+                target="_blank" 
+                rel="noopener"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
+                title="Descargar Brochure PDF"
+              >
+                <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
+                <span>PDF</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
   </div>
 </section>
 
@@ -235,11 +489,13 @@ import { MACHINES } from '../data/machines';
     const filterBtns = document.querySelectorAll('.cat-filter-btn');
     const searchInput = document.getElementById('search-input');
     const cards = document.querySelectorAll('.machine-card');
+    const sections = document.querySelectorAll('.catalog-section');
 
     let currentCategory = 'all';
     let searchQuery = '';
 
     function filterCards() {
+      // Show/hide individual cards
       cards.forEach(card => {
         const cat = card.getAttribute('data-category');
         const name = card.getAttribute('data-name');
@@ -252,6 +508,20 @@ import { MACHINES } from '../data/machines';
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
+        }
+      });
+
+      // Show/hide entire sections based on whether they have visible cards
+      sections.forEach(section => {
+        const sectionType = section.getAttribute('data-section');
+        const visibleCards = section.querySelectorAll('.machine-card:not(.hidden)');
+        
+        if (currentCategory !== 'all' && sectionType !== currentCategory) {
+          section.classList.add('hidden');
+        } else if (visibleCards.length === 0 && searchQuery) {
+          section.classList.add('hidden');
+        } else {
+          section.classList.remove('hidden');
         }
       });
     }
