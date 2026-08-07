@@ -371,13 +371,13 @@
         }
       });
 
-      // 1. Desplazamiento ultra suave desde startX a targetX (Duración 13.5s para completar en 15s total)
+      // 1. Desplazamiento rápido desde startX a targetX (4s), luego espera hasta 15s total
       tl.fromTo(
         tapeStrip,
         { x: startX },
         {
           x: targetX,
-          duration: 13.5,
+          duration: 4,
           ease: 'power2.inOut'
         },
         0
@@ -392,8 +392,10 @@
           repeat: 1,
           ease: 'sine.inOut'
         },
-        13.5
-      );
+        4
+      )
+      // 3. Espera en el centro hasta completar 15s totales
+      .to({}, { duration: 10 }, 4.5);
 
       currentTimeline = tl;
 
