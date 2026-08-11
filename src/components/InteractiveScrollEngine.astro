@@ -1,9 +1,9 @@
 ---
 ---
 
-<section id="wow-engine" class="relative min-h-[220vh] bg-slate-950 text-white my-12 border-y border-slate-800">
+<section id="wow-engine" class="relative min-h-[150vh] md:min-h-[220vh] bg-slate-950 text-white my-12 border-y border-slate-800">
   <!-- Sticky Container for Viewport -->
-  <div class="sticky top-16 h-[88vh] flex flex-col justify-between p-4 sm:p-8 max-w-7xl mx-auto overflow-hidden">
+  <div class="sticky top-16 h-[80vh] md:h-[88vh] flex flex-col justify-between p-4 sm:p-8 max-w-7xl mx-auto overflow-hidden">
     
     <!-- Section Header -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-20">
@@ -17,14 +17,14 @@
       </div>
 
       <!-- Live Telemetry HUD Badge -->
-      <div class="flex items-center gap-4 bg-slate-900/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-slate-800 font-['Space_Grotesk',monospace] text-xs shadow-xl">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-4 bg-slate-900/90 backdrop-blur-md px-3 sm:px-4 py-2 rounded-2xl border border-slate-800 font-['Space_Grotesk',monospace] text-[10px] sm:text-xs shadow-xl">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span class="text-slate-300 font-semibold" id="hud-status">ETAPA: 1/4 - SUSTRATO</span>
         </div>
-        <div class="h-4 w-px bg-slate-700"></div>
+        <div class="h-4 w-px bg-slate-700 hidden sm:block"></div>
         <span class="text-[#00aeef] font-bold" id="hud-dpi">1600 DPI</span>
-        <div class="h-4 w-px bg-slate-700"></div>
+        <div class="h-4 w-px bg-slate-700 hidden sm:block"></div>
         <span class="text-rose-400 font-bold" id="hud-speed">21 M/MIN</span>
       </div>
     </div>

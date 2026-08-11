@@ -32,7 +32,7 @@
   </div>
 
   <!-- Main Industrial Press Stage -->
-  <div class="press-stage-fullscreen relative w-full h-[520px] flex items-center justify-center overflow-hidden" id="pressStage">
+  <div class="press-stage-fullscreen relative w-full h-[400px] md:h-[520px] flex items-center justify-center overflow-hidden" id="pressStage">
     
     <!-- Paper Press Track Background Strip -->
     <div class="absolute top-1/2 left-0 right-0 h-[380px] -translate-y-1/2 bg-white/95 border-y border-slate-300 shadow-lg z-2 flex items-center">
@@ -44,9 +44,11 @@
 
     <!-- Continuous Paper Strip with Print Units -->
     <div class="tape-strip flex items-center gap-10 md:gap-16 absolute top-1/2 -translate-y-1/2 left-0 will-change-transform z-10" id="tapeStrip">
+
+      <!-- Calibration cards hidden on mobile for cleaner UX -->
       
       <!-- Print Calibration Unit 1 -->
-      <div class="toner-unit-card">
+      <div class="toner-unit-card hidden md:flex">
         <div class="registration-mark top-left"></div>
         <div class="registration-mark top-right"></div>
         <div class="registration-mark bottom-left"></div>
@@ -63,14 +65,14 @@
       </div>
 
       <!-- Print Calibration Unit 2 -->
-      <div class="toner-unit-card">
+      <div class="toner-unit-card hidden md:flex">
         <span class="material-symbols-outlined text-3xl text-[#00aeef] mb-1">verified</span>
         <div class="font-mono text-xs font-extrabold text-[#152f4e] uppercase">99.9% UPTIME</div>
         <div class="font-mono text-[9px] font-semibold text-slate-500">CONFIABILIDAD INDUSTRIAL</div>
       </div>
 
       <!-- Print Calibration Unit 3 -->
-      <div class="toner-unit-card">
+      <div class="toner-unit-card hidden md:flex">
         <span class="material-symbols-outlined text-3xl text-[#00aeef] mb-1">precision_manufacturing</span>
         <div class="font-mono text-xs font-extrabold text-[#152f4e] uppercase">TECNOLOGÍA MEMJET</div>
         <div class="font-mono text-[9px] font-semibold text-slate-500">ALTA PRECISIÓN 600 DPI</div>
@@ -118,14 +120,14 @@
       </div>
 
       <!-- Print Calibration Unit 4 -->
-      <div class="toner-unit-card">
+      <div class="toner-unit-card hidden md:flex">
         <span class="material-symbols-outlined text-3xl text-[#00aeef] mb-1">eco</span>
         <div class="font-mono text-xs font-extrabold text-[#152f4e] uppercase">TINTAS SUSTENTABLES</div>
         <div class="font-mono text-[9px] font-semibold text-slate-500">TECNOLOGÍA SUSTENTABLE</div>
       </div>
 
       <!-- Print Calibration Unit 5 -->
-      <div class="toner-unit-card">
+      <div class="toner-unit-card hidden md:flex">
         <span class="material-symbols-outlined text-3xl text-[#00aeef] mb-1">shield</span>
         <div class="font-mono text-xs font-extrabold text-[#152f4e] uppercase">GARANTÍA KATUN</div>
         <div class="font-mono text-[9px] font-semibold text-slate-500">SOPORTE TÉCNICO LATAM</div>
@@ -181,8 +183,8 @@
 
   /* Central Paper Badge */
   .central-paper-badge {
-    width: clamp(230px, 29vw, 330px);
-    height: clamp(230px, 29vw, 330px);
+    width: clamp(260px, 65vw, 330px);
+    height: clamp(260px, 65vw, 330px);
     box-shadow: 
       0 20px 45px -8px rgba(0, 174, 239, 0.22),
       0 4px 15px -2px rgba(21, 47, 78, 0.1);
