@@ -1,0 +1,320 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DpsLogo from '../../components/DpsLogo.astro';
+import { getBlogProfiles } from '../../lib/blog';
+
+const profiles = await getBlogProfiles();
+---
+
+<Layout
+  title="Gestión de Usuarios & Roles | Katun DPS CMS"
+  description="Control de usuarios y permisos de acceso para el blog de Katun DPS."
+>
+  <div class="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col md:flex-row">
+    
+    <!-- SIDEBAR BLANCO -->
+    <aside class="w-full md:w-64 bg-white border-r border-slate-200 p-6 flex flex-col justify-between shrink-0 shadow-xs">
+      <div class="space-y-6">
+        <a href="/" class="flex items-center py-1">
+          <DpsLogo class="h-8 w-auto" theme="light" />
+        </a>
+
+        <nav class="space-y-1 text-xs font-semibold">
+          <a
+            href="/admin"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base text-slate-400">dashboard</span>
+            <span>Publicaciones</span>
+          </a>
+
+          <a
+            href="/admin/editor"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base text-slate-400">palette</span>
+            <span>Editor Visual Canva</span>
+          </a>
+
+          <a
+            href="/admin/usuarios"
+            class="flex items-center gap-3 px-3 py-2.5 bg-sky-50 text-[#00aeef] rounded-lg font-bold transition-colors"
+          >
+            <span class="material-symbols-outlined text-base">group</span>
+            <span>Usuarios & Roles</span>
+          </a>
+
+          <a
+            href="/blog"
+            target="_blank"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:text-[#00aeef] rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base">open_in_new</span>
+            <span>Ver Blog en Vivo</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-slate-100">
+        <a
+          href="/admin"
+          class="w-full py-2 px-3 bg-slate-50 hover:bg-slate-100 text-slate-600 text-xs rounded-lg border border-slate-200 flex items-center justify-center gap-2 transition-colors"
+        >
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span>Volver al Panel</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-1 p-6 sm:p-8 lg:p-10 space-y-6 overflow-y-auto">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <h1 class="text-2xl font-extrabold text-slate-900">
+            Usuarios y Roles
+          </h1>
+          <p class="text-xs text-slate-500 mt-1">
+            Administra los roles de acceso y permisos de publicación del equipo.
+          </p>
+        </div>
+
+        <button
+          id="add-user-btn"
+          class="px-4 py-2 bg-[#00aeef] hover:bg-[#0098d4] text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-sm">person_add</span>
+          <span>Nuevo Usuario</span>
+        </button>
+      </div>
+
+      <!-- TARJETAS DE ROLES -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 bg-white border border-slate-200 rounded-xl space-y-1 shadow-xs">
+          <div class="flex items-center gap-1 text-[#00aeef] font-bold uppercase font-mono text-[11px]">
+            <span class="material-symbols-outlined text-base">shield_person</span>
+            SUPERADMIN / ADMIN
+          </div>
+          <p class="text-slate-500 text-xs">
+            Acceso total para publicar, editar, borrar y administrar usuarios.
+          </p>
+        </div>
+
+        <div class="p-4 bg-white border border-slate-200 rounded-xl space-y-1 shadow-xs">
+          <div class="flex items-center gap-1 text-emerald-600 font-bold uppercase font-mono text-[11px]">
+            <span class="material-symbols-outlined text-base">draw</span>
+            EDITOR
+          </div>
+          <p class="text-slate-500 text-xs">
+            Puede crear, editar y estructurar publicaciones en el editor visual.
+          </p>
+        </div>
+
+        <div class="p-4 bg-white border border-slate-200 rounded-xl space-y-1 shadow-xs">
+          <div class="flex items-center gap-1 text-purple-600 font-bold uppercase font-mono text-[11px]">
+            <span class="material-symbols-outlined text-base">edit_note</span>
+            AUTOR
+          </div>
+          <p class="text-slate-500 text-xs">
+            Redacción de borradores propios para revisión y aprobación.
+          </p>
+        </div>
+      </div>
+
+      <!-- TABLA DE USUARIOS -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+        <div class="p-5 border-b border-slate-100 bg-slate-50/50">
+          <h2 class="text-base font-bold text-slate-900">
+            Equipo Registrado
+          </h2>
+          <p class="text-xs text-slate-500">Asigna o cambia el rol de los colaboradores.</p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-mono tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="p-4">Usuario</th>
+                <th class="p-4">Rol</th>
+                <th class="p-4">Permisos</th>
+                <th class="p-4">Estado</th>
+                <th class="p-4 text-right">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body" class="divide-y divide-slate-100 text-slate-700">
+              <!-- Inyectado por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- MODAL DE EDICIÓN DE ROL -->
+    <div id="role-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-white border border-slate-200 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl relative">
+        <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+          <h3 class="text-base font-bold text-slate-900">
+            Modificar Rol de Usuario
+          </h3>
+          <button id="close-role-modal-btn" class="text-slate-400 hover:text-slate-600 cursor-pointer">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Nombre</label>
+            <input type="text" id="modal-user-name" disabled class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-600" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Correo Electrónico</label>
+            <input type="text" id="modal-user-email" disabled class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-600" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Rol</label>
+            <select id="modal-user-role-select" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]">
+              <option value="superadmin">SuperAdmin (Acceso Total)</option>
+              <option value="admin">Admin (Gestión y Publicación)</option>
+              <option value="editor">Editor (Edición de Artículos)</option>
+              <option value="author">Autor (Borradores Propios)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex justify-end gap-2">
+          <button
+            id="save-user-perms-btn"
+            class="px-4 py-2 bg-[#00aeef] hover:bg-[#0098d4] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ profiles }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sessionStr = localStorage.getItem('dps_admin_session');
+      if (!sessionStr) {
+        window.location.href = '/admin/login';
+        return;
+      }
+
+      const storedProfiles = localStorage.getItem('dps_custom_profiles');
+      let userList = storedProfiles ? JSON.parse(storedProfiles) : profiles;
+
+      const tableBody = document.getElementById('users-table-body');
+      const roleModal = document.getElementById('role-modal');
+      const closeRoleModalBtn = document.getElementById('close-role-modal-btn');
+      const saveUserPermsBtn = document.getElementById('save-user-perms-btn');
+
+      const modalName = document.getElementById('modal-user-name');
+      const modalEmail = document.getElementById('modal-user-email');
+      const modalRole = document.getElementById('modal-user-role-select');
+
+      let currentEditingId = null;
+
+      function renderUsers() {
+        if (!tableBody) return;
+        tableBody.innerHTML = '';
+
+        userList.forEach(user => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-slate-50/80 transition-colors';
+
+          let roleBadge = 'bg-slate-100 text-slate-700';
+          if (user.role === 'superadmin') roleBadge = 'bg-sky-50 text-[#00aeef] font-bold';
+          else if (user.role === 'admin') roleBadge = 'bg-emerald-50 text-emerald-700 font-bold';
+          else if (user.role === 'editor') roleBadge = 'bg-amber-50 text-amber-700 font-bold';
+          else if (user.role === 'author') roleBadge = 'bg-purple-50 text-purple-700 font-bold';
+
+          tr.innerHTML = `
+            <td class="p-4">
+              <div class="font-bold text-slate-900">${user.full_name}</div>
+              <div class="text-[11px] text-slate-400 font-mono">${user.email}</div>
+            </td>
+            <td class="p-4">
+              <span class="px-2.5 py-1 text-[10px] uppercase font-mono rounded-md ${roleBadge}">
+                ${user.role}
+              </span>
+            </td>
+            <td class="p-4 text-slate-600 text-xs">
+              ${user.role === 'superadmin' || user.role === 'admin' ? 'Total (Publicar y Borrar)' : (user.role === 'editor' ? 'Crear y Editar' : 'Solo Borrador')}
+            </td>
+            <td class="p-4">
+              <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Activo
+              </span>
+            </td>
+            <td class="p-4 text-right">
+              <button
+                class="edit-user-btn px-2.5 py-1.5 bg-slate-100 hover:bg-[#00aeef] hover:text-white text-slate-700 text-xs font-semibold rounded-md transition-colors cursor-pointer"
+                data-id="${user.id}"
+              >
+                Cambiar Rol
+              </button>
+            </td>
+          `;
+
+          tableBody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.edit-user-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.currentTarget.getAttribute('data-id');
+            const target = userList.find(u => u.id === id);
+            if (target) {
+              currentEditingId = id;
+              modalName.value = target.full_name;
+              modalEmail.value = target.email;
+              modalRole.value = target.role;
+              roleModal.classList.remove('hidden');
+            }
+          });
+        });
+      }
+
+      if (closeRoleModalBtn && roleModal) {
+        closeRoleModalBtn.addEventListener('click', () => roleModal.classList.add('hidden'));
+      }
+
+      if (saveUserPermsBtn) {
+        saveUserPermsBtn.addEventListener('click', () => {
+          const target = userList.find(u => u.id === currentEditingId);
+          if (target) {
+            target.role = modalRole.value;
+            localStorage.setItem('dps_custom_profiles', JSON.stringify(userList));
+            renderUsers();
+            roleModal.classList.add('hidden');
+          }
+        });
+      }
+
+      const addUserBtn = document.getElementById('add-user-btn');
+      if (addUserBtn) {
+        addUserBtn.addEventListener('click', () => {
+          const email = prompt('Introduce el correo del colaborador:');
+          if (email) {
+            const name = prompt('Nombre completo:') || email.split('@')[0];
+            const newUser = {
+              id: 'usr_' + Date.now(),
+              email: email,
+              full_name: name,
+              role: 'author',
+              permissions: { can_publish: false, can_delete: false, can_manage_users: false, can_edit_all: false },
+              is_active: true,
+              created_at: new Date().toISOString()
+            };
+            userList.push(newUser);
+            localStorage.setItem('dps_custom_profiles', JSON.stringify(userList));
+            renderUsers();
+          }
+        });
+      }
+
+      renderUsers();
+    });
+  </script>
+</Layout>

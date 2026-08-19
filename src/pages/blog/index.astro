@@ -1,0 +1,276 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPublishedBlogPosts, BLOG_CATEGORIES } from '../../lib/blog';
+
+const posts = await getPublishedBlogPosts();
+const featuredPost = posts[0];
+const otherPosts = posts.slice(1);
+---
+
+<Layout
+  title="Blog & Novedades Técnicas | Katun DPS"
+  description="Artículos técnicos, análisis comparativos de metodologías de impresión y novedades en la industria de empaque y etiquetado."
+>
+  <Header />
+
+  <main class="min-h-screen pt-20 pb-24 bg-[#fafafc]">
+    <!-- CABECERA PRINCIPAL (DISEÑO BLANCO, LIMPIO E INTUITIVO) -->
+    <section class="bg-white border-b border-slate-200/80 py-12 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-50 border border-sky-100 text-[#00aeef] text-xs font-bold rounded-full">
+            <span class="w-2 h-2 rounded-full bg-[#00aeef]"></span>
+            Blog Oficial Katun DPS
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Conocimiento y Tecnología en <span class="text-[#00aeef]">Etiquetas</span>
+          </h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Artículos técnicos, comparativas de metodologías de impresión y análisis estratégicos para la industria del empaque.
+          </p>
+        </div>
+
+        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
+          <div class="relative flex-1 max-w-md">
+            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+            <input
+              type="text"
+              id="blog-search-input"
+              placeholder="Buscar por tema, tecnología o autor..."
+              class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:bg-white focus:border-[#00aeef] focus:ring-2 focus:ring-[#00aeef]/10 transition-all"
+            />
+          </div>
+
+          <!-- Filtros de categoría -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
+            <button
+              class="category-btn active px-4 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap bg-[#00aeef] text-white shadow-xs"
+              data-category="all"
+            >
+              Todos ({posts.length})
+            </button>
+            {BLOG_CATEGORIES.map(cat => {
+              const count = posts.filter(p => p.category === cat).length;
+              return (
+                <button
+                  class="category-btn px-4 py-1.5 text-xs font-semibold rounded-full transition-all whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  data-category={cat}
+                >
+                  {cat} {count > 0 ? `(${count})` : ''}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+      {featuredPost && (
+        <article
+          id="featured-post-card"
+          data-category={featuredPost.category}
+          data-title={featuredPost.title.toLowerCase()}
+          data-summary={featuredPost.summary.toLowerCase()}
+          data-tags={featuredPost.tags.join(' ').toLowerCase()}
+          class="blog-item group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 mb-10"
+        >
+          <div class="lg:col-span-7 relative overflow-hidden bg-slate-100 min-h-[260px] sm:min-h-[340px]">
+            <img
+              src={featuredPost.featured_image}
+              alt={featuredPost.title}
+              class="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+            />
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 bg-white/95 backdrop-blur-xs text-slate-900 font-bold text-xs rounded-full shadow-xs border border-slate-200">
+                {featuredPost.category}
+              </span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-xs text-slate-500 font-mono">
+                <span class="flex items-center gap-1 text-[#00aeef]">
+                  <span class="material-symbols-outlined text-sm">schedule</span>
+                  {featuredPost.reading_time} min de lectura
+                </span>
+                <span>•</span>
+                <span>{featuredPost.published_at ? new Date(featuredPost.published_at).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Reciente'}</span>
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors leading-snug">
+                <a href={`/blog/${featuredPost.slug}`}>
+                  {featuredPost.title}
+                </a>
+              </h2>
+
+              <p class="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                {featuredPost.summary}
+              </p>
+
+              <div class="flex flex-wrap gap-1.5 pt-2">
+                {featuredPost.tags.map(tag => (
+                  <span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 text-[11px] rounded-md font-medium">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden flex items-center justify-center text-slate-700 text-xs font-bold">
+                  {featuredPost.author_avatar ? (
+                    <img src={featuredPost.author_avatar} alt={featuredPost.author_name} class="w-full h-full object-cover" />
+                  ) : (
+                    <span>{featuredPost.author_name.charAt(0)}</span>
+                  )}
+                </div>
+                <span class="text-xs font-bold text-slate-800">{featuredPost.author_name}</span>
+              </div>
+
+              <a href={`/blog/${featuredPost.slug}`} class="text-xs font-bold text-[#00aeef] hover:underline flex items-center gap-1">
+                Leer artículo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+
+      {otherPosts.length > 0 && (
+        <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {otherPosts.map(post => (
+            <article
+              data-category={post.category}
+              data-title={post.title.toLowerCase()}
+              data-summary={post.summary.toLowerCase()}
+              data-tags={post.tags.join(' ').toLowerCase()}
+              class="blog-item group bg-white border border-slate-200 rounded-xl shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden"
+            >
+              <div>
+                <div class="relative aspect-video overflow-hidden bg-slate-100">
+                  <img
+                    src={post.featured_image}
+                    alt={post.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <span class="absolute top-3 left-3 px-2.5 py-1 bg-white/95 backdrop-blur-xs text-slate-900 text-[11px] font-bold rounded-md shadow-xs border border-slate-200">
+                    {post.category}
+                  </span>
+                </div>
+
+                <div class="p-5 space-y-2.5">
+                  <div class="flex items-center gap-2 text-xs text-slate-500 font-mono">
+                    <span>{post.reading_time} min</span>
+                    <span>•</span>
+                    <span>{post.published_at ? new Date(post.published_at).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }) : 'Reciente'}</span>
+                  </div>
+
+                  <h3 class="text-base font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors leading-snug line-clamp-2">
+                    <a href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </a>
+                  </h3>
+
+                  <p class="text-slate-600 text-xs leading-relaxed line-clamp-3">
+                    {post.summary}
+                  </p>
+                </div>
+              </div>
+
+              <div class="p-5 pt-0">
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+                  <span class="text-xs font-semibold text-slate-700">{post.author_name}</span>
+                  <a href={`/blog/${post.slug}`} class="text-xs font-bold text-[#00aeef] hover:underline flex items-center gap-0.5">
+                    Leer <span class="material-symbols-outlined text-xs">chevron_right</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+
+      <!-- ESTADO SIN RESULTADOS -->
+      <div id="no-results-state" class="hidden py-16 text-center bg-white border border-slate-200 rounded-xl p-8 my-8">
+        <span class="material-symbols-outlined text-4xl text-slate-400 mb-2">search_off</span>
+        <h4 class="text-lg font-bold text-slate-800">No encontramos publicaciones para tu búsqueda</h4>
+        <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">
+          Intenta con otros términos como "Digital", "Flexografía" o selecciona "Todos".
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('blog-search-input');
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const blogItems = document.querySelectorAll('.blog-item');
+      const noResults = document.getElementById('no-results-state');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function filterPosts() {
+        let visibleCount = 0;
+
+        blogItems.forEach(item => {
+          const itemCat = (item.getAttribute('data-category') || '').toLowerCase();
+          const itemTitle = (item.getAttribute('data-title') || '').toLowerCase();
+          const itemSummary = (item.getAttribute('data-summary') || '').toLowerCase();
+          const itemTags = (item.getAttribute('data-tags') || '').toLowerCase();
+
+          const matchesCategory = currentCategory === 'all' || itemCat === currentCategory.toLowerCase();
+          const matchesQuery = !currentQuery || 
+            itemTitle.includes(currentQuery) || 
+            itemSummary.includes(currentQuery) || 
+            itemTags.includes(currentQuery);
+
+          if (matchesCategory && matchesQuery) {
+            item.style.display = '';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          if (visibleCount === 0) {
+            noResults.classList.remove('hidden');
+          } else {
+            noResults.classList.add('hidden');
+          }
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.trim().toLowerCase();
+          filterPosts();
+        });
+      }
+
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryBtns.forEach(b => {
+            b.classList.remove('bg-[#00aeef]', 'text-white', 'shadow-xs');
+            b.classList.add('bg-slate-100', 'text-slate-600');
+          });
+          btn.classList.remove('bg-slate-100', 'text-slate-600');
+          btn.classList.add('bg-[#00aeef]', 'text-white', 'shadow-xs');
+
+          currentCategory = btn.getAttribute('data-category') || 'all';
+          filterPosts();
+        });
+      });
+    });
+  </script>
+</Layout>

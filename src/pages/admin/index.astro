@@ -1,0 +1,339 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DpsLogo from '../../components/DpsLogo.astro';
+import { INITIAL_BLOG_POSTS } from '../../lib/blog';
+
+const initialPosts = INITIAL_BLOG_POSTS;
+---
+
+<Layout
+  title="Panel de Control | Katun DPS Blog"
+  description="Administración y gestión de publicaciones del blog de Katun DPS."
+>
+  <div class="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col md:flex-row">
+    
+    <!-- SIDEBAR BLANCO LIMPIO -->
+    <aside class="w-full md:w-64 bg-white border-r border-slate-200 p-6 flex flex-col justify-between shrink-0 shadow-xs">
+      <div class="space-y-6">
+        <!-- Logo -->
+        <a href="/" class="flex items-center py-1">
+          <DpsLogo class="h-8 w-auto" theme="light" />
+        </a>
+
+        <!-- Usuario Conectado -->
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+          <div class="text-[10px] uppercase font-bold text-slate-400 font-mono tracking-wider">Usuario</div>
+          <div id="sidebar-user-name" class="text-xs font-bold text-slate-900 mt-0.5 truncate">Administrador</div>
+          <div class="mt-1 inline-flex items-center gap-1 px-2 py-0.5 bg-sky-50 text-[#00aeef] text-[10px] font-bold rounded-md uppercase font-mono" id="sidebar-user-role">
+            SUPERADMIN
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="space-y-1 text-xs font-semibold">
+          <a
+            href="/admin"
+            class="flex items-center gap-3 px-3 py-2.5 bg-sky-50 text-[#00aeef] rounded-lg font-bold transition-colors"
+          >
+            <span class="material-symbols-outlined text-base">dashboard</span>
+            <span>Publicaciones</span>
+          </a>
+
+          <a
+            href="/admin/editor"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base text-slate-400">palette</span>
+            <span>Editor Visual Canva</span>
+          </a>
+
+          <a
+            href="/admin/usuarios"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base text-slate-400">group</span>
+            <span>Usuarios & Roles</span>
+          </a>
+
+          <a
+            href="/blog"
+            target="_blank"
+            class="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:text-[#00aeef] rounded-lg transition-colors"
+          >
+            <span class="material-symbols-outlined text-base">open_in_new</span>
+            <span>Ver Blog en Vivo</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Logout -->
+      <div class="pt-6 border-t border-slate-100">
+        <button
+          id="admin-logout-btn"
+          class="w-full py-2 px-3 bg-slate-50 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs rounded-lg border border-slate-200 hover:border-rose-200 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-sm">logout</span>
+          <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-1 p-6 sm:p-8 lg:p-10 space-y-6 overflow-y-auto">
+      <!-- Cabecera -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <h1 class="text-2xl font-extrabold text-slate-900">
+            Publicaciones del Blog
+          </h1>
+          <p class="text-xs text-slate-500 mt-1">
+            Administra, edita con el editor visual o crea nuevas entradas para el sitio web.
+          </p>
+        </div>
+
+        <a
+          href="/admin/editor"
+          class="px-4 py-2.5 bg-[#00aeef] hover:bg-[#0098d4] text-white font-bold text-xs uppercase tracking-wider rounded-lg flex items-center gap-2 transition-all shadow-xs"
+        >
+          <span class="material-symbols-outlined text-sm">add_circle</span>
+          <span>Crear Nueva Entrada</span>
+        </a>
+      </div>
+
+      <!-- TARJETAS DE ESTADÍSTICAS REALES (BLANCAS Y LIMPIAS) -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-1.5">
+          <div class="flex justify-between items-center text-slate-400 text-xs font-medium">
+            <span>Total de Entradas</span>
+            <span class="material-symbols-outlined text-base text-[#00aeef]">article</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900" id="stat-total-posts">1</div>
+          <p class="text-[11px] text-slate-500">Publicaciones registradas</p>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-1.5">
+          <div class="flex justify-between items-center text-slate-400 text-xs font-medium">
+            <span>Publicadas Activas</span>
+            <span class="material-symbols-outlined text-base text-emerald-500">check_circle</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900" id="stat-published-posts">1</div>
+          <p class="text-[11px] text-emerald-600 font-medium">Visibles al público</p>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-1.5">
+          <div class="flex justify-between items-center text-slate-400 text-xs font-medium">
+            <span>Borradores</span>
+            <span class="material-symbols-outlined text-base text-amber-500">edit_note</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900" id="stat-draft-posts">0</div>
+          <p class="text-[11px] text-slate-500">En proceso de edición</p>
+        </div>
+      </div>
+
+      <!-- TABLA DE ARTÍCULOS -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+        <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50/50">
+          <div>
+            <h2 class="text-base font-bold text-slate-900">
+              Listado de Artículos
+            </h2>
+            <p class="text-xs text-slate-500">Haz clic en editar para abrir el constructor visual.</p>
+          </div>
+
+          <div class="w-full sm:w-auto">
+            <input
+              type="text"
+              id="admin-search-input"
+              placeholder="Buscar artículos..."
+              class="w-full sm:w-64 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-slate-900 text-xs placeholder-slate-400 focus:outline-none focus:border-[#00aeef]"
+            />
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-mono tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="p-4">Artículo & Portada</th>
+                <th class="p-4">Categoría</th>
+                <th class="p-4">Autor</th>
+                <th class="p-4">Estado</th>
+                <th class="p-4 text-right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="posts-table-body" class="divide-y divide-slate-100 text-slate-700">
+              <!-- Inyectado por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script is:inline define:vars={{ initialPosts }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sessionStr = localStorage.getItem('dps_admin_session');
+      if (!sessionStr) {
+        window.location.href = '/admin/login';
+        return;
+      }
+
+      const session = JSON.parse(sessionStr);
+      const userNameEl = document.getElementById('sidebar-user-name');
+      const userRoleEl = document.getElementById('sidebar-user-role');
+      if (userNameEl) userNameEl.textContent = session.fullName || session.email;
+      if (userRoleEl) userRoleEl.textContent = (session.role || 'author').toUpperCase();
+
+      const logoutBtn = document.getElementById('admin-logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          localStorage.removeItem('dps_admin_session');
+          window.location.href = '/admin/login';
+        });
+      }
+
+      const localStoredPosts = localStorage.getItem('dps_custom_posts');
+      let posts = localStoredPosts ? JSON.parse(localStoredPosts) : initialPosts;
+      posts = posts.filter(p => p.slug !== 'revolucion-troquelado-laser-memjet-duraflex-2026' && p.author_name !== 'Roberto González');
+      localStorage.setItem('dps_custom_posts', JSON.stringify(posts));
+
+      const tableBody = document.getElementById('posts-table-body');
+      const searchInput = document.getElementById('admin-search-input');
+
+      function updateStats() {
+        const total = posts.length;
+        const published = posts.filter(p => p.status === 'published').length;
+        const drafts = posts.filter(p => p.status === 'draft').length;
+
+        document.getElementById('stat-total-posts').textContent = total;
+        document.getElementById('stat-published-posts').textContent = published;
+        document.getElementById('stat-draft-posts').textContent = drafts;
+      }
+
+      function renderPosts(filtered) {
+        if (!tableBody) return;
+        tableBody.innerHTML = '';
+
+        if (filtered.length === 0) {
+          tableBody.innerHTML = `
+            <tr>
+              <td colspan="5" class="p-8 text-center text-slate-400">
+                No se encontraron artículos.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        filtered.forEach(post => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-slate-50/80 transition-colors';
+
+          const isPublished = post.status === 'published';
+
+          tr.innerHTML = `
+            <td class="p-4">
+              <div class="flex items-center gap-3">
+                <img src="${post.featured_image}" alt="${post.title}" class="w-12 h-12 rounded-lg object-cover bg-slate-100 shrink-0 border border-slate-200" />
+                <div class="max-w-xs sm:max-w-md">
+                  <div class="font-bold text-slate-900 truncate">${post.title}</div>
+                  <div class="text-[11px] text-slate-400 font-mono truncate">/blog/${post.slug}</div>
+                </div>
+              </div>
+            </td>
+            <td class="p-4">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-md text-[11px] font-medium">
+                ${post.category}
+              </span>
+            </td>
+            <td class="p-4 font-semibold text-slate-700 text-xs">
+              ${post.author_name}
+            </td>
+            <td class="p-4">
+              <button
+                class="toggle-status-btn px-2.5 py-1 text-[11px] font-bold rounded-full transition-colors cursor-pointer ${
+                  isPublished 
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-amber-50 hover:text-amber-700' 
+                    : 'bg-amber-50 text-amber-700 border border-amber-200 hover:bg-emerald-50 hover:text-emerald-700'
+                }"
+                data-slug="${post.slug}"
+                title="Alternar estado"
+              >
+                ${isPublished ? '● Publicado' : '○ Borrador'}
+              </button>
+            </td>
+            <td class="p-4 text-right">
+              <div class="flex items-center justify-end gap-1.5">
+                <a
+                  href="/admin/editor?slug=${post.slug}"
+                  class="px-2.5 py-1.5 bg-slate-100 hover:bg-[#00aeef] hover:text-white text-slate-700 rounded-md text-xs font-semibold flex items-center gap-1 transition-colors"
+                  title="Editar con Canva"
+                >
+                  <span class="material-symbols-outlined text-sm">edit</span>
+                  <span>Editar</span>
+                </a>
+                <a
+                  href="/blog/${post.slug}"
+                  target="_blank"
+                  class="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-md transition-colors"
+                  title="Ver en vivo"
+                >
+                  <span class="material-symbols-outlined text-sm">visibility</span>
+                </a>
+                <button
+                  class="delete-post-btn p-1.5 bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 rounded-md transition-colors cursor-pointer"
+                  data-slug="${post.slug}"
+                  title="Eliminar"
+                >
+                  <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+              </div>
+            </td>
+          `;
+
+          tableBody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.toggle-status-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const slug = e.currentTarget.getAttribute('data-slug');
+            const target = posts.find(p => p.slug === slug);
+            if (target) {
+              target.status = target.status === 'published' ? 'draft' : 'published';
+              localStorage.setItem('dps_custom_posts', JSON.stringify(posts));
+              updateStats();
+              renderPosts(posts);
+            }
+          });
+        });
+
+        document.querySelectorAll('.delete-post-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const slug = e.currentTarget.getAttribute('data-slug');
+            if (confirm('¿Deseas eliminar este artículo?')) {
+              posts = posts.filter(p => p.slug !== slug);
+              localStorage.setItem('dps_custom_posts', JSON.stringify(posts));
+              updateStats();
+              renderPosts(posts);
+            }
+          });
+        });
+      }
+
+      updateStats();
+      renderPosts(posts);
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase().trim();
+          const filtered = posts.filter(p => 
+            p.title.toLowerCase().includes(q) || 
+            p.slug.toLowerCase().includes(q) || 
+            p.category.toLowerCase().includes(q)
+          );
+          renderPosts(filtered);
+        });
+      }
+    });
+  </script>
+</Layout>

@@ -1,0 +1,191 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DpsLogo from '../../components/DpsLogo.astro';
+---
+
+<Layout
+  title="Acceso CMS | Katun DPS Blog"
+  description="Portal seguro de administración para la gestión de contenidos de Katun DPS."
+>
+  <main class="min-h-screen bg-[#f8fafc] flex flex-col justify-center items-center px-4 sm:px-6">
+    <div class="w-full max-w-md">
+      <!-- Marca y Cabecera -->
+      <div class="text-center mb-6">
+        <a href="/" class="inline-flex items-center justify-center mb-3 py-1">
+          <DpsLogo class="h-10 sm:h-12 w-auto" theme="light" />
+        </a>
+        <h1 class="text-xl font-bold text-slate-900">
+          Panel de Administración
+        </h1>
+        <p class="text-xs text-slate-500 mt-1">
+          Editor de publicaciones y gestión de contenidos
+        </p>
+      </div>
+
+      <!-- Tarjeta Blanca de Login -->
+      <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm relative">
+        <div class="flex items-center justify-between pb-4 mb-6 border-b border-slate-100 text-xs">
+          <span class="flex items-center gap-1.5 text-emerald-600 font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Acceso Seguro SSL
+          </span>
+          <span class="text-slate-400 font-mono text-[11px]">DPS CMS</span>
+        </div>
+
+        <form id="admin-login-form" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Correo Electrónico
+            </label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-base">mail</span>
+              <input
+                type="email"
+                id="login-email"
+                required
+                placeholder="admin@katundps.com"
+                class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-[#00aeef] focus:ring-2 focus:ring-[#00aeef]/10 transition-all placeholder-slate-400"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+              Contraseña
+            </label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-base">lock</span>
+              <input
+                type="password"
+                id="login-password"
+                required
+                placeholder="••••••••••••"
+                class="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-sm focus:outline-none focus:bg-white focus:border-[#00aeef] focus:ring-2 focus:ring-[#00aeef]/10 transition-all placeholder-slate-400"
+              />
+              <button
+                type="button"
+                id="toggle-pwd-btn"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                aria-label="Ver u ocultar contraseña"
+              >
+                <span class="material-symbols-outlined text-base">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="login-error-alert" class="hidden p-3 bg-rose-50 border border-rose-200 rounded-lg text-rose-700 text-xs flex items-center gap-2">
+            <span class="material-symbols-outlined text-base shrink-0">error</span>
+            <span id="login-error-msg">Credenciales incorrectas.</span>
+          </div>
+
+          <button
+            type="submit"
+            id="login-submit-btn"
+            class="w-full py-2.5 bg-[#00aeef] hover:bg-[#0098d4] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer mt-6"
+          >
+            <span class="material-symbols-outlined text-sm">login</span>
+            <span id="login-btn-text">Iniciar Sesión</span>
+          </button>
+        </form>
+
+        <!-- Botones de acceso rápido para pruebas -->
+        <div class="mt-6 pt-5 border-t border-slate-100 text-center">
+          <p class="text-xs text-slate-500 mb-2">Acceso rápido de demostración:</p>
+          <div class="flex gap-2 justify-center">
+            <button
+              id="fill-demo-admin"
+              class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-md transition-colors cursor-pointer"
+            >
+              Demo SuperAdmin
+            </button>
+            <button
+              id="fill-demo-editor"
+              class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-md transition-colors cursor-pointer"
+            >
+              Demo Editor
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6">
+        <a href="/" class="text-xs text-slate-500 hover:text-[#00aeef] transition-colors flex items-center justify-center gap-1">
+          <span class="material-symbols-outlined text-xs">arrow_back</span>
+          Volver a la página principal
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('admin-login-form');
+      const emailInput = document.getElementById('login-email');
+      const passwordInput = document.getElementById('login-password');
+      const togglePwdBtn = document.getElementById('toggle-pwd-btn');
+      const errorAlert = document.getElementById('login-error-alert');
+      const errorMsg = document.getElementById('login-error-msg');
+      const submitBtn = document.getElementById('login-submit-btn');
+      const btnText = document.getElementById('login-btn-text');
+
+      const btnDemoAdmin = document.getElementById('fill-demo-admin');
+      const btnDemoEditor = document.getElementById('fill-demo-editor');
+
+      if (togglePwdBtn && passwordInput) {
+        togglePwdBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.type === 'password';
+          passwordInput.type = isPassword ? 'text' : 'password';
+          togglePwdBtn.querySelector('span').textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+      }
+
+      if (btnDemoAdmin) {
+        btnDemoAdmin.addEventListener('click', () => {
+          emailInput.value = 'admin@katundps.com';
+          passwordInput.value = 'KatunDPS2026!';
+        });
+      }
+
+      if (btnDemoEditor) {
+        btnDemoEditor.addEventListener('click', () => {
+          emailInput.value = 'editor@katundps.com';
+          passwordInput.value = 'KatunEditor2026!';
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          errorAlert.classList.add('hidden');
+
+          const email = emailInput.value.trim();
+          const password = passwordInput.value.trim();
+
+          submitBtn.disabled = true;
+          btnText.textContent = 'Iniciando sesión...';
+
+          try {
+            const userSession = {
+              email: email,
+              role: email.includes('admin') ? 'superadmin' : (email.includes('editor') ? 'editor' : 'author'),
+              fullName: email.includes('admin') ? 'Administrador Katun' : (email.includes('editor') ? 'Editor DPS' : 'Aleydis Reyes'),
+              loginTime: new Date().toISOString(),
+              token: 'dps_sec_' + Math.random().toString(36).substring(2) + Date.now()
+            };
+
+            localStorage.setItem('dps_admin_session', JSON.stringify(userSession));
+
+            setTimeout(() => {
+              window.location.href = '/admin';
+            }, 400);
+          } catch (err) {
+            errorMsg.textContent = 'Error al iniciar sesión.';
+            errorAlert.classList.remove('hidden');
+            submitBtn.disabled = false;
+            btnText.textContent = 'Iniciar Sesión';
+          }
+        });
+      }
+    });
+  </script>
+</Layout>

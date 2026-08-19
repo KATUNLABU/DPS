@@ -1,5 +1,5 @@
 ---
-
+import DpsLogo from './DpsLogo.astro';
 ---
 
 <header
@@ -8,7 +8,7 @@
   <div
     class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center"
   >
-    <!-- Brand Logo -->
+    <!-- Brand Logo Oficial DPS -->
     <div class="flex items-center gap-3">
       <button
         class="md:hidden text-slate-700 hover:text-slate-900 transition-colors p-1 cursor-crosshair"
@@ -18,17 +18,8 @@
         <span class="material-symbols-outlined text-2xl">menu</span>
       </button>
 
-      <a href="/" class="flex items-center gap-2.5 group cursor-crosshair">
-        <div class="flex items-center gap-1">
-          <span class="w-2.5 h-2.5 bg-[#00aeef]"></span>
-          <span class="w-2.5 h-2.5 bg-[#e11d48]"></span>
-          <span class="w-2.5 h-2.5 bg-[#f59e0b]"></span>
-        </div>
-        <h1
-          class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-extrabold tracking-tight text-slate-900"
-        >
-          KATUN <span class="text-[#00aeef]">DPS</span>
-        </h1>
+      <a href="/" class="flex items-center group cursor-crosshair py-1" aria-label="Katun DPS Inicio">
+        <DpsLogo class="h-9 sm:h-10 w-auto" theme="light" />
       </a>
     </div>
 
@@ -124,6 +115,15 @@
         class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
       >
         INDUSTRIAS
+      </a>
+
+      <!-- BLOG Link (Página dedicada) -->
+      <a
+        id="nav-blog"
+        href="/blog"
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 font-bold"
+      >
+        BLOG
       </a>
 
       <!-- CONTACTO Link (Página dedicada) -->
@@ -248,6 +248,15 @@
       </a>
 
       <a
+        id="mobile-nav-blog"
+        class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair"
+        href="/blog"
+        onclick="toggleDrawer()"
+      >
+        <span class="material-symbols-outlined text-slate-400">article</span> Blog & Artículos
+      </a>
+
+      <a
         id="mobile-nav-contacto"
         class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair"
         href="/contacto"
@@ -277,11 +286,13 @@
     const navInicio = document.getElementById("nav-inicio");
     const navCatalogo = document.getElementById("nav-catalogo");
     const navIndustrias = document.getElementById("nav-industrias");
+    const navBlog = document.getElementById("nav-blog");
     const navContacto = document.getElementById("nav-contacto");
 
     const mNavInicio = document.getElementById("mobile-nav-inicio");
     const mNavCatalogo = document.getElementById("mobile-nav-catalogo");
     const mNavIndustrias = document.getElementById("mobile-nav-industrias");
+    const mNavBlog = document.getElementById("mobile-nav-blog");
     const mNavContacto = document.getElementById("mobile-nav-contacto");
 
     const activeClasses = [
@@ -297,21 +308,27 @@
     ];
 
     // Clear active states
-    [navInicio, navCatalogo, navIndustrias, navContacto].forEach((el) => {
+    [navInicio, navCatalogo, navIndustrias, navBlog, navContacto].forEach((el) => {
       if (el) {
         el.classList.remove(...activeClasses);
         el.classList.add("text-slate-600");
       }
     });
 
-    [mNavInicio, mNavCatalogo, mNavIndustrias, mNavContacto].forEach((el) => {
+    [mNavInicio, mNavCatalogo, mNavIndustrias, mNavBlog, mNavContacto].forEach((el) => {
       if (el) {
         el.classList.remove(...mobileActiveClasses);
       }
     });
 
     // Apply active highlight based on current route
-    if (currentPath === "/catalogo" || currentPath.startsWith("/catalogo")) {
+    if (currentPath === "/blog" || currentPath.startsWith("/blog")) {
+      if (navBlog) {
+        navBlog.classList.add(...activeClasses);
+        navBlog.classList.remove("text-slate-600");
+      }
+      if (mNavBlog) mNavBlog.classList.add(...mobileActiveClasses);
+    } else if (currentPath === "/catalogo" || currentPath.startsWith("/catalogo")) {
       if (navCatalogo) {
         navCatalogo.classList.add(...activeClasses);
         navCatalogo.classList.remove("text-slate-600");
@@ -335,8 +352,7 @@
         navContacto.classList.remove("text-slate-600");
       }
       if (mNavContacto) mNavContacto.classList.add(...mobileActiveClasses);
-    } else {
-      // Default to Inicio for '/'
+    } else if (currentPath === "/" || currentPath === "") {
       if (navInicio) {
         navInicio.classList.add(...activeClasses);
         navInicio.classList.remove("text-slate-600");

@@ -1,0 +1,729 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { BLOG_CATEGORIES, INITIAL_BLOG_POSTS } from '../../lib/blog';
+
+const initialPosts = INITIAL_BLOG_POSTS;
+const categories = BLOG_CATEGORIES;
+---
+
+<Layout
+  title="Editor Visual Canva | Katun DPS CMS"
+  description="Constructor visual interactivo tipo Canva para entradas de blog de Katun DPS."
+>
+  <div class="min-h-screen bg-[#f8fafc] text-slate-900 flex flex-col h-screen overflow-hidden">
+    
+    <!-- BARRA SUPERIOR BLANCA Y LIMPIA -->
+    <header class="h-16 bg-white border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs">
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a
+          href="/admin"
+          class="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
+        >
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          <span class="hidden sm:inline">Panel</span>
+        </a>
+
+        <div class="h-5 w-px bg-slate-200 hidden sm:block"></div>
+
+        <div>
+          <input
+            type="text"
+            id="editor-post-title"
+            placeholder="Título del Artículo..."
+            value="Impresión Digital vs Flexográfica: ¿Cuál Elegir para Etiquetas?"
+            class="bg-transparent text-slate-900 font-bold text-sm sm:text-base focus:outline-none focus:bg-slate-50 px-2 py-0.5 rounded transition-all w-60 sm:w-96 truncate"
+          />
+          <div class="text-[11px] text-slate-400 font-mono flex items-center gap-1.5 px-2">
+            <span>Slug: /blog/<span id="slug-preview" class="text-slate-600 font-semibold">impresion-digital-vs-flexografica</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones de Cabecera -->
+      <div class="flex items-center gap-2">
+        <button
+          id="toggle-preview-btn"
+          class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-base text-[#00aeef]">visibility</span>
+          <span class="hidden md:inline">Vista Previa</span>
+        </button>
+
+        <button
+          id="open-settings-btn"
+          class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-base text-amber-500">tune</span>
+          <span class="hidden md:inline">Ajustes & SEO</span>
+        </button>
+
+        <button
+          id="save-post-btn"
+          class="px-4 py-1.5 bg-[#00aeef] hover:bg-[#0098d4] text-white font-bold text-xs uppercase tracking-wider rounded-lg flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+        >
+          <span class="material-symbols-outlined text-sm">save</span>
+          <span id="save-btn-text">Guardar</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ÁREA DE TRABAJO: COMPONENTES + LIENZO + INSPECTOR -->
+    <div class="flex-1 flex overflow-hidden">
+      
+      <!-- BANDEJA LATERAL IZQUIERDA DE BLOQUES -->
+      <aside class="w-64 bg-white border-r border-slate-200 flex flex-col shrink-0 overflow-y-auto">
+        <div class="p-4 border-b border-slate-100">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-sm text-[#00aeef]">add_box</span>
+            Bloques Visuales
+          </h2>
+          <p class="text-[11px] text-slate-400 mt-0.5">Haz clic para agregar al artículo</p>
+        </div>
+
+        <div class="p-3 space-y-1.5">
+          <button
+            class="add-block-btn w-full p-2.5 bg-slate-50 hover:bg-sky-50/60 text-left border border-slate-200/80 hover:border-[#00aeef]/40 rounded-lg transition-all flex items-center gap-2.5 cursor-pointer"
+            data-type="header"
+          >
+            <div class="w-8 h-8 rounded-md bg-white border border-slate-200 text-[#00aeef] flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-base">title</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Encabezado</div>
+              <div class="text-[10px] text-slate-500">Título y subtítulo</div>
+            </div>
+          </button>
+
+          <button
+            class="add-block-btn w-full p-2.5 bg-slate-50 hover:bg-sky-50/60 text-left border border-slate-200/80 hover:border-[#00aeef]/40 rounded-lg transition-all flex items-center gap-2.5 cursor-pointer"
+            data-type="text"
+          >
+            <div class="w-8 h-8 rounded-md bg-white border border-slate-200 text-emerald-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-base">format_align_left</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Párrafo / Texto</div>
+              <div class="text-[10px] text-slate-500">Redacción y formato</div>
+            </div>
+          </button>
+
+          <button
+            class="add-block-btn w-full p-2.5 bg-slate-50 hover:bg-sky-50/60 text-left border border-slate-200/80 hover:border-[#00aeef]/40 rounded-lg transition-all flex items-center gap-2.5 cursor-pointer"
+            data-type="callout"
+          >
+            <div class="w-8 h-8 rounded-md bg-white border border-slate-200 text-amber-500 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-base">lightbulb</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Caja de Llamada</div>
+              <div class="text-[10px] text-slate-500">Puntos destacados</div>
+            </div>
+          </button>
+
+          <button
+            class="add-block-btn w-full p-2.5 bg-slate-50 hover:bg-sky-50/60 text-left border border-slate-200/80 hover:border-[#00aeef]/40 rounded-lg transition-all flex items-center gap-2.5 cursor-pointer"
+            data-type="image_text"
+          >
+            <div class="w-8 h-8 rounded-md bg-white border border-slate-200 text-sky-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-base">view_column</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Imagen + Texto</div>
+              <div class="text-[10px] text-slate-500">Dos columnas</div>
+            </div>
+          </button>
+
+          <button
+            class="add-block-btn w-full p-2.5 bg-slate-50 hover:bg-sky-50/60 text-left border border-slate-200/80 hover:border-[#00aeef]/40 rounded-lg transition-all flex items-center gap-2.5 cursor-pointer"
+            data-type="quote"
+          >
+            <div class="w-8 h-8 rounded-md bg-white border border-slate-200 text-indigo-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-base">format_quote</span>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-slate-900">Cita / Frase</div>
+              <div class="text-[10px] text-slate-500">Autor y reflexión</div>
+            </div>
+          </button>
+        </div>
+      </aside>
+
+      <!-- LIENZO CENTRAL (CANVAS WORKSPACE BLANCO) -->
+      <section class="flex-1 bg-[#f8fafc] overflow-y-auto p-4 sm:p-8 flex justify-center">
+        <div class="w-full max-w-3xl space-y-4 pb-20">
+          
+          <!-- Encabezado de la portada en lienzo -->
+          <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 flex items-center justify-between shadow-xs">
+            <div class="flex items-center gap-3.5">
+              <div class="w-14 h-14 rounded-lg bg-slate-100 border border-slate-200 overflow-hidden shrink-0">
+                <img id="canvas-cover-img-preview" src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=400&q=80" alt="Portada" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <span class="text-[10px] font-bold text-[#00aeef] uppercase font-mono tracking-wider">Portada del Artículo</span>
+                <h3 id="canvas-preview-title" class="text-sm font-bold text-slate-900 leading-snug">Impresión Digital vs Flexográfica</h3>
+                <p id="canvas-preview-cat" class="text-xs text-slate-500">Categoría: Tecnología • 5 min de lectura</p>
+              </div>
+            </div>
+            <button id="change-cover-btn" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors cursor-pointer">
+              Cambiar Portada
+            </button>
+          </div>
+
+          <!-- CONTENEDOR DE BLOQUES ACTIVOS -->
+          <div id="canvas-blocks-container" class="space-y-3 min-h-[300px]">
+            <!-- Inyectado dinámicamente -->
+          </div>
+
+          <!-- Indicador de pie de lienzo -->
+          <div class="border-2 border-dashed border-slate-200 hover:border-[#00aeef]/50 rounded-xl p-6 text-center transition-colors bg-white/50">
+            <p class="text-xs text-slate-500 mb-1">
+              Haz clic en la bandeja izquierda para insertar un nuevo bloque visual
+            </p>
+            <span class="material-symbols-outlined text-slate-400 text-xl">add_circle_outline</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSPECTOR LATERAL DERECHO DE PROPIEDADES -->
+      <aside id="block-inspector-panel" class="w-80 bg-white border-l border-slate-200 flex flex-col shrink-0 overflow-y-auto">
+        <div class="p-4 border-b border-slate-100 flex items-center justify-between">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-700 font-mono flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-sm text-[#00aeef]">tune</span>
+            Inspector de Bloque
+          </h2>
+          <span id="inspector-block-type-badge" class="px-2 py-0.5 bg-sky-50 text-[#00aeef] text-[10px] font-mono font-bold uppercase rounded">
+            Ninguno
+          </span>
+        </div>
+
+        <div id="inspector-form-container" class="p-4 space-y-4 text-xs">
+          <div class="py-12 text-center text-slate-400">
+            <span class="material-symbols-outlined text-3xl mb-2 text-slate-300">touch_app</span>
+            <p>Selecciona cualquier bloque del lienzo para modificar su contenido en tiempo real.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- MODAL DE AJUSTES & SEO -->
+    <div id="settings-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-white border border-slate-200 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl relative">
+        <div class="flex justify-between items-center pb-3 border-b border-slate-100">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#00aeef]">settings</span>
+            Ajustes del Artículo & SEO
+          </h3>
+          <button id="close-settings-btn" class="text-slate-400 hover:text-slate-600 cursor-pointer">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+
+        <div class="space-y-3.5 text-xs">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">URL Slug</label>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                id="modal-slug-input"
+                class="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 font-mono text-xs focus:outline-none focus:border-[#00aeef]"
+              />
+              <button
+                id="auto-slug-btn"
+                class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-lg transition-colors cursor-pointer"
+              >
+                Auto
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Resumen del Artículo</label>
+            <textarea
+              id="modal-summary-input"
+              rows="3"
+              class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-xs focus:outline-none focus:border-[#00aeef]"
+            ></textarea>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Categoría</label>
+              <select
+                id="modal-category-select"
+                class="w-full px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-xs focus:outline-none focus:border-[#00aeef]"
+              >
+                {categories.map(cat => (
+                  <option value={cat}>{cat}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Estado</label>
+              <select
+                id="modal-status-select"
+                class="w-full px-2.5 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-xs focus:outline-none focus:border-[#00aeef]"
+              >
+                <option value="published">Publicado (Visible)</option>
+                <option value="draft">Borrador (Oculto)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">URL Imagen de Portada</label>
+            <input
+              type="text"
+              id="modal-image-input"
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-xs focus:outline-none focus:border-[#00aeef]"
+            />
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Etiquetas (Separadas por comas)</label>
+            <input
+              type="text"
+              id="modal-tags-input"
+              class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 text-xs focus:outline-none focus:border-[#00aeef]"
+            />
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-slate-100 flex justify-end gap-2">
+          <button
+            id="modal-done-btn"
+            class="px-4 py-2 bg-[#00aeef] hover:bg-[#0098d4] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-colors cursor-pointer"
+          >
+            Aplicar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline define:vars={{ initialPosts }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sessionStr = localStorage.getItem('dps_admin_session');
+      if (!sessionStr) {
+        window.location.href = '/admin/login';
+        return;
+      }
+      const session = JSON.parse(sessionStr);
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetSlug = urlParams.get('slug');
+
+      const localStoredPosts = localStorage.getItem('dps_custom_posts');
+      let allPosts = localStoredPosts ? JSON.parse(localStoredPosts) : initialPosts;
+      allPosts = allPosts.filter(p => p.slug !== 'revolucion-troquelado-laser-memjet-duraflex-2026' && p.author_name !== 'Roberto González');
+      localStorage.setItem('dps_custom_posts', JSON.stringify(allPosts));
+
+      let currentPost = JSON.parse(JSON.stringify(allPosts[0]));
+      if (targetSlug) {
+        const found = allPosts.find(p => p.slug === targetSlug);
+        if (found) currentPost = JSON.parse(JSON.stringify(found));
+      }
+
+      let selectedBlockId = currentPost.canvas_blocks[0]?.id || null;
+
+      const titleInput = document.getElementById('editor-post-title');
+      const slugPreview = document.getElementById('slug-preview');
+      const canvasContainer = document.getElementById('canvas-blocks-container');
+      const inspectorContainer = document.getElementById('inspector-form-container');
+      const inspectorBadge = document.getElementById('inspector-block-type-badge');
+      const canvasCoverPreview = document.getElementById('canvas-cover-img-preview');
+      const canvasPreviewTitle = document.getElementById('canvas-preview-title');
+      const canvasPreviewCat = document.getElementById('canvas-preview-cat');
+
+      const settingsModal = document.getElementById('settings-modal');
+      const openSettingsBtn = document.getElementById('open-settings-btn');
+      const closeSettingsBtn = document.getElementById('close-settings-btn');
+      const modalDoneBtn = document.getElementById('modal-done-btn');
+      const modalSlug = document.getElementById('modal-slug-input');
+      const modalSummary = document.getElementById('modal-summary-input');
+      const modalCategory = document.getElementById('modal-category-select');
+      const modalStatus = document.getElementById('modal-status-select');
+      const modalImage = document.getElementById('modal-image-input');
+      const modalTags = document.getElementById('modal-tags-input');
+      const autoSlugBtn = document.getElementById('auto-slug-btn');
+
+      const saveBtn = document.getElementById('save-post-btn');
+      const saveBtnText = document.getElementById('save-btn-text');
+      const togglePreviewBtn = document.getElementById('toggle-preview-btn');
+      const changeCoverBtn = document.getElementById('change-cover-btn');
+
+      function toSlug(str) {
+        return str
+          .toLowerCase()
+          .trim()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9 -]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-');
+      }
+
+      function syncHeader() {
+        titleInput.value = currentPost.title;
+        slugPreview.textContent = currentPost.slug;
+        canvasPreviewTitle.textContent = currentPost.title;
+        canvasPreviewCat.textContent = `Categoría: ${currentPost.category} • ${currentPost.reading_time} min de lectura`;
+        canvasCoverPreview.src = currentPost.featured_image;
+      }
+
+      function renderCanvas() {
+        canvasContainer.innerHTML = '';
+
+        currentPost.canvas_blocks.forEach((block, index) => {
+          const isSelected = block.id === selectedBlockId;
+          const blockCard = document.createElement('div');
+          blockCard.className = `p-4 sm:p-5 rounded-xl transition-all border-2 cursor-pointer relative ${
+            isSelected 
+              ? 'bg-white border-[#00aeef] shadow-sm' 
+              : 'bg-white/90 border-slate-200 hover:border-slate-300'
+          }`;
+          blockCard.setAttribute('data-id', block.id);
+
+          const topBar = document.createElement('div');
+          topBar.className = 'flex items-center justify-between pb-3 mb-3 border-b border-slate-100 text-xs';
+          topBar.innerHTML = `
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 bg-slate-100 text-slate-700 font-bold font-mono text-[10px] uppercase rounded">
+                ${block.type}
+              </span>
+              <span class="text-slate-400 font-mono text-[11px]">Bloque #${index + 1}</span>
+            </div>
+            <div class="flex items-center gap-1">
+              <button class="move-up-btn p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded disabled:opacity-30" ${index === 0 ? 'disabled' : ''} title="Mover arriba">
+                <span class="material-symbols-outlined text-base">arrow_upward</span>
+              </button>
+              <button class="move-down-btn p-1 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded disabled:opacity-30" ${index === currentPost.canvas_blocks.length - 1 ? 'disabled' : ''} title="Mover abajo">
+                <span class="material-symbols-outlined text-base">arrow_downward</span>
+              </button>
+              <button class="delete-block-btn p-1 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded" title="Eliminar">
+                <span class="material-symbols-outlined text-base">delete</span>
+              </button>
+            </div>
+          `;
+
+          const body = document.createElement('div');
+          body.className = 'text-xs text-slate-700';
+
+          if (block.type === 'header') {
+            body.innerHTML = `
+              <div class="space-y-1">
+                ${block.content.badge ? `<span class="text-[10px] text-[#00aeef] font-bold font-mono">${block.content.badge}</span>` : ''}
+                <h4 class="text-base font-bold text-slate-900">${block.content.title || 'Encabezado'}</h4>
+                ${block.content.subtitle ? `<p class="text-slate-500 text-xs">${block.content.subtitle}</p>` : ''}
+              </div>
+            `;
+          } else if (block.type === 'text') {
+            body.innerHTML = `
+              <div class="text-slate-600 leading-relaxed max-h-24 overflow-hidden line-clamp-3">
+                ${block.content.html || '<p>Párrafo de texto...</p>'}
+              </div>
+            `;
+          } else if (block.type === 'callout') {
+            body.innerHTML = `
+              <div class="p-3 bg-sky-50/70 border-l-3 border-[#00aeef] rounded-r-md">
+                <div class="font-bold text-slate-900 text-xs">${block.content.title}</div>
+                <div class="text-slate-600 text-[11px] mt-0.5">${block.content.text}</div>
+              </div>
+            `;
+          } else if (block.type === 'image_text') {
+            body.innerHTML = `
+              <div class="grid grid-cols-3 gap-3 items-center">
+                <div class="col-span-2">
+                  <div class="font-bold text-slate-900 text-xs">${block.content.title}</div>
+                  <div class="text-slate-500 text-[11px] line-clamp-2 mt-0.5">${block.content.description}</div>
+                </div>
+                <div class="col-span-1 aspect-video bg-slate-100 rounded-md overflow-hidden border border-slate-200">
+                  <img src="${block.content.image}" class="w-full h-full object-cover" />
+                </div>
+              </div>
+            `;
+          } else if (block.type === 'quote') {
+            body.innerHTML = `
+              <blockquote class="p-2 border-l-2 border-[#00aeef] italic text-slate-600 text-xs">
+                "${block.content.quote}"
+                <footer class="text-[10px] not-italic text-slate-400 mt-1">— ${block.content.author}</footer>
+              </blockquote>
+            `;
+          }
+
+          blockCard.appendChild(topBar);
+          blockCard.appendChild(body);
+
+          blockCard.addEventListener('click', (e) => {
+            if (e.target.closest('button')) return;
+            selectedBlockId = block.id;
+            renderCanvas();
+            renderInspector();
+          });
+
+          const btnUp = blockCard.querySelector('.move-up-btn');
+          const btnDown = blockCard.querySelector('.move-down-btn');
+          const btnDel = blockCard.querySelector('.delete-block-btn');
+
+          if (btnUp) {
+            btnUp.addEventListener('click', () => {
+              if (index > 0) {
+                const temp = currentPost.canvas_blocks[index];
+                currentPost.canvas_blocks[index] = currentPost.canvas_blocks[index - 1];
+                currentPost.canvas_blocks[index - 1] = temp;
+                renderCanvas();
+              }
+            });
+          }
+
+          if (btnDown) {
+            btnDown.addEventListener('click', () => {
+              if (index < currentPost.canvas_blocks.length - 1) {
+                const temp = currentPost.canvas_blocks[index];
+                currentPost.canvas_blocks[index] = currentPost.canvas_blocks[index + 1];
+                currentPost.canvas_blocks[index + 1] = temp;
+                renderCanvas();
+              }
+            });
+          }
+
+          if (btnDel) {
+            btnDel.addEventListener('click', () => {
+              currentPost.canvas_blocks = currentPost.canvas_blocks.filter(b => b.id !== block.id);
+              selectedBlockId = currentPost.canvas_blocks[0]?.id || null;
+              renderCanvas();
+              renderInspector();
+            });
+          }
+
+          canvasContainer.appendChild(blockCard);
+        });
+      }
+
+      function renderInspector() {
+        const block = currentPost.canvas_blocks.find(b => b.id === selectedBlockId);
+        if (!block) {
+          inspectorBadge.textContent = 'Ninguno';
+          inspectorContainer.innerHTML = `
+            <div class="py-12 text-center text-slate-400">
+              <span class="material-symbols-outlined text-3xl mb-2 text-slate-300">touch_app</span>
+              <p>Selecciona un bloque del lienzo para editar sus propiedades.</p>
+            </div>
+          `;
+          return;
+        }
+
+        inspectorBadge.textContent = block.type.toUpperCase();
+        inspectorContainer.innerHTML = '';
+
+        if (block.type === 'header') {
+          inspectorContainer.innerHTML = `
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Badge</label>
+              <input type="text" id="insp-badge" value="${block.content.badge || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Título</label>
+              <input type="text" id="insp-title" value="${block.content.title || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Subtítulo</label>
+              <textarea id="insp-subtitle" rows="2" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]">${block.content.subtitle || ''}</textarea>
+            </div>
+          `;
+        } else if (block.type === 'text') {
+          inspectorContainer.innerHTML = `
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Contenido HTML</label>
+              <textarea id="insp-html" rows="10" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef] font-mono text-xs">${block.content.html || ''}</textarea>
+            </div>
+          `;
+        } else if (block.type === 'callout') {
+          inspectorContainer.innerHTML = `
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Título</label>
+              <input type="text" id="insp-title" value="${block.content.title || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Mensaje</label>
+              <textarea id="insp-text" rows="4" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]">${block.content.text || ''}</textarea>
+            </div>
+          `;
+        } else if (block.type === 'image_text') {
+          inspectorContainer.innerHTML = `
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Título</label>
+              <input type="text" id="insp-title" value="${block.content.title || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Descripción</label>
+              <textarea id="insp-desc" rows="3" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]">${block.content.description || ''}</textarea>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">URL Imagen</label>
+              <input type="text" id="insp-img" value="${block.content.image || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+          `;
+        } else if (block.type === 'quote') {
+          inspectorContainer.innerHTML = `
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Frase</label>
+              <textarea id="insp-quote" rows="3" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]">${block.content.quote || ''}</textarea>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 uppercase font-mono mb-1">Autor</label>
+              <input type="text" id="insp-author" value="${block.content.author || ''}" class="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:border-[#00aeef]" />
+            </div>
+          `;
+        }
+
+        inspectorContainer.querySelectorAll('input, textarea').forEach(input => {
+          input.addEventListener('input', () => {
+            if (block.type === 'header') {
+              block.content.badge = document.getElementById('insp-badge')?.value;
+              block.content.title = document.getElementById('insp-title')?.value;
+              block.content.subtitle = document.getElementById('insp-subtitle')?.value;
+            } else if (block.type === 'text') {
+              block.content.html = document.getElementById('insp-html')?.value;
+            } else if (block.type === 'callout') {
+              block.content.title = document.getElementById('insp-title')?.value;
+              block.content.text = document.getElementById('insp-text')?.value;
+            } else if (block.type === 'image_text') {
+              block.content.title = document.getElementById('insp-title')?.value;
+              block.content.description = document.getElementById('insp-desc')?.value;
+              block.content.image = document.getElementById('insp-img')?.value;
+            } else if (block.type === 'quote') {
+              block.content.quote = document.getElementById('insp-quote')?.value;
+              block.content.author = document.getElementById('insp-author')?.value;
+            }
+            renderCanvas();
+          });
+        });
+      }
+
+      document.querySelectorAll('.add-block-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-type');
+          const newBlockId = 'blk_' + Math.random().toString(36).substr(2, 6);
+          let newBlock = { id: newBlockId, type, content: {} };
+
+          if (type === 'header') {
+            newBlock.content = { title: 'Nuevo Encabezado', subtitle: 'Subtítulo descriptivo', badge: 'SECCIÓN' };
+          } else if (type === 'text') {
+            newBlock.content = { html: '<p class="text-base leading-relaxed text-slate-700">Escribe aquí tu contenido...</p>' };
+          } else if (type === 'callout') {
+            newBlock.content = { title: 'Nota Importante', text: 'Información relevante para el lector.', icon: 'lightbulb' };
+          } else if (type === 'image_text') {
+            newBlock.content = {
+              title: 'Nueva Sección Visual',
+              description: 'Descripción detallada de la sección.',
+              image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=800&q=80',
+              imagePosition: 'right'
+            };
+          } else if (type === 'quote') {
+            newBlock.content = { quote: 'Frase o conclusión destacada.', author: 'Katun DPS' };
+          }
+
+          currentPost.canvas_blocks.push(newBlock);
+          selectedBlockId = newBlockId;
+          renderCanvas();
+          renderInspector();
+        });
+      });
+
+      if (openSettingsBtn && settingsModal) {
+        openSettingsBtn.addEventListener('click', () => {
+          modalSlug.value = currentPost.slug;
+          modalSummary.value = currentPost.summary;
+          modalCategory.value = currentPost.category;
+          modalStatus.value = currentPost.status;
+          modalImage.value = currentPost.featured_image;
+          modalTags.value = (currentPost.tags || []).join(', ');
+          settingsModal.classList.remove('hidden');
+        });
+      }
+
+      if (changeCoverBtn && settingsModal) {
+        changeCoverBtn.addEventListener('click', () => openSettingsBtn.click());
+      }
+
+      if (closeSettingsBtn && settingsModal) {
+        closeSettingsBtn.addEventListener('click', () => settingsModal.classList.add('hidden'));
+      }
+
+      if (autoSlugBtn) {
+        autoSlugBtn.addEventListener('click', () => {
+          modalSlug.value = toSlug(currentPost.title);
+        });
+      }
+
+      if (modalDoneBtn) {
+        modalDoneBtn.addEventListener('click', () => {
+          currentPost.slug = modalSlug.value.trim() || toSlug(currentPost.title);
+          currentPost.summary = modalSummary.value.trim();
+          currentPost.category = modalCategory.value;
+          currentPost.status = modalStatus.value;
+          currentPost.featured_image = modalImage.value.trim();
+          currentPost.tags = modalTags.value.split(',').map(t => t.trim()).filter(Boolean);
+
+          settingsModal.classList.add('hidden');
+          syncHeader();
+          renderCanvas();
+        });
+      }
+
+      if (titleInput) {
+        titleInput.addEventListener('input', (e) => {
+          currentPost.title = e.target.value;
+          currentPost.slug = toSlug(e.target.value);
+          syncHeader();
+        });
+      }
+
+      if (togglePreviewBtn) {
+        togglePreviewBtn.addEventListener('click', () => {
+          savePost(false, () => {
+            window.open(`/blog/${currentPost.slug}`, '_blank');
+          });
+        });
+      }
+
+      function savePost(showRedirect = true, callback) {
+        saveBtn.disabled = true;
+        saveBtnText.textContent = 'Guardando...';
+
+        currentPost.updated_at = new Date().toISOString();
+
+        const existingIdx = allPosts.findIndex(p => p.slug === currentPost.slug || p.id === currentPost.id);
+        if (existingIdx >= 0) {
+          allPosts[existingIdx] = currentPost;
+        } else {
+          allPosts.unshift(currentPost);
+        }
+
+        localStorage.setItem('dps_custom_posts', JSON.stringify(allPosts));
+
+        setTimeout(() => {
+          saveBtn.disabled = false;
+          saveBtnText.textContent = 'Guardado';
+          setTimeout(() => saveBtnText.textContent = 'Guardar', 2000);
+
+          if (callback) {
+            callback();
+          } else if (showRedirect) {
+            alert('¡Artículo guardado exitosamente!');
+            window.location.href = '/admin';
+          }
+        }, 400);
+      }
+
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => savePost(true));
+      }
+
+      syncHeader();
+      renderCanvas();
+      renderInspector();
+    });
+  </script>
+</Layout>

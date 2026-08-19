@@ -1,0 +1,337 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getPublishedBlogPosts, getBlogPostBySlug, INITIAL_BLOG_POSTS, type BlogPost, type BlogBlock } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedBlogPosts();
+  const list = posts.length > 0 ? posts : INITIAL_BLOG_POSTS;
+  return list.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+interface Props {
+  post?: BlogPost;
+}
+
+const { slug } = Astro.params;
+let post = Astro.props.post;
+
+if (!post && slug) {
+  const fetched = await getBlogPostBySlug(slug);
+  if (fetched) post = fetched;
+}
+
+if (!post) {
+  return Astro.redirect('/blog');
+}
+
+const allPosts = await getPublishedBlogPosts();
+const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
+---
+
+<Layout
+  title={`${post.seo_title || post.title} | Katun DPS Blog`}
+  description={post.seo_description || post.summary}
+>
+  <Header />
+
+  <!-- BARRA DE PROGRESO DE LECTURA -->
+  <div id="reading-progress-bar" class="fixed top-16 left-0 h-1 bg-[#00aeef] z-40 transition-all duration-75 w-0"></div>
+
+  <main class="min-h-screen pt-20 pb-24 bg-[#fafafc]">
+    <!-- CABECERA DEL ARTÍCULO (TEMA BLANCO ELEGANTE) -->
+    <header class="bg-white border-b border-slate-200/80 py-10 sm:py-14">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+        
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+          <a href="/" class="hover:text-[#00aeef] transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/blog" class="hover:text-[#00aeef] transition-colors">Blog</a>
+          <span>/</span>
+          <span class="text-slate-800 font-semibold">{post.category}</span>
+        </nav>
+
+        <div class="space-y-3 pt-2">
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <span class="px-3 py-1 bg-sky-50 text-[#00aeef] font-bold rounded-full border border-sky-100">
+              {post.category}
+            </span>
+            <span class="text-slate-500 flex items-center gap-1 font-mono">
+              <span class="material-symbols-outlined text-sm text-[#00aeef]">schedule</span>
+              {post.reading_time} min de lectura
+            </span>
+            <span class="text-slate-300">•</span>
+            <span class="text-slate-500 font-mono">
+              {post.published_at ? new Date(post.published_at).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Reciente'}
+            </span>
+          </div>
+
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            {post.title}
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed border-l-3 border-[#00aeef] pl-4 py-1">
+            {post.summary}
+          </p>
+
+          <!-- Autor e Interacciones -->
+          <div class="pt-4 mt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center text-slate-700 font-bold text-sm">
+                {post.author_avatar ? (
+                  <img src={post.author_avatar} alt={post.author_name} class="w-full h-full object-cover" />
+                ) : (
+                  <span>{post.author_name.charAt(0)}</span>
+                )}
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">{post.author_name}</p>
+                <p class="text-[11px] text-slate-500">Katun Digital Process Systems</p>
+              </div>
+            </div>
+
+            <!-- Botones para compartir -->
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-500 font-medium hidden sm:inline">Compartir:</span>
+              <button
+                id="share-whatsapp"
+                class="p-2 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
+                title="Compartir por WhatsApp"
+                aria-label="Compartir en WhatsApp"
+              >
+                <span class="material-symbols-outlined text-base">chat</span>
+              </button>
+              <button
+                id="share-linkedin"
+                class="p-2 bg-slate-100 hover:bg-[#0077b5] hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
+                title="Compartir en LinkedIn"
+                aria-label="Compartir en LinkedIn"
+              >
+                <span class="material-symbols-outlined text-base">share</span>
+              </button>
+              <button
+                id="share-copy"
+                class="p-2 bg-slate-100 hover:bg-[#00aeef] hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
+                title="Copiar enlace"
+                aria-label="Copiar enlace"
+              >
+                <span class="material-symbols-outlined text-base">link</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- IMAGEN DESTACADA -->
+    {post.featured_image && (
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="aspect-21/9 sm:aspect-16/7 w-full overflow-hidden rounded-xl bg-slate-100 border border-slate-200 shadow-sm">
+          <img
+            src={post.featured_image}
+            alt={post.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- CONTENIDO DEL ARTÍCULO (BLOQUES MODULARES) -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div class="bg-white p-6 sm:p-10 lg:p-12 border border-slate-200 rounded-xl shadow-xs space-y-8">
+        
+        {post.canvas_blocks && post.canvas_blocks.length > 0 ? (
+          post.canvas_blocks.map((block: BlogBlock) => {
+            // BLOQUE ENCABEZADO
+            if (block.type === 'header') {
+              return (
+                <div class="space-y-1.5 border-b border-slate-100 pb-3">
+                  {block.content.badge && (
+                    <span class="px-2.5 py-0.5 bg-sky-50 text-[#00aeef] border border-sky-100 text-[11px] font-bold rounded-full uppercase font-mono">
+                      {block.content.badge}
+                    </span>
+                  )}
+                  <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                    {block.content.title}
+                  </h2>
+                  {block.content.subtitle && (
+                    <p class="text-slate-600 text-sm sm:text-base">
+                      {block.content.subtitle}
+                    </p>
+                  )}
+                </div>
+              );
+            }
+
+            // BLOQUE TEXTO
+            if (block.type === 'text') {
+              return (
+                <div class="text-slate-700 text-base sm:text-lg leading-relaxed">
+                  <Fragment set:html={block.content.html || ''} />
+                </div>
+              );
+            }
+
+            // BLOQUE CALLOUT
+            if (block.type === 'callout') {
+              return (
+                <div class="p-5 sm:p-6 bg-sky-50/70 border-l-4 border-[#00aeef] rounded-r-lg space-y-2">
+                  <div class="flex items-center gap-2 font-bold text-slate-900">
+                    <span class="material-symbols-outlined text-[#00aeef]">
+                      {block.content.icon || 'lightbulb'}
+                    </span>
+                    <span>{block.content.title}</span>
+                  </div>
+                  <p class="text-slate-700 text-sm sm:text-base leading-relaxed pl-8">
+                    {block.content.text}
+                  </p>
+                </div>
+              );
+            }
+
+            // BLOQUE IMAGEN + TEXTO
+            if (block.type === 'image_text') {
+              const isImageRight = block.content.imagePosition === 'right';
+              return (
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-slate-50/80 p-6 sm:p-8 rounded-xl border border-slate-200">
+                  <div class={`space-y-3 md:col-span-6 ${isImageRight ? 'md:order-1' : 'md:order-2'}`}>
+                    <h3 class="text-xl font-bold text-slate-900">
+                      {block.content.title}
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                      {block.content.description}
+                    </p>
+                    {block.content.bullets && (
+                      <ul class="space-y-1.5 pt-2">
+                        {block.content.bullets.map((item: string) => (
+                          <li class="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
+                            <span class="material-symbols-outlined text-[#00aeef] text-base shrink-0">check_circle</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div class={`md:col-span-6 overflow-hidden rounded-lg aspect-4/3 bg-slate-200 ${isImageRight ? 'md:order-2' : 'md:order-1'}`}>
+                    <img
+                      src={block.content.image}
+                      alt={block.content.imageAlt || block.content.title}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              );
+            }
+
+            // BLOQUE CITA
+            if (block.type === 'quote') {
+              return (
+                <blockquote class="my-6 p-6 bg-slate-50 border-l-4 border-[#00aeef] rounded-r-lg space-y-2">
+                  <p class="text-lg font-medium text-slate-800 italic leading-snug">
+                    "{block.content.quote}"
+                  </p>
+                  {(block.content.author || block.content.role) && (
+                    <footer class="text-xs text-slate-500 font-medium">
+                      <strong class="text-slate-800">{block.content.author}</strong>
+                      {block.content.role && ` — ${block.content.role}`}
+                    </footer>
+                  )}
+                </blockquote>
+              );
+            }
+
+            return null;
+          })
+        ) : (
+          <div class="text-slate-700 leading-relaxed">
+            <Fragment set:html={post.content_html || '<p>Contenido del artículo.</p>'} />
+          </div>
+        )}
+
+        <!-- TAGS -->
+        <div class="pt-6 border-t border-slate-100">
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono mb-2.5">
+            Etiquetas
+          </h4>
+          <div class="flex flex-wrap gap-2">
+            {post.tags.map(tag => (
+              <a
+                href={`/blog?tag=${encodeURIComponent(tag)}`}
+                class="px-3 py-1 bg-slate-100 hover:bg-sky-50 hover:text-[#00aeef] text-slate-600 text-xs rounded-md transition-colors"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- TARJETA DEL AUTOR -->
+        <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-4">
+          <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0">
+            {post.author_avatar ? (
+              <img src={post.author_avatar} alt={post.author_name} class="w-full h-full object-cover" />
+            ) : (
+              <div class="w-full h-full flex items-center justify-center font-bold text-slate-700 text-lg">
+                {post.author_name.charAt(0)}
+              </div>
+            )}
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">{post.author_name}</h4>
+            <p class="text-xs text-slate-500">Autor de Contenido Técnico • Katun DPS</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const progressBar = document.getElementById('reading-progress-bar');
+      window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if (progressBar) {
+          progressBar.style.width = scrolled + '%';
+        }
+      });
+
+      const currentUrl = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+
+      const btnWa = document.getElementById('share-whatsapp');
+      if (btnWa) {
+        btnWa.addEventListener('click', () => {
+          window.open(`https://api.whatsapp.com/send?text=${pageTitle}%20${currentUrl}`, '_blank');
+        });
+      }
+
+      const btnLi = document.getElementById('share-linkedin');
+      if (btnLi) {
+        btnLi.addEventListener('click', () => {
+          window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`, '_blank');
+        });
+      }
+
+      const btnCopy = document.getElementById('share-copy');
+      if (btnCopy) {
+        btnCopy.addEventListener('click', () => {
+          navigator.clipboard.writeText(window.location.href);
+          btnCopy.classList.add('bg-emerald-600', 'text-white');
+          setTimeout(() => {
+            btnCopy.classList.remove('bg-emerald-600', 'text-white');
+          }, 2000);
+        });
+      }
+    });
+  </script>
+</Layout>
