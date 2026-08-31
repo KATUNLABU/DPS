@@ -108,7 +108,7 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3 pt-4">
             <a 
-              href={`https://wa.me/5215580793969?text=Hola,%20me%20interesa%20obtener%20cotización%20y%20asesoría%20para%20el%20equipo%20${encodeURIComponent(machine.name)}`}
+              href={`https://wa.me/5214492133887?text=Hola%20Obed,%20me%20interesa%20obtener%20cotización%20y%20asesoría%20para%20el%20equipo%20${encodeURIComponent(machine.name)}`}
               target="_blank" 
               rel="noopener" 
               class="bg-slate-900 hover:bg-[#00aeef] text-white px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 shadow-xs uppercase"
@@ -131,6 +131,64 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- Video Demonstration Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl text-white space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-6">
+          <div>
+            <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-[#00aeef] bg-[#00aeef]/10 px-3 py-1 border border-[#00aeef]/30 uppercase tracking-widest inline-block mb-2">
+              DEMOSTRACIÓN EN VIDEO
+            </span>
+            <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold text-white">
+              Funcionamiento en Vivo: {machine.name}
+            </h2>
+          </div>
+          <a 
+            href={`https://wa.me/5214492133887?text=Hola%20Obed,%20me%20gustaría%20solicitar%20un%20video%20específico%20o%20demo%20en%20vivo%20del%20equipo%20${encodeURIComponent(machine.name)}`}
+            target="_blank" 
+            rel="noopener"
+            class="bg-[#00aeef] hover:bg-[#009ee2] text-white px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase shrink-0 shadow-md"
+          >
+            <span class="material-symbols-outlined text-base">video_call</span>
+            SOLICITAR DEMO PERSONALIZADA
+          </a>
+        </div>
+
+        <div class="relative aspect-video w-full bg-slate-950 border border-slate-800 overflow-hidden flex items-center justify-center group">
+          {machine.videoUrl && !machine.videoUrl.includes('YOUTUBE_ID') ? (
+            <iframe 
+              src={machine.videoUrl} 
+              title={`Video Demostración ${machine.name}`}
+              class="w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          ) : (
+            <div class="relative w-full h-full flex flex-col items-center justify-center p-8 text-center bg-[radial-gradient(#00aeef_1px,transparent_1px)] [background-size:24px_24px] bg-slate-950/90">
+              <div class="w-16 h-16 rounded-full bg-[#00aeef]/20 border-2 border-[#00aeef] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-3xl text-[#00aeef]">play_circle</span>
+              </div>
+              <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-white mb-2">
+                Video Demostrativo de {machine.name}
+              </h3>
+              <p class="font-['Space_Grotesk',monospace] text-xs text-slate-400 max-w-md mb-4">
+                Observa la precisión de impresión y corte en tiempo real. Contáctanos para enviarte el video técnico completo o realizar una prueba de impresión con tus archivos.
+              </p>
+              <a 
+                href={`https://wa.me/5214492133887?text=Hola%20Obed,%20quisiera%20ver%20el%20video%20de%20operación%20de%20la%20${encodeURIComponent(machine.name)}`}
+                target="_blank" 
+                rel="noopener"
+                class="bg-slate-800 hover:bg-slate-700 text-[#00aeef] border border-[#00aeef]/40 px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase"
+              >
+                <span class="material-symbols-outlined text-sm">smart_display</span>
+                SOLICITAR VIDEO A UN ESPECIALISTA KATUN DPS
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </section>
 
