@@ -43,13 +43,13 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
   <div id="reading-progress-bar" class="fixed top-16 left-0 h-1 bg-[#00aeef] z-40 transition-all duration-75 w-0"></div>
 
   <main class="min-h-screen pt-20 pb-24 bg-[#fafafc]">
-    <!-- CABECERA DEL ARTÍCULO (TEMA BLANCO ELEGANTE) -->
+    <!-- CABEÇALHO DO ARTIGO -->
     <header class="bg-white border-b border-slate-200/80 py-10 sm:py-14">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         
         <!-- Breadcrumb -->
         <nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
-          <a href="/" class="hover:text-[#00aeef] transition-colors">Inicio</a>
+          <a href="/" class="hover:text-[#00aeef] transition-colors">Início</a>
           <span>/</span>
           <a href="/blog" class="hover:text-[#00aeef] transition-colors">Blog</a>
           <span>/</span>
@@ -63,11 +63,11 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
             </span>
             <span class="text-slate-500 flex items-center gap-1 font-mono">
               <span class="material-symbols-outlined text-sm text-[#00aeef]">schedule</span>
-              {post.reading_time} min de lectura
+              {post.reading_time} min de leitura
             </span>
             <span class="text-slate-300">•</span>
             <span class="text-slate-500 font-mono">
-              {post.published_at ? new Date(post.published_at).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Reciente'}
+              {post.published_at ? new Date(post.published_at).toLocaleDateString('pt-BR', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Recente'}
             </span>
           </div>
 
@@ -79,7 +79,7 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
             {post.summary}
           </p>
 
-          <!-- Autor e Interacciones -->
+          <!-- Autor e Interações -->
           <div class="pt-4 mt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 overflow-hidden flex items-center justify-center text-slate-700 font-bold text-sm">
@@ -95,30 +95,30 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
               </div>
             </div>
 
-            <!-- Botones para compartir -->
+            <!-- Botões para compartilhar -->
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-500 font-medium hidden sm:inline">Compartir:</span>
+              <span class="text-xs text-slate-500 font-medium hidden sm:inline">Compartilhar:</span>
               <button
                 id="share-whatsapp"
                 class="p-2 bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
-                title="Compartir por WhatsApp"
-                aria-label="Compartir en WhatsApp"
+                title="Compartilhar no WhatsApp"
+                aria-label="Compartilhar no WhatsApp"
               >
                 <span class="material-symbols-outlined text-base">chat</span>
               </button>
               <button
                 id="share-linkedin"
                 class="p-2 bg-slate-100 hover:bg-[#0077b5] hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
-                title="Compartir en LinkedIn"
-                aria-label="Compartir en LinkedIn"
+                title="Compartilhar no LinkedIn"
+                aria-label="Compartilhar no LinkedIn"
               >
                 <span class="material-symbols-outlined text-base">share</span>
               </button>
               <button
                 id="share-copy"
                 class="p-2 bg-slate-100 hover:bg-[#00aeef] hover:text-white text-slate-700 rounded-lg transition-colors cursor-pointer"
-                title="Copiar enlace"
-                aria-label="Copiar enlace"
+                title="Copiar link"
+                aria-label="Copiar link"
               >
                 <span class="material-symbols-outlined text-base">link</span>
               </button>
@@ -257,7 +257,7 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
         <!-- TAGS -->
         <div class="pt-6 border-t border-slate-100">
           <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider font-mono mb-2.5">
-            Etiquetas
+            Palavras-chave
           </h4>
           <div class="flex flex-wrap gap-2">
             {post.tags.map(tag => (
@@ -271,7 +271,7 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
           </div>
         </div>
 
-        <!-- TARJETA DEL AUTOR -->
+        <!-- CARTÃO DO AUTOR -->
         <div class="p-6 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-4">
           <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0">
             {post.author_avatar ? (
@@ -284,7 +284,7 @@ const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 3);
           </div>
           <div>
             <h4 class="text-sm font-bold text-slate-900">{post.author_name}</h4>
-            <p class="text-xs text-slate-500">Autor de Contenido Técnico • Katun DPS</p>
+            <p class="text-xs text-slate-500">Autor de Conteúdo Técnico • Katun DPS</p>
           </div>
         </div>
       </div>

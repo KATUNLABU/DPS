@@ -13,88 +13,78 @@ import DpsLogo from './DpsLogo.astro';
       <button
         class="md:hidden text-slate-700 hover:text-slate-900 transition-colors p-1 cursor-crosshair"
         onclick="toggleDrawer()"
-        aria-label="Abrir Menú"
+        aria-label="Abrir Menu"
       >
         <span class="material-symbols-outlined text-2xl">menu</span>
       </button>
 
-      <a href="/" class="flex items-center group cursor-crosshair py-1" aria-label="Katun DPS Inicio">
+      <a href="/" class="flex items-center group cursor-crosshair py-1" aria-label="Katun DPS Início">
         <DpsLogo class="h-9 sm:h-10 w-auto" theme="light" />
       </a>
     </div>
 
     <!-- Desktop Navigation -->
     <nav
-      class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans',sans-serif] text-xs font-semibold"
+      class="hidden md:flex items-center gap-7 font-['Plus_Jakarta_Sans',sans-serif] text-xs font-semibold"
     >
-      <!-- INICIO Button with Dropdown Menu for Sections -->
+      <!-- INÍCIO Button with Dropdown Menu for Sections -->
       <div class="relative group py-4">
         <a
           id="nav-inicio"
           href="/"
-          class="nav-link flex items-center gap-1 text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+          class="nav-link flex items-center gap-1 text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 uppercase"
         >
-          <span>INICIO</span>
+          <span>INÍCIO</span>
           <span
             class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180"
             >expand_more</span
           >
         </a>
 
-        <!-- Dropdown Menu for homepage sections that don't have their own page -->
+        <!-- Dropdown Menu for homepage sections -->
         <div
           class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 rounded-none"
         >
           <div
             class="px-4 py-2 bg-slate-50 border-b border-slate-100 font-['Space_Grotesk',monospace] text-[10px] text-slate-400 font-bold uppercase tracking-wider"
           >
-            SECCIONES PRINCIPALES
+            SEÇÕES PRINCIPAIS
           </div>
 
           <a
             href="/"
             class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair font-semibold"
           >
-            <span class="material-symbols-outlined text-sm text-slate-400"
-              >home</span
-            >
-            <span>Página Principal</span>
+            <span class="material-symbols-outlined text-sm text-slate-400">home</span>
+            <span>Página Inicial</span>
           </a>
           <a
             href="/#specs"
             class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair"
           >
-            <span class="material-symbols-outlined text-sm text-slate-400"
-              >memory</span
-            >
-            <span>Tecnología Memjet & Láser</span>
+            <span class="material-symbols-outlined text-sm text-slate-400">memory</span>
+            <span>Tecnologia Memjet & Laser</span>
           </a>
           <a
             href="/#industries"
             class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair"
           >
-            <span class="material-symbols-outlined text-sm text-slate-400"
-              >factory</span
-            >
-            <span>Sectores Industriales</span>
+            <span class="material-symbols-outlined text-sm text-slate-400">factory</span>
+            <span>Setores Industriais</span>
           </a>
           <a
             href="/#process"
             class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair"
           >
-            <span class="material-symbols-outlined text-sm text-slate-400"
-              >precision_manufacturing</span
-            >
-            <span>Proceso de Trabajo</span>
+            <span class="material-symbols-outlined text-sm text-slate-400">precision_manufacturing</span>
+            <span>Processo de Trabalho</span>
           </a>
           <a
             href="/#calculator"
             class="flex items-center gap-2.5 px-4 py-2.5 text-xs text-slate-700 hover:bg-[#00aeef]/10 hover:text-[#00aeef] transition-colors cursor-crosshair"
           >
-            <span class="material-symbols-outlined text-sm text-slate-400"
-              >calculate</span
-            >
-            <span>Calculadora de ROI</span>
+            <span class="material-symbols-outlined text-sm text-slate-400">calculate</span>
+            <span>Simulador de ROI</span>
           </a>
         </div>
       </div>
@@ -103,46 +93,54 @@ import DpsLogo from './DpsLogo.astro';
       <a
         id="nav-catalogo"
         href="/catalogo"
-        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 uppercase"
       >
         CATÁLOGO COMPLETO
       </a>
 
-      <!-- INDUSTRIAS Link (Página dedicada) -->
+      <!-- INDÚSTRIAS Link -->
       <a
         id="nav-industrias"
         href="/industrias"
-        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 uppercase"
       >
-        INDUSTRIAS
+        INDÚSTRIAS
       </a>
 
-      <!-- BLOG Link (Página dedicada) -->
+      <!-- BLOG Link -->
       <a
         id="nav-blog"
         href="/blog"
-        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 font-bold"
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 font-bold uppercase"
       >
         BLOG
       </a>
 
-      <!-- CONTACTO Link (Página dedicada) -->
+      <!-- CONTATO Link -->
       <a
         id="nav-contacto"
         href="/contacto"
-        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5"
+        class="nav-link text-slate-600 hover:text-[#00aeef] transition-all cursor-crosshair py-1.5 uppercase"
       >
-        CONTACTAR A UN ESPECIALISTA
+        FALE COM UM ESPECIALISTA
       </a>
     </nav>
 
-    <!-- Header Actions -->
+    <!-- Header Actions (Region Flag + Cassio WhatsApp) -->
     <div class="flex items-center gap-3">
+      <!-- Region Selector Badge -->
+      <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 border border-slate-200 text-[11px] font-['Space_Grotesk',monospace] font-semibold text-slate-700" title="Katun DPS Brasil & América Latina">
+        <span>🇧🇷</span>
+        <span>BR / PT</span>
+      </div>
+
+      <!-- WhatsApp Button -> Direct to Cássio Rodrigues (Corporate) -->
       <a
-        href="https://wa.me/5214492133887"
+        href="https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20e%20cota%C3%A7%C3%A3o%20sobre%20os%20equipamentos%20Katun%20DPS"
         target="_blank"
         rel="noopener"
-        class="bg-slate-900 text-white hover:bg-[#00aeef] transition-all text-xs font-semibold px-4 py-2 flex items-center gap-1.5 shadow-sm rounded-none cursor-crosshair"
+        class="bg-slate-900 text-white hover:bg-[#00aeef] transition-all text-xs font-semibold px-4 py-2 flex items-center gap-1.5 shadow-sm rounded-none cursor-crosshair uppercase"
+        title="Fale direto com Eng. Cássio Rodrigues no WhatsApp Corporativo (+55 11 94522-2069)"
       >
         <span class="material-symbols-outlined text-sm">chat</span>
         <span class="hidden sm:inline">WHATSAPP</span>
@@ -164,10 +162,10 @@ import DpsLogo from './DpsLogo.astro';
         <h2
           class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900"
         >
-          MENÚ NAVEGACIÓN
+          MENU DE NAVEGAÇÃO
         </h2>
         <span class="font-['Space_Grotesk',monospace] text-xs text-slate-500"
-          >KATUN DPS MEXICO</span
+          >KATUN DPS BRASIL & LATAM</span
         >
       </div>
       <button
@@ -187,43 +185,38 @@ import DpsLogo from './DpsLogo.astro';
         href="/"
         onclick="toggleDrawer()"
       >
-        <span class="material-symbols-outlined text-slate-400">home</span> Inicio
+        <span class="material-symbols-outlined text-slate-400">home</span> Início
       </a>
 
-      <!-- Sub-secciones desplegadas en mobile -->
+      <!-- Sub-seções exibidas no mobile -->
       <div class="pl-6 space-y-1 border-l-2 border-slate-100 my-1">
         <a
           class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2"
           href="/#specs"
           onclick="toggleDrawer()"
         >
-          <span class="material-symbols-outlined text-xs">memory</span> Tecnología
-          Memjet, LED & Láser
+          <span class="material-symbols-outlined text-xs">memory</span> Tecnologia Memjet & Laser
         </a>
         <a
           class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2"
           href="/#industries"
           onclick="toggleDrawer()"
         >
-          <span class="material-symbols-outlined text-xs">factory</span> Sectores
-          Industriales
+          <span class="material-symbols-outlined text-xs">factory</span> Setores Industriais
         </a>
         <a
           class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2"
           href="/#process"
           onclick="toggleDrawer()"
         >
-          <span class="material-symbols-outlined text-xs"
-            >precision_manufacturing</span
-          > Proceso de Trabajo
+          <span class="material-symbols-outlined text-xs">precision_manufacturing</span> Processo de Trabalho
         </a>
         <a
           class="p-2 text-xs text-slate-600 hover:text-[#00aeef] flex items-center gap-2"
           href="/#calculator"
           onclick="toggleDrawer()"
         >
-          <span class="material-symbols-outlined text-xs">calculate</span> Calculadora
-          ROI
+          <span class="material-symbols-outlined text-xs">calculate</span> Simulador de ROI
         </a>
       </div>
 
@@ -233,8 +226,7 @@ import DpsLogo from './DpsLogo.astro';
         href="/catalogo"
         onclick="toggleDrawer()"
       >
-        <span class="material-symbols-outlined text-slate-400">inventory_2</span
-        > Catálogo Completo
+        <span class="material-symbols-outlined text-slate-400">inventory_2</span> Catálogo Completo
       </a>
 
       <a
@@ -243,8 +235,7 @@ import DpsLogo from './DpsLogo.astro';
         href="/industrias"
         onclick="toggleDrawer()"
       >
-        <span class="material-symbols-outlined text-slate-400">factory</span> Industrias
-        & Sectores
+        <span class="material-symbols-outlined text-slate-400">factory</span> Indústrias & Setores
       </a>
 
       <a
@@ -253,27 +244,35 @@ import DpsLogo from './DpsLogo.astro';
         href="/blog"
         onclick="toggleDrawer()"
       >
-        <span class="material-symbols-outlined text-slate-400">article</span> Blog & Artículos
+        <span class="material-symbols-outlined text-slate-400">article</span> Blog & Artigos
       </a>
 
       <a
-        id="mobile-nav-[#contacto]"
+        id="mobile-nav-contacto"
         class="p-3 hover:bg-slate-100 transition-colors flex items-center gap-3 cursor-crosshair"
         href="/contacto"
         onclick="toggleDrawer()"
       >
-        <span class="material-symbols-outlined text-slate-400">mail</span> Contactar
-        a un Especialista
+        <span class="material-symbols-outlined text-slate-400">mail</span> Fale com um Especialista
       </a>
     </nav>
 
-    <div class="p-6 border-t border-slate-100 bg-slate-50">
+    <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-2">
       <p
         class="font-['Space_Grotesk',monospace] text-xs font-semibold text-slate-800"
       >
-        ATENCIÓN & SHOWROOM MÉXICO
+        ATENDIMENTO KATUN DPS BRASIL
       </p>
-      <p class="text-xs text-slate-500 mt-0.5">TEL: +52 1 (449) 213 3887</p>
+      <p class="text-xs text-slate-600">Eng. Cássio Rodrigues, MBA</p>
+      <a 
+        href="https://wa.me/5511945222069" 
+        target="_blank" 
+        rel="noopener"
+        class="text-xs text-[#00aeef] font-bold block hover:underline"
+      >
+        WhatsApp: +55 (11) 94522-2069
+      </a>
+      <p class="text-[11px] text-slate-400">Tel: +55 11 3647-3284</p>
     </div>
   </div>
 </div>

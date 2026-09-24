@@ -1,0 +1,877 @@
+{
+  "totalProcessed": 70,
+  "totalOriginalMB": "103.61",
+  "totalWebpMB": "5.43",
+  "totalFallbackMB": "15.84",
+  "percentSavingsWebp": "94.8%",
+  "equipments": [
+    {
+      "equipment": "VIP Color VP660 / VP610",
+      "category": "01_Impresoras_Digitales",
+      "folder": "01_VIP_Color_VP660_VP610",
+      "results": [
+        {
+          "source": "VIP COLOR/VIP COLOR 660 - ROLL TO ROLL.png",
+          "srcBytes": 7730937,
+          "originalDims": "4147x2287",
+          "webpPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-roll-to-roll-principal.webp",
+          "webpBytes": 91256,
+          "fallbackPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-roll-to-roll-principal.png",
+          "fallbackBytes": 325802,
+          "fallbackExt": ".png",
+          "savingWebp": "98.8%"
+        },
+        {
+          "source": "VIP COLOR/VIP COLOR 660_IMG 1.png",
+          "srcBytes": 1499081,
+          "originalDims": "2202x1041",
+          "webpPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-frontal.webp",
+          "webpBytes": 66084,
+          "fallbackPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-frontal.png",
+          "fallbackBytes": 315211,
+          "fallbackExt": ".png",
+          "savingWebp": "95.6%"
+        },
+        {
+          "source": "VIP COLOR/VIP COLOR 660_IMG 2.png",
+          "srcBytes": 997954,
+          "originalDims": "1856x1019",
+          "webpPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-perspectiva.webp",
+          "webpBytes": 58650,
+          "fallbackPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-perspectiva.png",
+          "fallbackBytes": 292277,
+          "fallbackExt": ".png",
+          "savingWebp": "94.1%"
+        },
+        {
+          "source": "VIP COLOR/02 VIP COLOR UVP 610/Captura de pantalla 2024-03-15 a la(s) 9.55.18.png",
+          "srcBytes": 1191371,
+          "originalDims": "2716x1676",
+          "webpPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp610-referencia.webp",
+          "webpBytes": 26746,
+          "fallbackPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp610-referencia.jpg",
+          "fallbackBytes": 57245,
+          "fallbackExt": ".jpg",
+          "savingWebp": "97.8%"
+        },
+        {
+          "source": "NUEVOSSSSSS/impresora-de-etiquetas-vip-color-660-katun-dps-1.png",
+          "srcBytes": 193362,
+          "originalDims": "700x700",
+          "webpPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-web-card.webp",
+          "webpBytes": 17910,
+          "fallbackPath": "01_Impresoras_Digitales\\01_VIP_Color_VP660_VP610\\vipcolor-vp660-web-card.png",
+          "fallbackBytes": 60289,
+          "fallbackExt": ".png",
+          "savingWebp": "90.7%"
+        }
+      ]
+    },
+    {
+      "equipment": "ArrowJet Aqua 330R - Hybrid PRO M",
+      "category": "01_Impresoras_Digitales",
+      "folder": "02_ArrowJet_Aqua_330R_Hybrid_PRO_M",
+      "results": [
+        {
+          "source": "ARROW/High Res Product Images/Hybrid pro m.png",
+          "srcBytes": 1848242,
+          "originalDims": "2405x911",
+          "webpPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-principal.webp",
+          "webpBytes": 97994,
+          "fallbackPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-principal.png",
+          "fallbackBytes": 281345,
+          "fallbackExt": ".png",
+          "savingWebp": "94.7%"
+        },
+        {
+          "source": "../DPS/DPS/public/imagenes/04-katun-dps-impresora-aqua-jet-330-hybrid-pro-m-web_-pdf-791x1024.jpg",
+          "srcBytes": 117953,
+          "originalDims": "791x1024",
+          "webpPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-vista-catalogo.webp",
+          "webpBytes": 37920,
+          "fallbackPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-vista-catalogo.jpg",
+          "fallbackBytes": 52332,
+          "fallbackExt": ".jpg",
+          "savingWebp": "67.9%"
+        },
+        {
+          "source": "NUEVOSSSSSS/WEBP/impresora-de-una-sola-pasada-1.webp",
+          "srcBytes": 208020,
+          "originalDims": "2048x2048",
+          "webpPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-angulo.webp",
+          "webpBytes": 147540,
+          "fallbackPath": "01_Impresoras_Digitales\\02_ArrowJet_Aqua_330R_Hybrid_PRO_M\\arrowjet-aqua-330r-hybrid-pro-m-angulo.png",
+          "fallbackBytes": 461690,
+          "fallbackExt": ".png",
+          "savingWebp": "29.1%"
+        }
+      ]
+    },
+    {
+      "equipment": "ArrowJet Aqua 330R",
+      "category": "01_Impresoras_Digitales",
+      "folder": "03_ArrowJet_Aqua_330R",
+      "results": [
+        {
+          "source": "ARROW/AQUA 330 R 2025.png",
+          "srcBytes": 4361548,
+          "originalDims": "2723x2356",
+          "webpPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-principal-2025.webp",
+          "webpBytes": 170450,
+          "fallbackPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-principal-2025.png",
+          "fallbackBytes": 737224,
+          "fallbackExt": ".png",
+          "savingWebp": "96.1%"
+        },
+        {
+          "source": "ARROW/High Res Product Images/PNG/ArrowJet Aqua.png",
+          "srcBytes": 3082403,
+          "originalDims": "2342x1934",
+          "webpPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-render-hd.webp",
+          "webpBytes": 92730,
+          "fallbackPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-render-hd.png",
+          "fallbackBytes": 422318,
+          "fallbackExt": ".png",
+          "savingWebp": "97.0%"
+        },
+        {
+          "source": "NUEVOSSSSSS/arrow-jet-aqua-330R-01.png",
+          "srcBytes": 391928,
+          "originalDims": "700x700",
+          "webpPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-frontal.webp",
+          "webpBytes": 38266,
+          "fallbackPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-frontal.png",
+          "fallbackBytes": 120519,
+          "fallbackExt": ".png",
+          "savingWebp": "90.2%"
+        },
+        {
+          "source": "NUEVOSSSSSS/arrow-jet-aqua-330R-02.png",
+          "srcBytes": 373919,
+          "originalDims": "700x700",
+          "webpPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-perspectiva.webp",
+          "webpBytes": 43204,
+          "fallbackPath": "01_Impresoras_Digitales\\03_ArrowJet_Aqua_330R\\arrowjet-aqua-330r-perspectiva.png",
+          "fallbackBytes": 126122,
+          "fallbackExt": ".png",
+          "savingWebp": "88.4%"
+        }
+      ]
+    },
+    {
+      "equipment": "Katun DPS LT330",
+      "category": "01_Impresoras_Digitales",
+      "folder": "04_Katun_DPS_LT330",
+      "results": [
+        {
+          "source": "LT330 (ANY PRESS)/Any-Press_1.png",
+          "srcBytes": 973566,
+          "originalDims": "1215x1364",
+          "webpPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-principal.webp",
+          "webpBytes": 56606,
+          "fallbackPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-principal.png",
+          "fallbackBytes": 351409,
+          "fallbackExt": ".png",
+          "savingWebp": "94.2%"
+        },
+        {
+          "source": "LT330 (ANY PRESS)/Any-Press_2.png",
+          "srcBytes": 639159,
+          "originalDims": "1103x1174",
+          "webpPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-perspectiva-3d.webp",
+          "webpBytes": 62962,
+          "fallbackPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-perspectiva-3d.png",
+          "fallbackBytes": 223116,
+          "fallbackExt": ".png",
+          "savingWebp": "90.1%"
+        },
+        {
+          "source": "LT330 (ANY PRESS)/Any-Press_3.png",
+          "srcBytes": 702645,
+          "originalDims": "1218x1259",
+          "webpPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-estacion-cmykw.webp",
+          "webpBytes": 53638,
+          "fallbackPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-estacion-cmykw.png",
+          "fallbackBytes": 302252,
+          "fallbackExt": ".png",
+          "savingWebp": "92.4%"
+        },
+        {
+          "source": "LT330 (ANY PRESS)/Any-Press_4.png",
+          "srcBytes": 562535,
+          "originalDims": "1120x1185",
+          "webpPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-vista-lateral.webp",
+          "webpBytes": 49542,
+          "fallbackPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-vista-lateral.png",
+          "fallbackBytes": 233452,
+          "fallbackExt": ".png",
+          "savingWebp": "91.2%"
+        },
+        {
+          "source": "NUEVOSSSSSS/impresora-cmyk-+-blanco-katun-dps.png",
+          "srcBytes": 381915,
+          "originalDims": "700x700",
+          "webpPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-card-frontal.webp",
+          "webpBytes": 28094,
+          "fallbackPath": "01_Impresoras_Digitales\\04_Katun_DPS_LT330\\katun-dps-lt330-card-frontal.png",
+          "fallbackBytes": 127848,
+          "fallbackExt": ".png",
+          "savingWebp": "92.6%"
+        }
+      ]
+    },
+    {
+      "equipment": "Katun DPS KLT3",
+      "category": "01_Impresoras_Digitales",
+      "folder": "05_Katun_DPS_KLT3",
+      "results": [
+        {
+          "source": "IMPRESORA UV/IMPRESORA UV.png",
+          "srcBytes": 1894242,
+          "originalDims": "1885x1368",
+          "webpPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-principal.webp",
+          "webpBytes": 84112,
+          "fallbackPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-principal.png",
+          "fallbackBytes": 344290,
+          "fallbackExt": ".png",
+          "savingWebp": "95.6%"
+        },
+        {
+          "source": "IMPRESORA UV/freepik__mejorar-la-imagen__61406.png",
+          "srcBytes": 1729012,
+          "originalDims": "2040x1632",
+          "webpPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-hd.webp",
+          "webpBytes": 47030,
+          "fallbackPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-hd.jpg",
+          "fallbackBytes": 78967,
+          "fallbackExt": ".jpg",
+          "savingWebp": "97.3%"
+        },
+        {
+          "source": "IMPRESORA UV/imgi_2_JetsLabel-Inkjet-Printing-Machine-1024x676.png",
+          "srcBytes": 379356,
+          "originalDims": "1024x676",
+          "webpPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-modulo-impresion.webp",
+          "webpBytes": 20338,
+          "fallbackPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-modulo-impresion.png",
+          "fallbackBytes": 126971,
+          "fallbackExt": ".png",
+          "savingWebp": "94.6%"
+        },
+        {
+          "source": "IMPRESORA UV/imgi_8_JetsLabel-Inkjet-Printing-Machine.png",
+          "srcBytes": 606047,
+          "originalDims": "1257x830",
+          "webpPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-vista-operativa.webp",
+          "webpBytes": 31358,
+          "fallbackPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-vista-operativa.png",
+          "fallbackBytes": 196097,
+          "fallbackExt": ".png",
+          "savingWebp": "94.8%"
+        },
+        {
+          "source": "NUEVOSSSSSS/impresora-uv-de-etiquetas-katundps.png",
+          "srcBytes": 240505,
+          "originalDims": "700x700",
+          "webpPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-card.webp",
+          "webpBytes": 24204,
+          "fallbackPath": "01_Impresoras_Digitales\\05_Katun_DPS_KLT3\\katun-dps-klt3-uv-card.png",
+          "fallbackBytes": 67826,
+          "fallbackExt": ".png",
+          "savingWebp": "89.9%"
+        }
+      ]
+    },
+    {
+      "equipment": "Cortadora KF30X",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "01_Cortadora_KF30X",
+      "results": [
+        {
+          "source": "CORTADORA KF30X/CORTADORA KF30X_HQ.png",
+          "srcBytes": 1641262,
+          "originalDims": "1415x1380",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-principal-hq.webp",
+          "webpBytes": 107346,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-principal-hq.png",
+          "fallbackBytes": 478171,
+          "fallbackExt": ".png",
+          "savingWebp": "93.5%"
+        },
+        {
+          "source": "CORTADORA KF30X/KF30X.png",
+          "srcBytes": 771984,
+          "originalDims": "1200x1200",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-frontal.webp",
+          "webpBytes": 59018,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-frontal.png",
+          "fallbackBytes": 204012,
+          "fallbackExt": ".png",
+          "savingWebp": "92.4%"
+        },
+        {
+          "source": "CORTADORA KF30X/IMG_0049.jpg",
+          "srcBytes": 679265,
+          "originalDims": "2048x1536",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-cabezal-tangencial.webp",
+          "webpBytes": 134014,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-cabezal-tangencial.jpg",
+          "fallbackBytes": 180352,
+          "fallbackExt": ".jpg",
+          "savingWebp": "80.3%"
+        },
+        {
+          "source": "CORTADORA KF30X/IMG_0050.jpg",
+          "srcBytes": 961415,
+          "originalDims": "2048x1536",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-rebobinado-merma.webp",
+          "webpBytes": 233124,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-rebobinado-merma.jpg",
+          "fallbackBytes": 250379,
+          "fallbackExt": ".jpg",
+          "savingWebp": "75.8%"
+        },
+        {
+          "source": "CORTADORA KF30X/IMG_0051.jpg",
+          "srcBytes": 972411,
+          "originalDims": "2048x1536",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-panel-control.webp",
+          "webpBytes": 244074,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-panel-control.jpg",
+          "fallbackBytes": 263695,
+          "fallbackExt": ".jpg",
+          "savingWebp": "74.9%"
+        },
+        {
+          "source": "NUEVOSSSSSS/cortadora-de-etiquetas-kf30x-katun-dps.png",
+          "srcBytes": 335969,
+          "originalDims": "700x700",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-card.webp",
+          "webpBytes": 30082,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\01_Cortadora_KF30X\\cortadora-kf30x-card.png",
+          "fallbackBytes": 79989,
+          "fallbackExt": ".png",
+          "savingWebp": "91.0%"
+        }
+      ]
+    },
+    {
+      "equipment": "Arrow EzCut VR 240 X",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "02_Arrow_EzCut_VR_240_X",
+      "results": [
+        {
+          "source": "04 VR 240 X/cortadora-etiquetas-vr-240-katun-dps-02.png",
+          "srcBytes": 639770,
+          "originalDims": "1080x1080",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-principal.webp",
+          "webpBytes": 56270,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-principal.png",
+          "fallbackBytes": 191440,
+          "fallbackExt": ".png",
+          "savingWebp": "91.2%"
+        },
+        {
+          "source": "04 VR 240 X/601fafb89c589.jpg",
+          "srcBytes": 175823,
+          "originalDims": "1000x1000",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-vista-general.webp",
+          "webpBytes": 39148,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-vista-general.jpg",
+          "fallbackBytes": 56621,
+          "fallbackExt": ".jpg",
+          "savingWebp": "77.7%"
+        },
+        {
+          "source": "04 VR 240 X/601fafba7a9fc.jpg",
+          "srcBytes": 173956,
+          "originalDims": "1000x1000",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-modulo-corte-dragknife.webp",
+          "webpBytes": 41918,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-modulo-corte-dragknife.jpg",
+          "fallbackBytes": 58138,
+          "fallbackExt": ".jpg",
+          "savingWebp": "75.9%"
+        },
+        {
+          "source": "04 VR 240 X/601fafbb28d63.jpg",
+          "srcBytes": 172660,
+          "originalDims": "1000x1000",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-traccion-bobina.webp",
+          "webpBytes": 39326,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\02_Arrow_EzCut_VR_240_X\\arrow-ezcut-vr-240x-traccion-bobina.jpg",
+          "fallbackBytes": 54105,
+          "fallbackExt": ".jpg",
+          "savingWebp": "77.2%"
+        }
+      ]
+    },
+    {
+      "equipment": "Arrow EzCut 330 RX",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "03_Arrow_EzCut_330_RX",
+      "results": [
+        {
+          "source": "ARROW/VR330RX/arrow-ezcut-330-rx-nuevo-2025.png",
+          "srcBytes": 1514167,
+          "originalDims": "1075x933",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-principal-2025.webp",
+          "webpBytes": 91538,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-principal-2025.png",
+          "fallbackBytes": 327042,
+          "fallbackExt": ".png",
+          "savingWebp": "94.0%"
+        },
+        {
+          "source": "ARROW/VR330RX/arrow-ezcut-330-rx-nuevo-2025-1.png",
+          "srcBytes": 599113,
+          "originalDims": "971x751",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-angulo.webp",
+          "webpBytes": 62692,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-angulo.png",
+          "fallbackBytes": 193988,
+          "fallbackExt": ".png",
+          "savingWebp": "89.5%"
+        },
+        {
+          "source": "ARROW/VR330RX/arrow-ezcut-330-rx-nuevo-2025-2.png",
+          "srcBytes": 1415146,
+          "originalDims": "1122x941",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-perspectiva.webp",
+          "webpBytes": 102576,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-perspectiva.png",
+          "fallbackBytes": 394924,
+          "fallbackExt": ".png",
+          "savingWebp": "92.8%"
+        },
+        {
+          "source": "05 EzCut 330 RX/Arrow EZcut 330R_ Double Blade Finishing System _ Katun DPS/Digital Cutting Positioning Sensor.jpg",
+          "srcBytes": 679849,
+          "originalDims": "1080x1440",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-sensor-posicionamiento.webp",
+          "webpBytes": 199682,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-sensor-posicionamiento.jpg",
+          "fallbackBytes": 213641,
+          "fallbackExt": ".jpg",
+          "savingWebp": "70.6%"
+        },
+        {
+          "source": "05 EzCut 330 RX/Arrow EZcut 330R_ Double Blade Finishing System _ Katun DPS/Slitting.jpg",
+          "srcBytes": 460790,
+          "originalDims": "1500x1500",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-slitting.webp",
+          "webpBytes": 229190,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-slitting.jpg",
+          "fallbackBytes": 287746,
+          "fallbackExt": ".jpg",
+          "savingWebp": "50.3%"
+        },
+        {
+          "source": "05 EzCut 330 RX/Arrow EZcut 330R_ Double Blade Finishing System _ Katun DPS/Unwinder.jpg",
+          "srcBytes": 307451,
+          "originalDims": "1500x1500",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-desbobinador.webp",
+          "webpBytes": 199868,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-desbobinador.jpg",
+          "fallbackBytes": 232979,
+          "fallbackExt": ".jpg",
+          "savingWebp": "35.0%"
+        },
+        {
+          "source": "05 EzCut 330 RX/Arrow EZcut 330R_ Double Blade Finishing System _ Katun DPS/Vacuum Cutting.jpg",
+          "srcBytes": 307676,
+          "originalDims": "1500x1500",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-corte-vacio.webp",
+          "webpBytes": 218022,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-corte-vacio.jpg",
+          "fallbackBytes": 232583,
+          "fallbackExt": ".jpg",
+          "savingWebp": "29.1%"
+        },
+        {
+          "source": "05 EzCut 330 RX/Arrow EZcut 330R_ Double Blade Finishing System _ Katun DPS/Waste Removal.jpg",
+          "srcBytes": 269390,
+          "originalDims": "1500x1500",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-extraccion-merma.webp",
+          "webpBytes": 169638,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\03_Arrow_EzCut_330_RX\\arrow-ezcut-330-rx-extraccion-merma.jpg",
+          "fallbackBytes": 196882,
+          "fallbackExt": ".jpg",
+          "savingWebp": "37.0%"
+        }
+      ]
+    },
+    {
+      "equipment": "Arrow EzCut 350R",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "04_Arrow_EzCut_350R",
+      "results": [
+        {
+          "source": "EQUIPOS/VR350/VR 350 Vicutt-05.png",
+          "srcBytes": 1364518,
+          "originalDims": "9000x7165",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\04_Arrow_EzCut_350R\\arrow-ezcut-350r-principal-hd.webp",
+          "webpBytes": 81802,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\04_Arrow_EzCut_350R\\arrow-ezcut-350r-principal-hd.png",
+          "fallbackBytes": 358838,
+          "fallbackExt": ".png",
+          "savingWebp": "94.0%"
+        },
+        {
+          "source": "../DPS/DPS/public/imagenes/arrow-ezcut-350R-real.png",
+          "srcBytes": 350664,
+          "originalDims": "710x560",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\04_Arrow_EzCut_350R\\arrow-ezcut-350r-equipo-real.webp",
+          "webpBytes": 18540,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\04_Arrow_EzCut_350R\\arrow-ezcut-350r-equipo-real.jpg",
+          "fallbackBytes": 28491,
+          "fallbackExt": ".jpg",
+          "savingWebp": "94.7%"
+        }
+      ]
+    },
+    {
+      "equipment": "Aries 35 PL",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "05_Aries_35_PL",
+      "results": [
+        {
+          "source": "ARIES/Cover Image Aries 350.png",
+          "srcBytes": 9117652,
+          "originalDims": "3781x2759",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-principal-hd.webp",
+          "webpBytes": 119882,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-principal-hd.png",
+          "fallbackBytes": 682141,
+          "fallbackExt": ".png",
+          "savingWebp": "98.7%"
+        },
+        {
+          "source": "ARIES/Offset Cut Position.jpg",
+          "srcBytes": 769263,
+          "originalDims": "4032x2268",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-troquel-magnetico.webp",
+          "webpBytes": 36998,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-troquel-magnetico.jpg",
+          "fallbackBytes": 61467,
+          "fallbackExt": ".jpg",
+          "savingWebp": "95.2%"
+        },
+        {
+          "source": "ARIES/Cold Laminating.jpg",
+          "srcBytes": 4221865,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-laminacion-frio.webp",
+          "webpBytes": 56432,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-laminacion-frio.jpg",
+          "fallbackBytes": 88092,
+          "fallbackExt": ".jpg",
+          "savingWebp": "98.7%"
+        },
+        {
+          "source": "ARIES/Tension Control.jpg",
+          "srcBytes": 4023769,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-control-tension.webp",
+          "webpBytes": 44606,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-control-tension.jpg",
+          "fallbackBytes": 73193,
+          "fallbackExt": ".jpg",
+          "savingWebp": "98.9%"
+        },
+        {
+          "source": "ARIES/Varnish Module.png",
+          "srcBytes": 5090170,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-modulo-barniz.webp",
+          "webpBytes": 45960,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-modulo-barniz.png",
+          "fallbackBytes": 205067,
+          "fallbackExt": ".png",
+          "savingWebp": "99.1%"
+        },
+        {
+          "source": "ARIES/Settings.jpg",
+          "srcBytes": 1938633,
+          "originalDims": "4032x2268",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-panel-ajustes.webp",
+          "webpBytes": 48418,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\05_Aries_35_PL\\aries-35-pl-panel-ajustes.jpg",
+          "fallbackBytes": 66509,
+          "fallbackExt": ".jpg",
+          "savingWebp": "97.5%"
+        }
+      ]
+    },
+    {
+      "equipment": "Taurus 35 PL Plus Láser CO2",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "06_Taurus_35_PL_Plus_Laser_CO2",
+      "results": [
+        {
+          "source": "TAURUS/DPR-TAURUS-35-PL-LÁSER.png",
+          "srcBytes": 5182088,
+          "originalDims": "4692x2932",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-plus-laser-co2-principal.webp",
+          "webpBytes": 80434,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-plus-laser-co2-principal.png",
+          "fallbackBytes": 391803,
+          "fallbackExt": ".png",
+          "savingWebp": "98.4%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Taurus 330.png",
+          "srcBytes": 10271327,
+          "originalDims": "4608x2381",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-plus-laser-co2-modulo-corte.webp",
+          "webpBytes": 80270,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-plus-laser-co2-modulo-corte.png",
+          "fallbackBytes": 460269,
+          "fallbackExt": ".png",
+          "savingWebp": "99.2%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Rotary Slitter.jpg",
+          "srcBytes": 1084884,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-cuchillas-rotativas.webp",
+          "webpBytes": 48580,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-cuchillas-rotativas.jpg",
+          "fallbackBytes": 76577,
+          "fallbackExt": ".jpg",
+          "savingWebp": "95.5%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Slitting.jpg",
+          "srcBytes": 4493255,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-slitting.webp",
+          "webpBytes": 48178,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-slitting.jpg",
+          "fallbackBytes": 82286,
+          "fallbackExt": ".jpg",
+          "savingWebp": "98.9%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Web Guide.jpg",
+          "srcBytes": 1129075,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-guia-bobina.webp",
+          "webpBytes": 80048,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-guia-bobina.jpg",
+          "fallbackBytes": 121893,
+          "fallbackExt": ".jpg",
+          "savingWebp": "92.9%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Waste Removal.jpg",
+          "srcBytes": 889221,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-extraccion-merma.webp",
+          "webpBytes": 43954,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-extraccion-merma.jpg",
+          "fallbackBytes": 72904,
+          "fallbackExt": ".jpg",
+          "savingWebp": "95.1%"
+        },
+        {
+          "source": "TAURUS/IMG Taurus High Speed Laser Finishing System _ Katun DPS/Data Matrix.jpg",
+          "srcBytes": 1057660,
+          "originalDims": "4608x3072",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-lector-datamatrix.webp",
+          "webpBytes": 77932,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\06_Taurus_35_PL_Plus_Laser_CO2\\taurus-35-pl-lector-datamatrix.jpg",
+          "fallbackBytes": 107740,
+          "fallbackExt": ".jpg",
+          "savingWebp": "92.6%"
+        }
+      ]
+    },
+    {
+      "equipment": "Gemini 40",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "07_Gemini_40",
+      "results": [
+        {
+          "source": "07 DPR GEMINI 40/Gemini 40 IMG .png",
+          "srcBytes": 487950,
+          "originalDims": "1132x1108",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-cortadora-pliego-principal.webp",
+          "webpBytes": 66590,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-cortadora-pliego-principal.png",
+          "fallbackBytes": 134892,
+          "fallbackExt": ".png",
+          "savingWebp": "86.4%"
+        },
+        {
+          "source": "07 DPR GEMINI 40/Gemini 40 IMG_2.png",
+          "srcBytes": 484403,
+          "originalDims": "1074x637",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-perspectiva-operacion.webp",
+          "webpBytes": 71124,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-perspectiva-operacion.png",
+          "fallbackBytes": 134129,
+          "fallbackExt": ".png",
+          "savingWebp": "85.3%"
+        },
+        {
+          "source": "../DPS/DPS/public/imagenes/gemini-40-real.png",
+          "srcBytes": 1444029,
+          "originalDims": "1367x864",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-real-hd.webp",
+          "webpBytes": 59704,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-real-hd.jpg",
+          "fallbackBytes": 87246,
+          "fallbackExt": ".jpg",
+          "savingWebp": "95.9%"
+        },
+        {
+          "source": "NUEVOSSSSSS/cortadora-de-etiquetas-por-pliego-gemini-40-katun-dps.png",
+          "srcBytes": 259521,
+          "originalDims": "700x700",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-card.webp",
+          "webpBytes": 35350,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\07_Gemini_40\\gemini-40-card.png",
+          "fallbackBytes": 67237,
+          "fallbackExt": ".png",
+          "savingWebp": "86.4%"
+        }
+      ]
+    },
+    {
+      "equipment": "Cortadora LC 350 PM",
+      "category": "02_Cortadoras_y_Finalizadoras",
+      "folder": "08_Cortadora_LC_350_PM",
+      "results": [
+        {
+          "source": "Cortadora LC 350 PM/lc-350-pm_1.png",
+          "srcBytes": 1868880,
+          "originalDims": "1582x1582",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-principal.webp",
+          "webpBytes": 160148,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-principal.png",
+          "fallbackBytes": 694055,
+          "fallbackExt": ".png",
+          "savingWebp": "91.4%"
+        },
+        {
+          "source": "Cortadora LC 350 PM/lc-350-pm_2.png",
+          "srcBytes": 1451567,
+          "originalDims": "1581x1582",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-angulo.webp",
+          "webpBytes": 119082,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-angulo.png",
+          "fallbackBytes": 567704,
+          "fallbackExt": ".png",
+          "savingWebp": "91.8%"
+        },
+        {
+          "source": "Cortadora LC 350 PM/lc-350-pm_3.png",
+          "srcBytes": 2523781,
+          "originalDims": "1582x1582",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-lateral.webp",
+          "webpBytes": 160554,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-lateral.png",
+          "fallbackBytes": 587052,
+          "fallbackExt": ".png",
+          "savingWebp": "93.6%"
+        },
+        {
+          "source": "NUEVOSSSSSS/cortadora-syscut-350-pm-katun-dps-1.png",
+          "srcBytes": 296403,
+          "originalDims": "700x700",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-card.webp",
+          "webpBytes": 21172,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-card.png",
+          "fallbackBytes": 106249,
+          "fallbackExt": ".png",
+          "savingWebp": "92.9%"
+        },
+        {
+          "source": "Cortadora LC 350 PM/Syscut SF350PM_6.png",
+          "srcBytes": 2250526,
+          "originalDims": "1398x1398",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-alimentador.webp",
+          "webpBytes": 145594,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-alimentador.png",
+          "fallbackBytes": 734290,
+          "fallbackExt": ".png",
+          "savingWebp": "93.5%"
+        },
+        {
+          "source": "Cortadora LC 350 PM/Syscut SF350PM_8.png",
+          "srcBytes": 2022948,
+          "originalDims": "1398x1398",
+          "webpPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-cabezal-doble-herramienta.webp",
+          "webpBytes": 122766,
+          "fallbackPath": "02_Cortadoras_y_Finalizadoras\\08_Cortadora_LC_350_PM\\cortadora-lc-350-pm-cabezal-doble-herramienta.png",
+          "fallbackBytes": 701462,
+          "fallbackExt": ".png",
+          "savingWebp": "93.9%"
+        }
+      ]
+    },
+    {
+      "equipment": "Contador Automático de Rótulos",
+      "category": "03_Especiales_y_Control_Calidad",
+      "folder": "01_Contador_Automatico_de_Rotulos",
+      "results": [
+        {
+          "source": "CONTADOR DE ETIQUETAS - KATUN DPS/Contador De Etiquetas Katun DPS.png",
+          "srcBytes": 420826,
+          "originalDims": "1200x1200",
+          "webpPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-automatico-rotulos-principal.webp",
+          "webpBytes": 43286,
+          "fallbackPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-automatico-rotulos-principal.png",
+          "fallbackBytes": 136507,
+          "fallbackExt": ".png",
+          "savingWebp": "89.7%"
+        },
+        {
+          "source": "CONTADOR DE ETIQUETAS - KATUN DPS/clm-111-contador-automatico-de-etiquetas-katun-dps-1.png",
+          "srcBytes": 619320,
+          "originalDims": "872x918",
+          "webpPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-modelo-clm111.webp",
+          "webpBytes": 47742,
+          "fallbackPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-modelo-clm111.png",
+          "fallbackBytes": 194563,
+          "fallbackExt": ".png",
+          "savingWebp": "92.3%"
+        },
+        {
+          "source": "CONTADOR DE ETIQUETAS - KATUN DPS/csr-111-contador-automatico-de-etiquetas-katun-dps.png",
+          "srcBytes": 278060,
+          "originalDims": "858x664",
+          "webpPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-modelo-csr111.webp",
+          "webpBytes": 26428,
+          "fallbackPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-modelo-csr111.png",
+          "fallbackBytes": 116030,
+          "fallbackExt": ".png",
+          "savingWebp": "90.5%"
+        },
+        {
+          "source": "CONTADOR DE ETIQUETAS - KATUN DPS/ce-contador-automatico-de-etiquetas-katun-dps-2.png",
+          "srcBytes": 403744,
+          "originalDims": "959x736",
+          "webpPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-estacion-bobinado.webp",
+          "webpBytes": 41968,
+          "fallbackPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-estacion-bobinado.png",
+          "fallbackBytes": 136391,
+          "fallbackExt": ".png",
+          "savingWebp": "89.6%"
+        },
+        {
+          "source": "NUEVOSSSSSS/contador-automatico-de-etiquetas-katun-dps-01.png",
+          "srcBytes": 667778,
+          "originalDims": "2149x700",
+          "webpPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-card.webp",
+          "webpBytes": 56896,
+          "fallbackPath": "03_Especiales_y_Control_Calidad\\01_Contador_Automatico_de_Rotulos\\contador-rotulos-card.png",
+          "fallbackBytes": 136327,
+          "fallbackExt": ".png",
+          "savingWebp": "91.5%"
+        }
+      ]
+    }
+  ]
+}

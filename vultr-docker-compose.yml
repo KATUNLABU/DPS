@@ -1,0 +1,48 @@
+version: '3.8'
+
+# ====================================================================
+# KATUN DPS - DOCKER COMPOSE PARA VPS EN VULTR
+# ====================================================================
+# Instrucciones de ejecución en tu VPS:
+# 1. Copia este archivo y 'vultr_postgres_schema.sql' a una carpeta en tu VPS (ej. /root/dps-db/)
+# 2. Cambia 'TuPasswordSeguraAqui2026!' por la contraseña que desees
+# 3. Ejecuta: docker compose up -d
+# 4. Entra a tu navegador: http://TU_IP_VULTR:8080 para ver Adminer (panel web de la BD)
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dps_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: dps_user
+      POSTGRES_PASSWORD: TuPasswordSeguraAqui2026!
+      POSTGRES_DB: dps_catalog
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Si colocas vultr_postgres_schema.sql aquí, se inicializa automáticamente en el primer arranque:
+      - ./vultr_postgres_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - dps_network
+
+  # Panel visual ligero en navegador para gestionar tablas y registros sin comandos
+  adminer:
+    image: adminer:latest
+    container_name: dps_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - dps_network
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  dps_network:
+    driver: bridge

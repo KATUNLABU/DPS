@@ -10,13 +10,13 @@ const otherPosts = posts.slice(1);
 ---
 
 <Layout
-  title="Blog & Novedades Técnicas | Katun DPS"
-  description="Artículos técnicos, análisis comparativos de metodologías de impresión y novedades en la industria de empaque y etiquetado."
+  title="Blog & Inovações Técnicas | Katun DPS"
+  description="Artigos técnicos, análises comparativas de tecnologias de impressão e novidades na indústria de embalagens e rótulos."
 >
   <Header />
 
   <main class="min-h-screen pt-20 pb-24 bg-[#fafafc]">
-    <!-- CABECERA PRINCIPAL (DISEÑO BLANCO, LIMPIO E INTUITIVO) -->
+    <!-- CABECALHO PRINCIPAL -->
     <section class="bg-white border-b border-slate-200/80 py-12 sm:py-16">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl space-y-3">
@@ -25,26 +25,26 @@ const otherPosts = posts.slice(1);
             Blog Oficial Katun DPS
           </div>
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Conocimiento y Tecnología en <span class="text-[#00aeef]">Etiquetas</span>
+            Conhecimento e Tecnologia em <span class="text-[#00aeef]">Rótulos & Embalagens</span>
           </h1>
           <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Artículos técnicos, comparativas de metodologías de impresión y análisis estratégicos para la industria del empaque.
+            Artigos técnicos, comparativos de tecnologias de impressão e análises estratégicas para a indústria de conversão e embalagens.
           </p>
         </div>
 
-        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <!-- BARRA DE PESQUISA E FILTROS -->
         <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
           <div class="relative flex-1 max-w-md">
             <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
             <input
               type="text"
               id="blog-search-input"
-              placeholder="Buscar por tema, tecnología o autor..."
+              placeholder="Buscar por tema, tecnologia ou autor..."
               class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:bg-white focus:border-[#00aeef] focus:ring-2 focus:ring-[#00aeef]/10 transition-all"
             />
           </div>
 
-          <!-- Filtros de categoría -->
+          <!-- Filtros de categoria -->
           <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
             <button
               class="category-btn active px-4 py-1.5 text-xs font-bold rounded-full transition-all whitespace-nowrap bg-[#00aeef] text-white shadow-xs"
@@ -96,10 +96,10 @@ const otherPosts = posts.slice(1);
               <div class="flex items-center gap-2 text-xs text-slate-500 font-mono">
                 <span class="flex items-center gap-1 text-[#00aeef]">
                   <span class="material-symbols-outlined text-sm">schedule</span>
-                  {featuredPost.reading_time} min de lectura
+                  {featuredPost.reading_time} min de leitura
                 </span>
                 <span>•</span>
-                <span>{featuredPost.published_at ? new Date(featuredPost.published_at).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Reciente'}</span>
+                <span>{featuredPost.published_at ? new Date(featuredPost.published_at).toLocaleDateString('pt-BR', { year: 'numeric', month: 'short', day: 'numeric' }) : 'Recente'}</span>
               </div>
 
               <h2 class="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors leading-snug">
@@ -134,7 +134,7 @@ const otherPosts = posts.slice(1);
               </div>
 
               <a href={`/blog/${featuredPost.slug}`} class="text-xs font-bold text-[#00aeef] hover:underline flex items-center gap-1">
-                Leer artículo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                Ler artigo <span class="material-symbols-outlined text-sm">arrow_forward</span>
               </a>
             </div>
           </div>
@@ -168,7 +168,7 @@ const otherPosts = posts.slice(1);
                   <div class="flex items-center gap-2 text-xs text-slate-500 font-mono">
                     <span>{post.reading_time} min</span>
                     <span>•</span>
-                    <span>{post.published_at ? new Date(post.published_at).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' }) : 'Reciente'}</span>
+                    <span>{post.published_at ? new Date(post.published_at).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' }) : 'Recente'}</span>
                   </div>
 
                   <h3 class="text-base font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors leading-snug line-clamp-2">
@@ -187,7 +187,7 @@ const otherPosts = posts.slice(1);
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
                   <span class="text-xs font-semibold text-slate-700">{post.author_name}</span>
                   <a href={`/blog/${post.slug}`} class="text-xs font-bold text-[#00aeef] hover:underline flex items-center gap-0.5">
-                    Leer <span class="material-symbols-outlined text-xs">chevron_right</span>
+                    Ler <span class="material-symbols-outlined text-xs">chevron_right</span>
                   </a>
                 </div>
               </div>
@@ -196,12 +196,12 @@ const otherPosts = posts.slice(1);
         </div>
       )}
 
-      <!-- ESTADO SIN RESULTADOS -->
+      <!-- ESTADO SEM RESULTADOS -->
       <div id="no-results-state" class="hidden py-16 text-center bg-white border border-slate-200 rounded-xl p-8 my-8">
         <span class="material-symbols-outlined text-4xl text-slate-400 mb-2">search_off</span>
-        <h4 class="text-lg font-bold text-slate-800">No encontramos publicaciones para tu búsqueda</h4>
+        <h4 class="text-lg font-bold text-slate-800">Não encontramos publicações para a sua pesquisa</h4>
         <p class="text-sm text-slate-500 mt-1 max-w-md mx-auto">
-          Intenta con otros términos como "Digital", "Flexografía" o selecciona "Todos".
+          Tente outros termos como "Digital", "Laser", "Flexografia" ou selecione "Todos".
         </p>
       </div>
     </div>

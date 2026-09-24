@@ -1,24 +1,25 @@
 ---
-import { MACHINES } from '../data/machines';
+import { getMachines } from '../lib/vultr-db';
 
-const impresoras = MACHINES.filter(m => m.category === 'impresoras');
-const cortadoras = MACHINES.filter(m => m.category === 'cortadoras');
-const especiales = MACHINES.filter(m => m.category === 'especiales');
+const allMachines = await getMachines();
+const impresoras = allMachines.filter(m => m.category === 'impresoras');
+const cortadoras = allMachines.filter(m => m.category === 'cortadoras');
+const especiales = allMachines.filter(m => m.category === 'especiales');
 ---
 
 <section id="catalog" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
   <!-- Header Title -->
   <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
     <div class="space-y-3">
-      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-slate-900 text-white inline-block rounded-none">
-        CATÁLOGO INDUSTRIAL 2026
+      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-slate-900 text-white inline-block rounded-none uppercase">
+        CATÁLOGO OFICIAL 2025 - 2026
       </span>
       <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-        Catálogo Completo de Equipos ({MACHINES.length})
+        Catálogo de Equipamentos ({allMachines.length})
       </h2>
     </div>
     <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
-      Explora nuestra gama completa de prensas digitales Memjet®, troqueladoras láser CO2, plotters y sistemas de inspección Katun DPS.
+      Linha industrial completa: prensas digitais inkjet Memjet® DuraFlex, troqueladoras a laser CO2, lâminas tangenciais e contadores automáticos Katun DPS.
     </p>
   </div>
 
@@ -28,44 +29,44 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
     <div class="flex flex-wrap gap-2" id="category-filters">
       <button 
         data-category="all" 
-        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-bold bg-slate-900 text-white shadow-xs transition-all cursor-crosshair rounded-none"
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-bold bg-slate-900 text-white shadow-xs transition-all cursor-crosshair rounded-none uppercase"
       >
-        TODOS LOS EQUIPOS ({MACHINES.length})
+        TODOS OS EQUIPAMENTOS ({allMachines.length})
       </button>
       <button 
         data-category="impresoras" 
-        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none uppercase"
       >
-        IMPRESORAS DIGITALES ({impresoras.length})
+        EQUIPAMENTOS INKJET ({impresoras.length})
       </button>
       <button 
         data-category="cortadoras" 
-        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none uppercase"
       >
-        CORTADORAS & LÁSER ({cortadoras.length})
+        CORTADORAS E FINALIZADORAS ({cortadoras.length})
       </button>
       <button 
         data-category="especiales" 
-        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none"
+        class="cat-filter-btn px-4 py-2 font-['Space_Grotesk',monospace] text-xs font-medium bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 transition-all cursor-crosshair rounded-none uppercase"
       >
-        INSPECCIÓN & CONTROL ({especiales.length})
+        CONTADOR ROLO A ROLO ({especiales.length})
       </button>
     </div>
 
-    <!-- Live Search Bar (Square) -->
+    <!-- Live Search Bar -->
     <div class="relative w-full lg:w-80">
       <span class="material-symbols-outlined absolute left-3.5 top-2.5 text-slate-400 text-sm">search</span>
       <input 
         type="text" 
         id="search-input" 
-        placeholder="Buscar equipo o tecnología..." 
+        placeholder="Buscar equipamento ou tecnologia..." 
         class="w-full pl-10 pr-4 py-2 text-xs bg-white border border-slate-200 focus:ring-2 focus:ring-[#00aeef] focus:outline-none placeholder:text-slate-400 font-['Space_Grotesk',monospace] rounded-none cursor-crosshair"
       />
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- SECCIÓN 1: IMPRESORAS DIGITALES                     -->
+  <!-- SEÇÃO 1: EQUIPAMENTOS INKJET                        -->
   <!-- ═══════════════════════════════════════════════════ -->
   <div class="catalog-section mb-16" data-section="impresoras">
     <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#00aeef]">
@@ -73,11 +74,11 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
         <span class="material-symbols-outlined text-xl text-white">print</span>
       </div>
       <div>
-        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
-          Impresoras Digitales
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900 tracking-tight uppercase">
+          EQUIPAMENTOS INKJET
         </h3>
         <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#00aeef] uppercase">
-          {impresoras.length} EQUIPOS • MEMJET® DURAFLEX® • LED HD • PIEZOELÉCTRICO UV
+          {impresoras.length} EQUIPAMENTOS • MEMJET® DURAFLEX® • TINTAS PIGMENTADAS • LED HD • PIEZOELÉTRICO UV
         </span>
       </div>
     </div>
@@ -91,21 +92,21 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
           data-tech={machine.technology.toLowerCase()}
         >
           <div>
-            <!-- Machine Image Container (Square) -->
-            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+            <!-- Machine Image Container -->
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none p-2 flex items-center justify-center">
               <img 
                 src={machine.image} 
                 alt={machine.name} 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none"></div>
 
-              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
-                IMPRESORA
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200 uppercase">
+                EQUIPAMENTO INKJET
               </span>
 
               {machine.badge && (
-                <span class="absolute top-3 right-3 bg-[#00aeef] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                <span class="absolute top-3 right-3 bg-[#00aeef] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none uppercase">
                   {machine.badge}
                 </span>
               )}
@@ -117,27 +118,27 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
                 <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
                   {machine.name}
                 </h3>
-                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-2">
                   {machine.subtitle}
                 </p>
               </div>
 
-              <!-- Key Specs Pill Table (Square) -->
+              <!-- Key Specs Pill Table -->
               <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
                 <div>
-                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGIA</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDADE</span>
                   <span class="font-semibold text-[#00aeef] truncate block">{machine.speed}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">RESOLUCIÓN</span>
+                  <span class="text-slate-400 block text-[10px]">RESOLUÇÃO</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="text-slate-400 block text-[10px]">LARGURA MÁX</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
                 </div>
               </div>
@@ -148,31 +149,42 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
             </div>
           </div>
 
-          <!-- Card Actions (Square) -->
+          <!-- Card Actions -->
           <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
             <a 
-              href={`/soluciones/${machine.id}`}
+              href={`https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20tenho%20interesse%20em%20uma%20cota%C3%A7%C3%A3o%20do%20equipamento%20${encodeURIComponent(machine.name)}`}
+              target="_blank"
+              rel="noopener"
               class="w-full bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
             >
-              <span>VER PRODUCTO</span>
-              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              <span class="material-symbols-outlined text-sm">chat</span>
+              <span>COTAR COM CÁSSIO (WHATSAPP)</span>
             </a>
 
             <div class="flex gap-2">
+              <a 
+                href={`/solucion/${machine.id}`}
+                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair shadow-xs rounded-none font-['Space_Grotesk',monospace] uppercase"
+                title="Detalhes Técnicos"
+              >
+                <span>DETALHES</span>
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+
               <button 
-                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                class="open-modal-btn px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
                 data-id={machine.id}
+                title="Visualização Rápida"
               >
                 <span class="material-symbols-outlined text-sm">visibility</span>
-                <span>VISTA RÁPIDA</span>
               </button>
 
               <a 
                 href={machine.pdfUrl} 
                 target="_blank" 
                 rel="noopener"
-                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
-                title="Descargar Brochure PDF"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none uppercase font-['Space_Grotesk',monospace]"
+                title="Baixar Ficha Técnica em PDF"
               >
                 <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
                 <span>PDF</span>
@@ -185,7 +197,7 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
   </div>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- SECCIÓN 2: CORTADORAS & TROQUELADO                  -->
+  <!-- SEÇÃO 2: CORTADORAS E FINALIZADORAS                 -->
   <!-- ═══════════════════════════════════════════════════ -->
   <div class="catalog-section mb-16" data-section="cortadoras">
     <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#e11d48]">
@@ -193,11 +205,11 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
         <span class="material-symbols-outlined text-xl text-white">content_cut</span>
       </div>
       <div>
-        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
-          Cortadoras & Troquelado
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900 tracking-tight uppercase">
+          CORTADORAS E FINALIZADORAS DE RÓTULOS
         </h3>
         <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#e11d48] uppercase">
-          {cortadoras.length} EQUIPOS • LÁSER CO2 • CUCHILLAS DIGITALES • SEMI-ROTATIVO
+          {cortadoras.length} EQUIPAMENTOS • LÂMINA TANGENCIAL • CORTE A LASER CO2 • MULTI-LÂMINAS • EM FOLHA B3
         </span>
       </div>
     </div>
@@ -211,20 +223,20 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
           data-tech={machine.technology.toLowerCase()}
         >
           <div>
-            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none p-2 flex items-center justify-center">
               <img 
                 src={machine.image} 
                 alt={machine.name} 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none"></div>
 
-              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
-                CORTADORA / LÁSER
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200 uppercase">
+                CORTADORA / FINALIZADORA
               </span>
 
               {machine.badge && (
-                <span class="absolute top-3 right-3 bg-[#e11d48] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                <span class="absolute top-3 right-3 bg-[#e11d48] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none uppercase">
                   {machine.badge}
                 </span>
               )}
@@ -235,26 +247,26 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
                 <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#e11d48] transition-colors">
                   {machine.name}
                 </h3>
-                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-2">
                   {machine.subtitle}
                 </p>
               </div>
 
               <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
                 <div>
-                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGIA</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDADE</span>
                   <span class="font-semibold text-[#e11d48] truncate block">{machine.speed}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">PRECISIÓN</span>
+                  <span class="text-slate-400 block text-[10px]">PRECISÃO</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="text-slate-400 block text-[10px]">LARGURA MÁX</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
                 </div>
               </div>
@@ -267,28 +279,39 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
 
           <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
             <a 
-              href={`/soluciones/${machine.id}`}
+              href={`https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20tenho%20interesse%20em%20uma%20cota%C3%A7%C3%A3o%20do%20equipamento%20${encodeURIComponent(machine.name)}`}
+              target="_blank"
+              rel="noopener"
               class="w-full bg-[#e11d48] hover:bg-[#be123c] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
             >
-              <span>VER PRODUCTO</span>
-              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              <span class="material-symbols-outlined text-sm">chat</span>
+              <span>COTAR COM CÁSSIO (WHATSAPP)</span>
             </a>
 
             <div class="flex gap-2">
+              <a 
+                href={`/solucion/${machine.id}`}
+                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair shadow-xs rounded-none font-['Space_Grotesk',monospace] uppercase"
+                title="Detalhes Técnicos"
+              >
+                <span>DETALHES</span>
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+
               <button 
-                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                class="open-modal-btn px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
                 data-id={machine.id}
+                title="Visualização Rápida"
               >
                 <span class="material-symbols-outlined text-sm">visibility</span>
-                <span>VISTA RÁPIDA</span>
               </button>
 
               <a 
                 href={machine.pdfUrl} 
                 target="_blank" 
                 rel="noopener"
-                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
-                title="Descargar Brochure PDF"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none uppercase font-['Space_Grotesk',monospace]"
+                title="Baixar Ficha Técnica em PDF"
               >
                 <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
                 <span>PDF</span>
@@ -301,19 +324,19 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
   </div>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- SECCIÓN 3: INSPECCIÓN & CONTROL                     -->
+  <!-- SEÇÃO 3: CONTADOR DE RÓTULOS AUTOMÁTICO             -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <div class="catalog-section" data-section="especiales">
+  <div class="catalog-section mb-20" data-section="especiales">
     <div class="flex items-center gap-4 mb-8 pb-3 border-b-2 border-[#f59e0b]">
       <div class="w-10 h-10 bg-[#f59e0b] flex items-center justify-center rounded-none">
         <span class="material-symbols-outlined text-xl text-white">fact_check</span>
       </div>
       <div>
-        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900">
-          Inspección & Control de Calidad
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-extrabold text-slate-900 tracking-tight uppercase">
+          CONTADOR AUTOMÁTICO DE RÓTULOS ROLO A ROLO
         </h3>
         <span class="font-['Space_Grotesk',monospace] text-xs font-semibold text-[#f59e0b] uppercase">
-          {especiales.length} EQUIPO • SENSOR ULTRASÓNICO • CONTEO AUTOMÁTICO
+          {especiales.length} EQUIPAMENTO • SENSOR ULTRASSÔNICO & FOTOELÉTRICO • CONTAGEM EM ALTA VELOCIDADE
         </span>
       </div>
     </div>
@@ -327,20 +350,20 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
           data-tech={machine.technology.toLowerCase()}
         >
           <div>
-            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none">
+            <div class="relative h-48 sm:h-52 overflow-hidden bg-slate-100 rounded-none p-2 flex items-center justify-center">
               <img 
                 src={machine.image} 
                 alt={machine.name} 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent pointer-events-none"></div>
 
-              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
-                ESPECIAL
+              <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200 uppercase">
+                CONTADOR ROLO A ROLO
               </span>
 
               {machine.badge && (
-                <span class="absolute top-3 right-3 bg-[#f59e0b] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none">
+                <span class="absolute top-3 right-3 bg-[#f59e0b] text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none uppercase">
                   {machine.badge}
                 </span>
               )}
@@ -351,26 +374,26 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
                 <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 group-hover:text-[#f59e0b] transition-colors">
                   {machine.name}
                 </h3>
-                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-1">
+                <p class="font-['Space_Grotesk',monospace] text-xs text-slate-500 mt-1 line-clamp-2">
                   {machine.subtitle}
                 </p>
               </div>
 
               <div class="grid grid-cols-2 gap-2 p-3 bg-slate-50 border border-slate-100 text-[11px] font-['Space_Grotesk',monospace] rounded-none">
                 <div>
-                  <span class="text-slate-400 block text-[10px]">TECNOLOGÍA</span>
+                  <span class="text-slate-400 block text-[10px]">TECNOLOGIA</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.technology}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">VELOCIDAD</span>
+                  <span class="text-slate-400 block text-[10px]">VELOCIDADE</span>
                   <span class="font-semibold text-[#f59e0b] truncate block">{machine.speed}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">PRECISIÓN</span>
+                  <span class="text-slate-400 block text-[10px]">PRECISÃO</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.resolution}</span>
                 </div>
                 <div>
-                  <span class="text-slate-400 block text-[10px]">ANCHO MÁX</span>
+                  <span class="text-slate-400 block text-[10px]">LARGURA MÁX</span>
                   <span class="font-semibold text-slate-800 truncate block">{machine.maxWidth}</span>
                 </div>
               </div>
@@ -383,28 +406,39 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
 
           <div class="px-6 pb-6 pt-2 flex flex-col gap-2">
             <a 
-              href={`/soluciones/${machine.id}`}
+              href={`https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20tenho%20interesse%20em%20uma%20cota%C3%A7%C3%A3o%20do%20equipamento%20${encodeURIComponent(machine.name)}`}
+              target="_blank"
+              rel="noopener"
               class="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white text-xs font-bold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none uppercase font-['Space_Grotesk',monospace]"
             >
-              <span>VER PRODUCTO</span>
-              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              <span class="material-symbols-outlined text-sm">chat</span>
+              <span>COTAR COM CÁSSIO (WHATSAPP)</span>
             </a>
 
             <div class="flex gap-2">
+              <a 
+                href={`/solucion/${machine.id}`}
+                class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair shadow-xs rounded-none font-['Space_Grotesk',monospace] uppercase"
+                title="Detalhes Técnicos"
+              >
+                <span>DETALHES</span>
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+              </a>
+
               <button 
-                class="open-modal-btn flex-1 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1.5 cursor-crosshair shadow-xs rounded-none"
+                class="open-modal-btn px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
                 data-id={machine.id}
+                title="Visualização Rápida"
               >
                 <span class="material-symbols-outlined text-sm">visibility</span>
-                <span>VISTA RÁPIDA</span>
               </button>
 
               <a 
                 href={machine.pdfUrl} 
                 target="_blank" 
                 rel="noopener"
-                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none"
-                title="Descargar Brochure PDF"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 transition-colors flex items-center justify-center gap-1 cursor-crosshair rounded-none uppercase font-['Space_Grotesk',monospace]"
+                title="Baixar Ficha Técnica em PDF"
               >
                 <span class="material-symbols-outlined text-sm text-rose-500">picture_as_pdf</span>
                 <span>PDF</span>
@@ -415,9 +449,88 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
       ))}
     </div>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- BANNER: BAIXAR CATÁLOGO OFICIAL KATUN DPS           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-2 border-slate-800 p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl rounded-none mb-8">
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#00aeef]/10 blur-3xl pointer-events-none rounded-full"></div>
+    <div class="absolute -left-20 -top-20 w-80 h-80 bg-[#e11d48]/10 blur-3xl pointer-events-none rounded-full"></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+      <!-- Left Content -->
+      <div class="lg:col-span-8 space-y-5">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3 py-1 bg-[#00aeef] text-slate-950 uppercase tracking-widest rounded-none">
+            EDIÇÃO OFICIAL 2025 - 2026
+          </span>
+          <span class="font-['Space_Grotesk',monospace] text-xs text-slate-400 font-semibold">
+            PDF DE ALTA DEFINIÇÃO • DOWNLOAD DIRETO
+          </span>
+        </div>
+
+        <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          BAIXE NOSSO CATÁLOGO DE EQUIPAMENTOS
+        </h3>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed font-['Space_Grotesk',monospace] max-w-2xl">
+          Tenha em mãos o catálogo técnico completo em PDF com todas as especificações de prensas inkjet Memjet® DuraFlex, cortadoras a laser CO2, lâminas tangenciais e equipamentos de inspeção Katun DPS.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a 
+            href="/imagenes/KATUN-DPS-Catalogo-01-28-2025_web.pdf"
+            target="_blank"
+            rel="noopener"
+            download="KATUN-DPS-Catalogo-Equipamentos.pdf"
+            class="bg-[#00aeef] hover:bg-[#0096d1] text-slate-950 font-bold px-6 py-3.5 text-xs font-['Space_Grotesk',monospace] uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 shadow-lg hover:shadow-[#00aeef]/25 cursor-crosshair rounded-none"
+          >
+            <span class="material-symbols-outlined text-lg">download</span>
+            <span>BAIXAR CATÁLOGO (PDF)</span>
+          </a>
+
+          <a 
+            href="https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20gostaria%20de%20receber%20o%20Cat%C3%A1logo%20Completo%20de%20Equipamentos%20Katun%20DPS%20e%20assessoria%20t%C3%A9cnica."
+            target="_blank"
+            rel="noopener"
+            class="border border-slate-700 hover:border-slate-500 bg-slate-900/80 hover:bg-slate-800 text-white font-semibold px-6 py-3.5 text-xs font-['Space_Grotesk',monospace] uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-crosshair rounded-none"
+          >
+            <span class="material-symbols-outlined text-base text-emerald-400">chat</span>
+            <span>SOLICITAR ASSESSORIA COM CÁSSIO</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Catalog Thumbnail -->
+      <div class="lg:col-span-4 flex justify-center lg:justify-end">
+        <a 
+          href="/imagenes/KATUN-DPS-Catalogo-01-28-2025_web.pdf"
+          target="_blank" 
+          rel="noopener"
+          class="group relative block w-48 sm:w-56 shadow-2xl border-2 border-slate-700 hover:border-[#00aeef] transition-all duration-300 hover:scale-105 cursor-crosshair"
+          title="Abrir Catálogo Oficial Katun DPS"
+        >
+          <img 
+            src="/imagenes/KATUN-DPS-Catalogo-01-28-2025_web-pdf-791x1024.jpg" 
+            alt="Capa Catálogo Katun DPS" 
+            class="w-full h-auto object-cover"
+          />
+          <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-4 text-center">
+            <span class="material-symbols-outlined text-3xl text-[#00aeef]">picture_as_pdf</span>
+            <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-white uppercase">
+              ABRIR CATÁLOGO EM PDF
+            </span>
+          </div>
+          <span class="absolute bottom-2 left-2 right-2 bg-slate-900/90 text-white text-[10px] font-['Space_Grotesk',monospace] font-bold py-1 px-2 text-center border border-slate-700 block uppercase">
+            VERSÃO OFICIAL • PDF
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Sharp Square Spec Modal (0px Radius) -->
+<!-- Spec Modal (Portuguese) -->
 <div id="spec-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center bg-slate-950/60 backdrop-blur-sm p-4">
   <div class="bg-white border-2 border-slate-900 w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl rounded-none">
     <!-- Modal Header -->
@@ -443,18 +556,23 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
             SUBTITLE HERE
           </span>
           <span class="font-['Space_Grotesk',monospace] text-sm font-semibold text-slate-800" id="modal-tech">
-            TECNOLOGÍA
+            TECNOLOGIA
           </span>
         </div>
-        <a id="modal-pdf-link" href="#" target="_blank" rel="noopener" class="bg-slate-900 text-white text-xs font-semibold px-4 py-2 hover:bg-[#00aeef] transition-colors flex items-center gap-2 rounded-none cursor-crosshair">
-          <span class="material-symbols-outlined text-sm">download</span> DESCARGAR PDF
-        </a>
+        <div class="flex flex-wrap gap-2">
+          <a id="modal-wa-link" href="#" target="_blank" rel="noopener" class="bg-[#00aeef] text-white text-xs font-semibold px-4 py-2 hover:bg-[#0096d1] transition-colors flex items-center gap-1.5 rounded-none cursor-crosshair uppercase">
+            <span class="material-symbols-outlined text-sm">chat</span> COTAR NO WHATSAPP
+          </a>
+          <a id="modal-pdf-link" href="#" target="_blank" rel="noopener" class="bg-slate-900 text-white text-xs font-semibold px-4 py-2 hover:bg-[#00aeef] transition-colors flex items-center gap-1.5 rounded-none cursor-crosshair uppercase">
+            <span class="material-symbols-outlined text-sm">download</span> BAIXAR PDF
+          </a>
+        </div>
       </div>
 
       <!-- Specs Grid Table -->
       <div>
         <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <span class="material-symbols-outlined text-[#00aeef]">tune</span> Especificaciones Técnicas
+          <span class="material-symbols-outlined text-[#00aeef]">tune</span> Especificações Técnicas
         </h4>
         <div class="border border-slate-200 divide-y divide-slate-100 bg-slate-50 font-['Space_Grotesk',monospace] text-xs rounded-none" id="modal-specs-table">
           <!-- Dynamically populated -->
@@ -464,7 +582,7 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
       <!-- Features List -->
       <div>
         <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <span class="material-symbols-outlined text-emerald-500">check_circle</span> Características Principales
+          <span class="material-symbols-outlined text-emerald-500">check_circle</span> Diferenciais e Recursos
         </h4>
         <ul class="space-y-2 font-['Space_Grotesk',monospace] text-xs" id="modal-features-list">
           <!-- Dynamically populated -->
@@ -474,7 +592,7 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
       <!-- Target Industries Tags -->
       <div>
         <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <span class="material-symbols-outlined text-amber-500">domain</span> Sectores Compatibles
+          <span class="material-symbols-outlined text-amber-500">domain</span> Aplicações & Setores
         </h4>
         <div class="flex flex-wrap gap-2" id="modal-industries-list">
           <!-- Dynamically populated -->
@@ -484,7 +602,7 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
   </div>
 </div>
 
-<script is:inline define:vars={{ MACHINES }}>
+<script is:inline define:vars={{ MACHINES: allMachines }}>
   document.addEventListener('DOMContentLoaded', () => {
     const filterBtns = document.querySelectorAll('.cat-filter-btn');
     const searchInput = document.getElementById('search-input');
@@ -495,7 +613,6 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
     let searchQuery = '';
 
     function filterCards() {
-      // Show/hide individual cards
       cards.forEach(card => {
         const cat = card.getAttribute('data-category');
         const name = card.getAttribute('data-name');
@@ -511,7 +628,6 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
         }
       });
 
-      // Show/hide entire sections based on whether they have visible cards
       sections.forEach(section => {
         const sectionType = section.getAttribute('data-section');
         const visibleCards = section.querySelectorAll('.machine-card:not(.hidden)');
@@ -551,6 +667,7 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
     const modal = document.getElementById('spec-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const openModalBtns = document.querySelectorAll('.open-modal-btn');
+    const modalWaLink = document.getElementById('modal-wa-link');
 
     openModalBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -560,9 +677,14 @@ const especiales = MACHINES.filter(m => m.category === 'especiales');
 
         document.getElementById('modal-title').textContent = machine.name;
         document.getElementById('modal-subtitle').textContent = machine.subtitle;
-        document.getElementById('modal-tech').textContent = `TECNOLOGÍA: ${machine.technology} | RES: ${machine.resolution}`;
+        document.getElementById('modal-tech').textContent = `TECNOLOGIA: ${machine.technology} | RES: ${machine.resolution}`;
         document.getElementById('modal-category').textContent = `FICHA TÉCNICA - ${machine.category.toUpperCase()}`;
         document.getElementById('modal-pdf-link').setAttribute('href', machine.pdfUrl);
+
+        if (modalWaLink) {
+          const waUrl = `https://wa.me/5511945222069?text=${encodeURIComponent(`Olá Cássio, gostaria de uma cotação para o equipamento ${machine.name}`)}`;
+          modalWaLink.setAttribute('href', waUrl);
+        }
 
         // Populate Specs Table
         const specsTable = document.getElementById('modal-specs-table');

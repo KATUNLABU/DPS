@@ -7,62 +7,85 @@ import DpsLogo from './DpsLogo.astro';
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
       <!-- Brand Info -->
       <div class="md:col-span-5 space-y-4">
-        <a href="/" class="inline-block py-1" aria-label="Katun DPS Inicio">
+        <a href="/" class="inline-block py-1" aria-label="Katun DPS Início">
           <DpsLogo class="h-10 sm:h-11 w-auto" theme="dark" />
         </a>
 
         <p class="text-xs text-slate-400 font-['Space_Grotesk',monospace] leading-relaxed max-w-sm">
-          Katun Digital Process Systems (DPS) - Líderes en tecnología de impresión de etiquetas digitales Memjet® DuraFlex y troquelado láser CO2 en México y Latinoamérica.
+          Katun Digital Process Systems (DPS) — Líderes em tecnologia de impressão digital de rótulos Memjet® DuraFlex, corte a laser CO2 e acabamento industrial no Brasil e América Latina.
         </p>
 
-        <div class="pt-2">
+        <div class="pt-2 flex flex-wrap gap-2">
           <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3 py-1 bg-slate-800 text-[#00aeef] border border-slate-700 rounded-none inline-block">
-            SHOWROOM MÉXICO • CDMX
+            🇧🇷 BRASIL • SÃO PAULO
+          </span>
+          <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3 py-1 bg-slate-800 text-slate-400 border border-slate-700 rounded-none inline-block">
+            🇲🇽 MÉXICO • CDMX
           </span>
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Navigation Links in Portuguese -->
       <div class="md:col-span-3 space-y-3 font-['Space_Grotesk',monospace] text-xs">
         <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-bold text-white uppercase tracking-wider">
-          NAVEGACIÓN
+          NAVEGAÇÃO
         </h4>
         <ul class="space-y-2 text-slate-400">
-          <li><a href="/" class="hover:text-white transition-colors cursor-crosshair">Inicio / Bienvenida</a></li>
-          <li><a href="/catalogo" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Catálogo Completo (14 Equipos)</a></li>
-          <li><a href="/industrias" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Sectores por Industria (7)</a></li>
-          <li><a href="/blog" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Blog & Artículos Técnicos</a></li>
-          <li><a href="/#specs" class="hover:text-white transition-colors cursor-crosshair">Tecnología Memjet, LED & Láser</a></li>
-          <li><a href="/#calculator" class="hover:text-white transition-colors cursor-crosshair">Calculadora de ROI</a></li>
-          <li><a href="/contacto" class="hover:text-white transition-colors cursor-crosshair">Contactar a un Especialista</a></li>
-          <li><a href="/admin/login" class="text-slate-500 hover:text-slate-300 text-[11px] transition-colors flex items-center gap-1 mt-2 cursor-crosshair"><span class="material-symbols-outlined text-[13px]">lock</span> Acceso CMS</a></li>
+          <li><a href="/" class="hover:text-white transition-colors cursor-crosshair">Início / Boas-vindas</a></li>
+          <li><a href="/catalogo" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Catálogo Completo (14 Equipamentos)</a></li>
+          <li><a href="/industrias" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Setores Industriais (7)</a></li>
+          <li><a href="/blog" class="hover:text-[#00aeef] transition-colors font-bold text-white cursor-crosshair">Blog & Artigos Técnicos</a></li>
+          <li><a href="/#specs" class="hover:text-white transition-colors cursor-crosshair">Tecnologia Memjet & Laser</a></li>
+          <li><a href="/#process" class="hover:text-white transition-colors cursor-crosshair">Processo de Trabalho</a></li>
+          <li><a href="/#calculator" class="hover:text-white transition-colors cursor-crosshair">Simulador de ROI</a></li>
+          <li><a href="/contacto" class="hover:text-white transition-colors cursor-crosshair">Fale com um Especialista</a></li>
+          <li><a href="/admin/login" class="text-slate-500 hover:text-slate-300 text-[11px] transition-colors flex items-center gap-1 mt-2 cursor-crosshair"><span class="material-symbols-outlined text-[13px]">lock</span> Acesso Restrito CMS</a></li>
         </ul>
       </div>
 
-      <!-- Contact & Showroom -->
+      <!-- Contact & Regional Specialists (Cassio Rodrigues Brasil + Obed Guardado México) -->
       <div class="md:col-span-4 space-y-3 font-['Space_Grotesk',monospace] text-xs text-slate-400">
         <h4 class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-bold text-white uppercase tracking-wider">
-          ATENCIÓN & ESPECIALISTAS MÉXICO
+          ATENDIMENTO BRASIL & LATAM
         </h4>
-        <p class="text-slate-300">
-          Obed Guardado — Project Leader DPS México
-        </p>
-        <p class="text-slate-300">
-          Tel / Mobile: <a href="https://wa.me/5214492133887" target="_blank" rel="noopener" class="text-[#00aeef] hover:underline cursor-crosshair">+52 1 (449) 213 3887</a>
-        </p>
-        <p class="text-slate-300">
-          Email: <a href="mailto:obed.guardado@katun.com" class="text-slate-300 hover:underline cursor-crosshair">obed.guardado@katun.com</a>
-        </p>
-        <p class="text-slate-400 pt-1">
-          Sitio Oficial: <a href="https://katundps.com" target="_blank" rel="noopener" class="text-slate-300 hover:underline cursor-crosshair">katundps.com</a>
+        
+        <!-- Brazil Lead -->
+        <div class="pb-2 border-b border-slate-800 space-y-1">
+          <p class="text-white font-semibold flex items-center gap-1">
+            <span>🇧🇷</span> Eng. Cássio Rodrigues, MBA
+          </p>
+          <p class="text-[11px] text-slate-400">CTS / New Product Development • DPS Expert</p>
+          <p class="text-slate-300">
+            WhatsApp Corporativo: <a href="https://wa.me/5511945222069" target="_blank" rel="noopener" class="text-[#00aeef] hover:underline cursor-crosshair font-bold">+55 (11) 94522-2069</a>
+          </p>
+          <p class="text-slate-300">
+            Telefone: +55 (11) 3647-3284
+          </p>
+          <p class="text-slate-300">
+            E-mail: <a href="mailto:cassio.rodrigues@katun.com" class="text-slate-300 hover:underline cursor-crosshair">cassio.rodrigues@katun.com</a>
+          </p>
+        </div>
+
+        <!-- Mexico Regional Contact -->
+        <div class="pt-1 text-[11px] text-slate-400 space-y-0.5">
+          <p class="text-slate-300 font-medium flex items-center gap-1">
+            <span>🇲🇽</span> Atendimento México: Obed Guardado
+          </p>
+          <p>WhatsApp: <a href="https://wa.me/5214492133887" target="_blank" rel="noopener" class="text-slate-300 hover:underline cursor-crosshair">+52 1 (449) 213 3887</a></p>
+        </div>
+
+        <p class="text-slate-400 pt-2">
+          Website Oficial: <a href="https://www.katun.com" target="_blank" rel="noopener" class="text-[#00aeef] hover:underline cursor-crosshair">www.katun.com</a>
         </p>
       </div>
     </div>
 
     <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-['Space_Grotesk',monospace] text-slate-500">
-      <p>© 2026 KATUN DPS. Todos los derechos reservados.</p>
+      <p>© 2026 KATUN DPS. Todos os direitos reservados.</p>
       <div class="flex gap-6">
-        <a href="https://katundps.com" target="_blank" rel="noopener" class="hover:text-slate-400 transition-colors cursor-crosshair">KATUNDPS.COM</a>
+        <a href="https://www.katun.com" target="_blank" rel="noopener" class="hover:text-slate-400 transition-colors cursor-crosshair">KATUN.COM</a>
+        <a href="/catalogo" class="hover:text-slate-400 transition-colors cursor-crosshair">CATÁLOGO</a>
+        <a href="/contacto" class="hover:text-slate-400 transition-colors cursor-crosshair">CONTATO</a>
       </div>
     </div>
   </div>

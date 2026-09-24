@@ -9,8 +9,8 @@ const industries = await getIndustries();
 ---
 
 <Layout 
-  title="Soluciones por Sector Industrial - KATUN DPS"
-  description="Tecnología de impresión digital de etiquetas y empaques flexibles para bebidas, quimicos GHS, alimentos, farmacéutica, gráfica y fabricación industrial."
+  title="Soluções por Setor Industrial - KATUN DPS"
+  description="Tecnologia de impressão digital de rótulos e embalagens flexíveis para bebidas, químicos GHS, alimentos, farmacêutica, gráfica e manufatura industrial no Brasil e América Latina."
 >
   <Header />
 
@@ -22,25 +22,25 @@ const industries = await getIndustries();
       <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-[#e11d48]/20 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto text-center relative z-10">
-        <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3.5 py-1.5 bg-[#00aeef]/20 text-[#00aeef] border border-[#00aeef]/30 inline-block mb-4 uppercase tracking-widest">
-          TECNOLOGÍA DE ADAPTACIÓN SECTORIAL
+        <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3.5 py-1.5 bg-[#00aeef]/20 text-[#00aeef] border border-[#00aeef]/30 inline-block mb-4 uppercase tracking-widest rounded-none">
+          TECNOLOGIA DE ADAPTAÇÃO SETORIAL
         </span>
         <h1 class="font-['Plus_Jakarta_Sans',sans-serif] text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-          Soluciones de Impresión para <br/>
+          Soluções de Impressão para <br/>
           <span class="bg-gradient-to-r from-[#00aeef] via-[#f59e0b] to-[#e11d48] bg-clip-text text-transparent">
-            Cada Industria Especifica
+            Cada Segmento Industrial
           </span>
         </h1>
         <p class="text-slate-300 max-w-3xl mx-auto text-sm sm:text-base font-['Space_Grotesk',monospace] leading-relaxed">
-          Desde tirajes cortos bajo demanda para microcervecerías hasta etiquetas químicas BS5609 con máxima durabilidad y empaques flexibles en bolsas Mylar. Conéctate con la prensa digital exacta para tu sector.
+          De tiragens sob demanda para cervejarias e vinícolas até rótulos químicos ultrarresistentes BS5609 e embalagens flexíveis pouch/Mylar. Encontre a tecnologia exata para a sua operação.
         </p>
 
         <!-- Quick Filter Badges / Navigation Tabs -->
         <div class="mt-10 flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
-          {industries.map((ind, idx) => (
+          {industries.map((ind) => (
             <a 
               href={`#${ind.slug}`} 
-              class="bg-slate-800/80 hover:bg-[#00aeef] hover:text-white border border-slate-700/80 text-slate-200 text-xs font-['Space_Grotesk',monospace] px-4 py-2 transition-all duration-200 flex items-center gap-2 group shadow-sm"
+              class="bg-slate-800/80 hover:bg-[#00aeef] hover:text-white border border-slate-700/80 text-slate-200 text-xs font-['Space_Grotesk',monospace] px-4 py-2 transition-all duration-200 flex items-center gap-2 group shadow-sm rounded-none"
             >
               <span class="material-symbols-outlined text-sm text-[#00aeef] group-hover:text-white">{ind.icon}</span>
               <span>{ind.title}</span>
@@ -55,7 +55,7 @@ const industries = await getIndustries();
       {industries.map((ind, index) => (
         <section 
           id={ind.slug} 
-          class={`bg-white border border-slate-200 shadow-md overflow-hidden relative transition-all duration-300 scroll-mt-24 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+          class={`bg-white border border-slate-200 shadow-md overflow-hidden relative transition-all duration-300 scroll-mt-24 rounded-none ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
         >
           <!-- Accent Top Bar -->
           <div class="h-1.5 w-full bg-gradient-to-r from-[#00aeef] via-[#f59e0b] to-[#e11d48]"></div>
@@ -72,7 +72,7 @@ const industries = await getIndustries();
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent"></div>
               
               <div class="absolute top-4 left-4">
-                <span class="bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-3 py-1 border border-slate-700 tracking-wider">
+                <span class="bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-['Space_Grotesk',monospace] font-bold px-3 py-1 border border-slate-700 tracking-wider uppercase rounded-none">
                   {ind.tag}
                 </span>
               </div>
@@ -80,7 +80,7 @@ const industries = await getIndustries();
               <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
                 <div class="flex items-center gap-2 text-[#00aeef]">
                   <span class="material-symbols-outlined text-3xl">{ind.icon}</span>
-                  <span class="font-['Space_Grotesk',monospace] text-xs font-bold uppercase tracking-wider">SECTOR #{index + 1}</span>
+                  <span class="font-['Space_Grotesk',monospace] text-xs font-bold uppercase tracking-wider">SETOR #{index + 1}</span>
                 </div>
                 <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold text-white">
                   {ind.title}
@@ -95,7 +95,7 @@ const industries = await getIndustries();
               <div class="space-y-4">
                 <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-xl font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
                   <span class="w-2 h-2 bg-[#00aeef] inline-block"></span>
-                  Requerimientos y Ventajas Competitivas
+                  Requisitos Técnicos e Vantagens Competitivas
                 </h3>
                 
                 <p class="text-slate-700 text-sm sm:text-base leading-relaxed font-['Space_Grotesk',monospace]">
@@ -105,13 +105,13 @@ const industries = await getIndustries();
 
               <!-- Subsections / Tags Highlights -->
               {ind.subsections && ind.subsections.length > 0 && (
-                <div class="space-y-3 bg-slate-50 p-4 border border-slate-200">
+                <div class="space-y-3 bg-slate-50 p-4 border border-slate-200 rounded-none">
                   <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-slate-500 uppercase tracking-wider block">
-                    ESPECIALIDADES DESTACADAS DEL SECTOR:
+                    DESTAQUES E APLICAÇÕES ESPECÍFICAS:
                   </span>
                   <div class="flex flex-wrap gap-2">
                     {ind.subsections.map(sub => (
-                      <span class="bg-white border border-slate-300 text-slate-800 font-['Space_Grotesk',monospace] text-xs font-semibold px-3 py-1 flex items-center gap-1.5 shadow-xs">
+                      <span class="bg-white border border-slate-300 text-slate-800 font-['Space_Grotesk',monospace] text-xs font-semibold px-3 py-1 flex items-center gap-1.5 shadow-xs rounded-none">
                         <span class="material-symbols-outlined text-xs text-[#00aeef]">check_circle</span>
                         {sub}
                       </span>
@@ -124,21 +124,21 @@ const industries = await getIndustries();
               {ind.recommendedMachines && ind.recommendedMachines.length > 0 && (
                 <div class="space-y-3 pt-2">
                   <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-slate-900 uppercase tracking-wider block">
-                    TECNOLOGÍA RECOMENDADA DE KATUN DPS:
+                    TECNOLOGIAS HOMOLOGADAS KATUN DPS:
                   </span>
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {ind.recommendedMachines.map(machineName => {
                       const foundMachine = MACHINES.find(m => m.name.toLowerCase().includes(machineName.toLowerCase()) || machineName.toLowerCase().includes(m.name.toLowerCase()));
                       return (
                         <a 
-                          href={foundMachine ? `/catalogo#${foundMachine.id}` : '/catalogo'}
-                          class="bg-white border border-slate-200 p-3 hover:border-[#00aeef] transition-colors group flex flex-col justify-between"
+                          href={foundMachine ? `/solucion/${foundMachine.id}` : '/catalogo'}
+                          class="bg-white border border-slate-200 p-3 hover:border-[#00aeef] transition-colors group flex flex-col justify-between rounded-none"
                         >
                           <div class="font-['Plus_Jakarta_Sans',sans-serif] text-xs font-bold text-slate-900 group-hover:text-[#00aeef] transition-colors">
                             {machineName}
                           </div>
                           <div class="mt-2 text-[10px] text-slate-500 font-['Space_Grotesk',monospace] flex items-center gap-1">
-                            Ver Especificaciones <span class="material-symbols-outlined text-[12px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+                            Ver Especificações <span class="material-symbols-outlined text-[12px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
                           </div>
                         </a>
                       );
@@ -150,20 +150,20 @@ const industries = await getIndustries();
               <!-- Action Bar -->
               <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
                 <a 
-                  href={`https://wa.me/5215580793969?text=Hola,%20me%20interesa%20obtener%20asesoría%20y%20cotización%20para%20la%20${encodeURIComponent(ind.title)}`}
+                  href={`https://wa.me/5511945222069?text=Ol%C3%A1%20C%C3%A1ssio%2C%20tenho%20interesse%20em%20uma%20solu%C3%A7%C3%A3o%20Katun%20DPS%20para%20o%20setor%20${encodeURIComponent(ind.title)}`}
                   target="_blank" 
                   rel="noopener" 
-                  class="w-full sm:w-auto bg-slate-900 hover:bg-[#00aeef] text-white text-xs font-bold font-['Space_Grotesk',monospace] px-5 py-3 transition-colors flex items-center justify-center gap-2 shadow-xs"
+                  class="w-full sm:w-auto bg-slate-900 hover:bg-[#00aeef] text-white text-xs font-bold font-['Space_Grotesk',monospace] px-5 py-3 transition-colors flex items-center justify-center gap-2 shadow-xs rounded-none uppercase"
                 >
                   <span class="material-symbols-outlined text-base">chat</span>
-                  COTIZAR SOLUCIÓN PARA {ind.title.toUpperCase()}
+                  COTAR SOLUÇÃO COM CÁSSIO (WHATSAPP)
                 </a>
 
                 <a 
                   href="/contacto" 
-                  class="text-xs font-bold text-slate-600 hover:text-[#00aeef] font-['Space_Grotesk',monospace] flex items-center gap-1 transition-colors"
+                  class="text-xs font-bold text-slate-600 hover:text-[#00aeef] font-['Space_Grotesk',monospace] flex items-center gap-1 transition-colors uppercase"
                 >
-                  SOLICITAR PRUEBA DE IMPRESIÓN SIN COSTO <span class="material-symbols-outlined text-sm">navigate_next</span>
+                  SOLICITAR AMOSTRA IMPRESSA <span class="material-symbols-outlined text-sm">navigate_next</span>
                 </a>
               </div>
 
@@ -176,31 +176,31 @@ const industries = await getIndustries();
 
     <!-- Bottom CTA Banner -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-      <div class="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-slate-800 p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
+      <div class="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-slate-800 p-8 sm:p-12 text-white flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl rounded-none">
         <div class="space-y-3 text-center md:text-left">
           <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-[#00aeef] uppercase tracking-wider">
-            ¿NO ENCUENTRAS TU APLICACIÓN ESPECÍFICA?
+            NÃO ENCONTROU SUA APLICAÇÃO ESPECÍFICA?
           </span>
           <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold text-white">
-            Desarrollamos Soluciones a Medida In-House
+            Desenvolvemos Soluções Sob Medida
           </h2>
           <p class="text-slate-300 text-xs sm:text-sm max-w-xl font-['Space_Grotesk',monospace]">
-            Nuestros ingenieros evalúan tu sustrato, resistencia química requerida y volumen de producción para recomendar la combinación ideal de prensa y acabador láser.
+            Nossos engenheiros analisam seu substrato, requisitos de adesão e volume produtivo para recomendar a combinação ideal de impressora e acabamento.
           </p>
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <a 
             href="/contacto" 
-            class="bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold font-['Space_Grotesk',monospace] px-6 py-3.5 text-center transition-all shadow-md uppercase tracking-wider"
+            class="bg-[#00aeef] hover:bg-[#0096d1] text-white text-xs font-bold font-['Space_Grotesk',monospace] px-6 py-3.5 text-center transition-all shadow-md uppercase tracking-wider rounded-none"
           >
-            Agendar Asesoría Técnica
+            Falar com um Especialista
           </a>
           <a 
             href="/catalogo" 
-            class="border border-slate-700 hover:bg-slate-800 text-slate-200 text-xs font-bold font-['Space_Grotesk',monospace] px-6 py-3.5 text-center transition-all uppercase tracking-wider"
+            class="border border-slate-700 hover:bg-slate-800 text-slate-200 text-xs font-bold font-['Space_Grotesk',monospace] px-6 py-3.5 text-center transition-all uppercase tracking-wider rounded-none"
           >
-            Explorar Prensas y Cortadoras
+            Explorar Catálogo Completo
           </a>
         </div>
       </div>

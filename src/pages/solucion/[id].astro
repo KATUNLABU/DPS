@@ -4,7 +4,6 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ContactEngineering from '../../components/ContactEngineering.astro';
 import { MACHINES, type Machine } from '../../data/machines';
-import { getProducts } from '../../lib/supabase';
 
 export async function getStaticPaths() {
   return MACHINES.map((machine) => ({
@@ -23,7 +22,7 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
 
 <Layout 
   title={`${machine.name} - ${machine.subtitle} | KATUN DPS`}
-  description={`${machine.description} Conoce las especificaciones técnicas, velocidad, resolución y descarga la ficha técnica PDF.`}
+  description={`${machine.description} Conheça as especificações técnicas, velocidade, resolução e faça o download da ficha técnica em PDF.`}
 >
   <Header />
 
@@ -32,9 +31,9 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
     <!-- Breadcrumb Navigation -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <nav class="flex items-center gap-2 text-xs font-['Space_Grotesk',monospace] text-slate-500">
-        <a href="/" class="hover:text-[#00aeef] transition-colors">Inicio</a>
+        <a href="/" class="hover:text-[#00aeef] transition-colors">Início</a>
         <span>/</span>
-        <a href="/catalogo" class="hover:text-[#00aeef] transition-colors">Catálogo de Equipos</a>
+        <a href="/catalogo" class="hover:text-[#00aeef] transition-colors">Catálogo de Equipamentos</a>
         <span>/</span>
         <span class="text-slate-900 font-bold">{machine.name}</span>
       </nav>
@@ -42,40 +41,65 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
 
     <!-- Product Detail Hero -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <div class="bg-white border border-slate-200 shadow-md p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="bg-white border border-slate-200 shadow-md p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-none">
         
         <!-- Product Image Showcase -->
         <div class="lg:col-span-6 space-y-4">
-          <div class="relative bg-slate-950 aspect-[4/3] overflow-hidden border border-slate-200 group">
+          <div class="relative bg-slate-100 aspect-[4/3] overflow-hidden border border-slate-200 group p-4 flex items-center justify-center rounded-none">
             <img 
+              id="main-product-img"
               src={machine.image} 
               alt={machine.name} 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+              class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
             
             {machine.badge && (
-              <span class="absolute top-4 left-4 bg-[#00aeef] text-white text-[11px] font-['Space_Grotesk',monospace] font-bold px-3 py-1 uppercase tracking-wider shadow-sm">
+              <span class="absolute top-4 left-4 bg-[#00aeef] text-white text-[11px] font-['Space_Grotesk',monospace] font-bold px-3 py-1 uppercase tracking-wider shadow-sm rounded-none">
                 {machine.badge}
               </span>
             )}
 
             <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center text-white text-xs font-['Space_Grotesk',monospace]">
-              <span class="bg-slate-900/80 px-2.5 py-1 border border-slate-700 uppercase">
+              <span class="bg-slate-900/90 px-2.5 py-1 border border-slate-700 uppercase rounded-none">
                 {machine.category}
               </span>
-              <span class="bg-slate-900/80 px-2.5 py-1 border border-slate-700 text-[#00aeef] font-bold">
+              <span class="bg-slate-900/90 px-2.5 py-1 border border-slate-700 text-[#00aeef] font-bold rounded-none">
                 {machine.technology}
               </span>
             </div>
           </div>
+
+          <!-- Thumbnail Gallery for Alternate Views & Components -->
+          {machine.gallery && machine.gallery.length > 1 && (
+            <div class="space-y-2 pt-1">
+              <div class="flex items-center justify-between text-[11px] font-['Space_Grotesk',monospace] text-slate-500">
+                <span class="uppercase font-bold tracking-wider text-slate-600 flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm text-[#00aeef]">photo_library</span>
+                  Vistas e Detalhes ({machine.gallery.length} fotos)
+                </span>
+                <span class="text-[10px] text-slate-400">Clique para alternar vista</span>
+              </div>
+              <div class="flex gap-2.5 overflow-x-auto pb-2 scrollbar-thin">
+                {machine.gallery.map((thumbUrl, idx) => (
+                  <button 
+                    type="button"
+                    class={`gallery-thumb-btn w-20 h-20 shrink-0 bg-slate-100 border p-1.5 transition-all rounded-none cursor-crosshair ${idx === 0 ? 'border-[#00aeef] ring-2 ring-[#00aeef]/30 bg-white' : 'border-slate-200 hover:border-slate-400 hover:bg-white'}`}
+                    data-img={thumbUrl}
+                    title={`Ver foto ${idx + 1}`}
+                  >
+                    <img src={thumbUrl} alt={`${machine.name} - Foto ${idx + 1}`} class="w-full h-full object-contain" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <!-- Product Summary & Action Panel -->
         <div class="lg:col-span-6 space-y-6">
           <div class="space-y-3">
-            <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3 py-1 bg-[#00aeef]/10 text-[#00aeef] inline-block uppercase tracking-widest">
-              SOLUCIÓN INDUSTRIAL KATUN DPS
+            <span class="font-['Space_Grotesk',monospace] text-xs font-bold px-3 py-1 bg-[#00aeef]/10 text-[#00aeef] inline-block uppercase tracking-widest rounded-none">
+              SOLUÇÃO INDUSTRIAL KATUN DPS
             </span>
             <h1 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
               {machine.name}
@@ -91,16 +115,16 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
 
           <!-- Highlight Key Specs -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-            <div class="bg-slate-50 p-3 border border-slate-200">
-              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">VELOCIDAD</span>
+            <div class="bg-slate-50 p-3 border border-slate-200 rounded-none">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase font-medium">VELOCIDADE</span>
               <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-slate-900">{machine.speed}</span>
             </div>
-            <div class="bg-slate-50 p-3 border border-slate-200">
-              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">RESOLUCIÓN</span>
+            <div class="bg-slate-50 p-3 border border-slate-200 rounded-none">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase font-medium">RESOLUÇÃO</span>
               <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-slate-900">{machine.resolution}</span>
             </div>
-            <div class="bg-slate-50 p-3 border border-slate-200">
-              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase">ANCHO MÁX.</span>
+            <div class="bg-slate-50 p-3 border border-slate-200 rounded-none">
+              <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase font-medium">LARGURA MÁX.</span>
               <span class="font-['Plus_Jakarta_Sans',sans-serif] text-sm font-extrabold text-[#00aeef]">{machine.maxWidth}</span>
             </div>
           </div>
@@ -108,24 +132,36 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3 pt-4">
             <a 
-              href={`https://wa.me/5214492133887?text=Hola%20Obed,%20me%20interesa%20obtener%20cotización%20y%20asesoría%20para%20el%20equipo%20${encodeURIComponent(machine.name)}`}
+              href={`https://wa.me/5511945222069?text=${encodeURIComponent(`Olá Cássio, gostaria de obter cotação e assessoria técnica para o equipamento ${machine.name}`)}`}
               target="_blank" 
               rel="noopener" 
-              class="bg-slate-900 hover:bg-[#00aeef] text-white px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 shadow-xs uppercase"
+              class="bg-slate-900 hover:bg-[#00aeef] text-white px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 shadow-xs uppercase rounded-none"
             >
               <span class="material-symbols-outlined text-base">chat</span>
-              COTIZAR {machine.name.toUpperCase()}
+              COTAR COM CÁSSIO (WHATSAPP)
             </a>
+
+            {machine.webUrl && (
+              <a 
+                href={machine.webUrl}
+                target="_blank"
+                rel="noopener"
+                class="border border-slate-300 hover:border-[#00aeef] hover:text-[#00aeef] text-slate-700 px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 uppercase rounded-none"
+              >
+                <span class="material-symbols-outlined text-base">open_in_new</span>
+                FICHA WEB OFICIAL
+              </a>
+            )}
 
             {machine.pdfUrl && (
               <a 
                 href={machine.pdfUrl}
                 target="_blank"
                 download 
-                class="border border-slate-300 hover:border-[#00aeef] hover:text-[#00aeef] text-slate-700 px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 uppercase"
+                class="border border-slate-300 hover:border-[#00aeef] hover:text-[#00aeef] text-slate-700 px-6 py-3.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center justify-center gap-2 uppercase rounded-none"
               >
-                <span class="material-symbols-outlined text-base">picture_as_pdf</span>
-                DESCARGAR FICHA PDF
+                <span class="material-symbols-outlined text-base text-rose-500">picture_as_pdf</span>
+                BAIXAR FICHA PDF
               </a>
             )}
           </div>
@@ -136,32 +172,32 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
 
     <!-- Video Demonstration Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <div class="bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl text-white space-y-6">
+      <div class="bg-slate-900 border border-slate-800 p-6 sm:p-10 shadow-2xl text-white space-y-6 rounded-none">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-800 pb-6">
           <div>
-            <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-[#00aeef] bg-[#00aeef]/10 px-3 py-1 border border-[#00aeef]/30 uppercase tracking-widest inline-block mb-2">
-              DEMOSTRACIÓN EN VIDEO
+            <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-[#00aeef] bg-[#00aeef]/10 px-3 py-1 border border-[#00aeef]/30 uppercase tracking-widest inline-block mb-2 rounded-none">
+              DEMONSTRAÇÃO EM VÍDEO
             </span>
             <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-3xl font-extrabold text-white">
-              Funcionamiento en Vivo: {machine.name}
+              Operação em Tempo Real: {machine.name}
             </h2>
           </div>
           <a 
-            href={`https://wa.me/5214492133887?text=Hola%20Obed,%20me%20gustaría%20solicitar%20un%20video%20específico%20o%20demo%20en%20vivo%20del%20equipo%20${encodeURIComponent(machine.name)}`}
+            href={`https://wa.me/5511945222069?text=${encodeURIComponent(`Olá Cássio, gostaria de solicitar um vídeo de operação ou agendar uma demo ao vivo do equipamento ${machine.name}`)}`}
             target="_blank" 
             rel="noopener"
-            class="bg-[#00aeef] hover:bg-[#009ee2] text-white px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase shrink-0 shadow-md"
+            class="bg-[#00aeef] hover:bg-[#009ee2] text-white px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase shrink-0 shadow-md rounded-none"
           >
             <span class="material-symbols-outlined text-base">video_call</span>
-            SOLICITAR DEMO PERSONALIZADA
+            SOLICITAR VÍDEO COM CÁSSIO
           </a>
         </div>
 
-        <div class="relative aspect-video w-full bg-slate-950 border border-slate-800 overflow-hidden flex items-center justify-center group">
+        <div class="relative aspect-video w-full bg-slate-950 border border-slate-800 overflow-hidden flex items-center justify-center group rounded-none">
           {machine.videoUrl && !machine.videoUrl.includes('YOUTUBE_ID') ? (
             <iframe 
               src={machine.videoUrl} 
-              title={`Video Demostración ${machine.name}`}
+              title={`Video Demonstração ${machine.name}`}
               class="w-full h-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -172,19 +208,19 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
                 <span class="material-symbols-outlined text-3xl text-[#00aeef]">play_circle</span>
               </div>
               <h3 class="font-['Plus_Jakarta_Sans',sans-serif] text-lg font-bold text-white mb-2">
-                Video Demostrativo de {machine.name}
+                Vídeo Demonstrativo de {machine.name}
               </h3>
               <p class="font-['Space_Grotesk',monospace] text-xs text-slate-400 max-w-md mb-4">
-                Observa la precisión de impresión y corte en tiempo real. Contáctanos para enviarte el video técnico completo o realizar una prueba de impresión con tus archivos.
+                Confira a precisão de impressão e acabamento ao vivo. Entre em contato com o especialista Eng. Cássio Rodrigues para receber vídeos técnicos ou agendar um teste com seus próprios arquivos.
               </p>
               <a 
-                href={`https://wa.me/5214492133887?text=Hola%20Obed,%20quisiera%20ver%20el%20video%20de%20operación%20de%20la%20${encodeURIComponent(machine.name)}`}
+                href={`https://wa.me/5511945222069?text=${encodeURIComponent(`Olá Cássio, gostaria de ver o vídeo demonstrativo de operação do equipamento ${machine.name}`)}`}
                 target="_blank" 
                 rel="noopener"
-                class="bg-slate-800 hover:bg-slate-700 text-[#00aeef] border border-[#00aeef]/40 px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase"
+                class="bg-slate-800 hover:bg-slate-700 text-[#00aeef] border border-[#00aeef]/40 px-5 py-2.5 text-xs font-bold font-['Space_Grotesk',monospace] transition-colors flex items-center gap-2 uppercase rounded-none"
               >
                 <span class="material-symbols-outlined text-sm">smart_display</span>
-                SOLICITAR VIDEO A UN ESPECIALISTA KATUN DPS
+                SOLICITAR VÍDEO NO WHATSAPP
               </a>
             </div>
           )}
@@ -197,15 +233,15 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         <!-- Left Column: Features -->
-        <div class="lg:col-span-6 bg-white p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+        <div class="lg:col-span-6 bg-white p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 rounded-none">
           <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-4">
             <span class="material-symbols-outlined text-[#00aeef]">verified</span>
-            Características Principales
+            Recursos & Diferenciais Principais
           </h2>
           
           <ul class="space-y-4 font-['Space_Grotesk',monospace] text-sm text-slate-700">
             {machine.features.map(feature => (
-              <li class="flex items-start gap-3 bg-slate-50 p-3 border border-slate-100">
+              <li class="flex items-start gap-3 bg-slate-50 p-3 border border-slate-100 rounded-none">
                 <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
                 <span>{feature}</span>
               </li>
@@ -215,11 +251,11 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
           {machine.industries && machine.industries.length > 0 && (
             <div class="pt-4 space-y-3">
               <span class="font-['Space_Grotesk',monospace] text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                SECTORES RECOMENDADOS:
+                SETORES COMPATÍVEIS:
               </span>
               <div class="flex flex-wrap gap-2">
                 {machine.industries.map(ind => (
-                  <span class="bg-slate-100 text-slate-800 font-['Space_Grotesk',monospace] text-xs px-3 py-1 font-semibold border border-slate-200">
+                  <span class="bg-slate-100 text-slate-800 font-['Space_Grotesk',monospace] text-xs px-3 py-1 font-semibold border border-slate-200 rounded-none">
                     {ind}
                   </span>
                 ))}
@@ -229,10 +265,10 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
         </div>
 
         <!-- Right Column: Specs Table -->
-        <div class="lg:col-span-6 bg-slate-900 text-white p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6">
+        <div class="lg:col-span-6 bg-slate-900 text-white p-6 sm:p-8 border border-slate-800 shadow-xl space-y-6 rounded-none">
           <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-4">
             <span class="material-symbols-outlined text-[#00aeef]">settings</span>
-            Especificaciones Técnicas
+            Especificações Técnicas
           </h2>
 
           <div class="divide-y divide-slate-800 font-['Space_Grotesk',monospace] text-xs">
@@ -251,18 +287,18 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
     <!-- Related Equipment Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200">
       <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-2xl font-bold text-slate-900 mb-6">
-        Otras Soluciones de Katun DPS que podrían interesarte
+        Outras Soluções Katun DPS que podem interessar a você
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {relatedMachines.map(rel => (
           <a 
             href={`/solucion/${rel.id}`}
-            class="bg-white border border-slate-200 p-5 hover:border-[#00aeef] transition-all group flex flex-col justify-between shadow-xs"
+            class="bg-white border border-slate-200 p-5 hover:border-[#00aeef] transition-all group flex flex-col justify-between shadow-xs rounded-none"
           >
             <div class="space-y-3">
-              <div class="h-40 overflow-hidden bg-slate-950">
-                <img src={rel.image} alt={rel.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="h-40 overflow-hidden bg-slate-100 flex items-center justify-center p-2">
+                <img src={rel.image} alt={rel.name} class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
               </div>
               <span class="text-[10px] font-['Space_Grotesk',monospace] font-bold text-[#00aeef] uppercase block">
                 {rel.category}
@@ -274,8 +310,8 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
                 {rel.subtitle}
               </p>
             </div>
-            <div class="pt-4 mt-2 border-t border-slate-100 text-xs font-bold text-[#00aeef] font-['Space_Grotesk',monospace] flex items-center gap-1">
-              Ver Detalles <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            <div class="pt-4 mt-2 border-t border-slate-100 text-xs font-bold text-[#00aeef] font-['Space_Grotesk',monospace] flex items-center gap-1 uppercase">
+              Ver Detalhes <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
           </a>
         ))}
@@ -288,4 +324,27 @@ const relatedMachines = MACHINES.filter(m => m.id !== machine.id).slice(0, 3);
   </main>
 
   <Footer />
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mainImg = document.getElementById('main-product-img');
+      const thumbBtns = document.querySelectorAll('.gallery-thumb-btn');
+      if (mainImg && thumbBtns.length > 0) {
+        thumbBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const newSrc = btn.getAttribute('data-img');
+            if (newSrc && mainImg.getAttribute('src') !== newSrc) {
+              mainImg.src = newSrc;
+              thumbBtns.forEach(b => {
+                b.classList.remove('border-[#00aeef]', 'ring-2', 'ring-[#00aeef]/30', 'bg-white');
+                b.classList.add('border-slate-200', 'bg-slate-100');
+              });
+              btn.classList.add('border-[#00aeef]', 'ring-2', 'ring-[#00aeef]/30', 'bg-white');
+              btn.classList.remove('border-slate-200', 'bg-slate-100');
+            }
+          });
+        });
+      }
+    });
+  </script>
 </Layout>

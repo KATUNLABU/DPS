@@ -3,72 +3,72 @@ const INDUSTRIES = [
   {
     id: "alimentos",
     title: "Alimentos & Bebidas",
-    tag: "RESISTENCIA & NORMATIVA",
+    tag: "RESISTÊNCIA & NORMATIVA",
     icon: "restaurant",
     image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80",
-    description: "Tintas acuosas Memjet® aptas para contacto indirecto con alimentos, botellas refrigeradas y latas sumergidas en hielo.",
-    recommended: ["ArrowJet Aqua 330R", "VIPColor VP610", "Aries 35PL"]
+    description: "Tintas aquosas pigmentadas Memjet® aptas para contato indireto, garrafas refrigeradas, condensação e baldes de gelo.",
+    recommended: ["ArrowJet Aqua 330R", "VIP Color VP660 / VP610", "Aries 35 PL"]
   },
   {
     id: "quimicos",
-    title: "Químicos e Industriales (GHS)",
-    tag: "ETIQUETADO BS5609",
+    title: "Químicos e Lubrificantes (GHS)",
+    tag: "ROTULAGEM BS5609 & GHS",
     icon: "science",
     image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80",
-    description: "Etiquetas ultrarresistentes a solventes, aceites y corrosivos con cumplimiento del estándar internacional GHS.",
-    recommended: ["ArrowJet Aqua 330R", "Arrow EZCut 350R Láser", "LC 350 PM"]
+    description: "Rótulos ultrarresistentes a solventes, ácidos, óleos minerais e intempéries marinhas conforme a norma BS5609.",
+    recommended: ["ArrowJet Aqua 330R", "Taurus 35 PL Plus Láser CO2", "Arrow EzCut 350R"]
   },
   {
     id: "farmaceutica",
-    title: "Salud & Farmacéutica",
-    tag: "TRAZABILIDAD & QR",
+    title: "Saúde & Farmacêutica",
+    tag: "RASTREABILIDADE & QR CODE",
     icon: "medication",
     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
-    description: "Micro-impresión de alta precisión para frascos pequeños, ampolletas y serialización mediante códigos QR troquelados por láser.",
-    recommended: ["VIPColor VP660", "LC 350 PM Láser", "Contador Automático"]
+    description: "Microimpressão de altíssima definição para ampolas e frascos, com serialização de códigos 2D e troca ágil de lotes.",
+    recommended: ["VIP Color VP660 / VP610", "Taurus 35 PL Plus Láser CO2", "Contador Automático"]
   },
   {
     id: "cosmetica",
-    title: "Cuidado Personal & Cosmética",
-    tag: "ACABADO LUXURY & FOIL",
+    title: "Cuidados Pessoais & Cosméticos",
+    tag: "ACABAMENTO PREMIUM & FOIL",
     icon: "face_3",
     image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
-    description: "Etiquetas transparentes (clear-on-clear), barniz UV brillante y estampado metálico foil para marcas de belleza y perfumería.",
-    recommended: ["Aqua Jet 330 Hybrid", "Katun LT330", "Taurus 35PL"]
+    description: "Rótulos transparentes no-label look (clear-on-clear), verniz com brilho intenso e aplicação sobre filmes metalizados.",
+    recommended: ["ArrowJet Aqua 330R Hybrid", "Katun DPS LT330", "Taurus 35 PL Plus Láser CO2"]
   },
   {
     id: "decoracion",
-    title: "Decoración & Rotulación",
-    tag: "FORMATO ANCHO & VINIL",
+    title: "Comunicação Visual & Rótulos",
+    tag: "FORMATO AMPLO & VINIL",
     icon: "design_services",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80",
-    description: "Impresión y troquelado en vinilos autoadhesivos, papel tapiz, películas metalizadas y gráficos de alta durabilidad.",
-    recommended: ["Katun KLT3", "Arrow EZCut 330RX", "Katun LT330"]
+    description: "Impressão e corte de contorno em vinis autoadesivos, papéis couché, películas fosforescentes e materiais de alta durabilidade.",
+    recommended: ["Katun DPS KLT3", "Arrow EzCut 330 RX", "Katun DPS LT330"]
   },
   {
     id: "empaques",
-    title: "Empaques Flexibles & Cajas",
-    tag: "RÍGIDOS Y FLEXIBLES",
+    title: "Embalagens Flexíveis & Caixas",
+    tag: "SACHÊS & POUCH MYLAR",
     icon: "inventory",
     image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
-    description: "Soluciones de impresión digital directa para bolsas pouch, cajas corrugadas, cartoncillo microcorrugado y empaques flexibles.",
-    recommended: ["Katun KLT3", "Gemini 40", "Taurus 35PL Plus"]
+    description: "Impressão digital direta e corte em folhas soltas para caixas, protótipos, bolsas pouch e embalagens flexíveis sob demanda.",
+    recommended: ["Katun DPS KLT3", "Gemini 40", "Cortadora de Rótulos por Folha LC 350 PM"]
   }
 ];
 ---
 
-<section id="industries" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+<section id="industries" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200 scroll-mt-20">
   <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
     <div class="space-y-3">
-      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-[#e11d48]/10 text-[#e11d48] inline-block rounded-none">
-        APLICACIONES INDUSTRIALES
+      <span class="font-['Space_Grotesk',monospace] text-xs font-semibold px-3.5 py-1.5 bg-[#e11d48]/10 text-[#e11d48] inline-block rounded-none uppercase">
+        APLICAÇÕES INDUSTRIAIS
       </span>
       <h2 class="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-        Sectores Atendidos
+        Setores Industriais Atendidos
       </h2>
     </div>
     <p class="max-w-md text-slate-600 text-sm leading-relaxed font-['Space_Grotesk',monospace]">
-      Nuestras prensas digitales y cortadoras cumplen con las exigencias de adhesión, resistencia y normativa en diversos mercados.
+      Nossas prensas digitais e cortadoras atendem às mais rígidas exigências de adesão, conformidade técnica e resistência ambiental.
     </p>
   </div>
 
@@ -84,7 +84,7 @@ const INDUSTRIES = [
             />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
             
-            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200">
+            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-['Space_Grotesk',monospace] font-bold px-2.5 py-1 shadow-xs rounded-none border border-slate-200 uppercase">
               {ind.tag}
             </span>
           </div>
@@ -103,16 +103,18 @@ const INDUSTRIES = [
           </div>
         </div>
 
-        <div class="p-6 pt-0 border-t border-slate-100 mt-4">
-          <span class="font-['Space_Grotesk',monospace] text-[10px] font-bold uppercase text-slate-400 block mb-2">
-            EQUIPOS RECOMENDADOS:
-          </span>
-          <div class="flex flex-wrap gap-1.5">
-            {ind.recommended.map(rec => (
-              <span class="font-['Space_Grotesk',monospace] text-[10px] font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 border border-slate-200 rounded-none">
-                {rec}
-              </span>
-            ))}
+        <div class="p-6 pt-0">
+          <div class="border-t border-slate-100 pt-3">
+            <span class="text-[10px] text-slate-400 font-['Space_Grotesk',monospace] block uppercase mb-1 font-semibold">
+              EQUIPAMENTOS RECOMENDADOS:
+            </span>
+            <div class="flex flex-wrap gap-1">
+              {ind.recommended.map(rec => (
+                <span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 font-['Space_Grotesk',monospace] font-medium rounded-none">
+                  {rec}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
