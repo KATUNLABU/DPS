@@ -22,8 +22,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # Si colocas vultr_postgres_schema.sql aquí, se inicializa automáticamente en el primer arranque:
-      - ./vultr_postgres_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      # Inicialización automática en el primer arranque:
+      - ./supabase/vultr_postgres_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
     networks:
       - dps_network
 

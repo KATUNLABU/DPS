@@ -104,7 +104,7 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
     category: 'Tecnología',
     tags: ['Impresión Digital', 'Flexografía', 'Etiquetas Adhesivas', 'Normativas', 'Guía Técnica'],
     author_name: 'Aleydis Reyes',
-    author_avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+    author_avatar: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&q=80',
     status: 'published',
     reading_time: 5,
     views_count: 0,

@@ -37,6 +37,7 @@ async function runSeed() {
         description TEXT,
         badge VARCHAR(50),
         image TEXT,
+        gallery JSONB DEFAULT '[]'::jsonb,
         pdf_url TEXT,
         web_url TEXT,
         video_url TEXT,
@@ -54,7 +55,7 @@ async function runSeed() {
       await sql`
         INSERT INTO machines (
           id, name, subtitle, category, technology, speed, resolution,
-          max_width, description, badge, image, pdf_url, web_url, video_url,
+          max_width, description, badge, image, gallery, pdf_url, web_url, video_url,
           features, specs, industries
         ) VALUES (
           ${machine.id},
@@ -68,6 +69,7 @@ async function runSeed() {
           ${machine.description},
           ${machine.badge || null},
           ${machine.image},
+          ${JSON.stringify(machine.gallery || [machine.image])},
           ${machine.pdfUrl},
           ${machine.webUrl || null},
           ${machine.videoUrl || null},
@@ -86,6 +88,7 @@ async function runSeed() {
           description = EXCLUDED.description,
           badge = EXCLUDED.badge,
           image = EXCLUDED.image,
+          gallery = EXCLUDED.gallery,
           pdf_url = EXCLUDED.pdf_url,
           web_url = EXCLUDED.web_url,
           video_url = EXCLUDED.video_url,
